@@ -1,6 +1,7 @@
 package ru.shcheglov.geekbrains.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import ru.shcheglov.geekbrains.entity.Bullet;
 import ru.shcheglov.geekbrains.entity.BulletImpl;
@@ -8,6 +9,7 @@ import ru.shcheglov.geekbrains.entity.Rifle;
 import ru.shcheglov.geekbrains.entity.RifleImpl;
 
 @Configuration
+@ComponentScan("ru.shcheglov.geekbrains.config")
 public class AppConfig {
 
     @Bean(name = "bullet")
@@ -17,7 +19,7 @@ public class AppConfig {
 
     @Bean(name = "rifle")
     public Rifle rifle(Bullet bullet) {
-        Rifle rifle = (Rifle) new RifleImpl();
+        Rifle rifle = new RifleImpl();
         rifle.setBullet(bullet);
         return rifle;
     }
