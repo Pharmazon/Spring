@@ -7,7 +7,7 @@ public class Client {
 
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        Rifle rifle = context.getBean("rifle", Rifle.class);
+        Rifle rifle = context.getBean(Rifle.class);
         rifle.shoot();
     }
 }
