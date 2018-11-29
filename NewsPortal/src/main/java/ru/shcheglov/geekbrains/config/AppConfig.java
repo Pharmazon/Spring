@@ -8,6 +8,11 @@ import ru.shcheglov.geekbrains.entity.BulletImpl;
 import ru.shcheglov.geekbrains.entity.Rifle;
 import ru.shcheglov.geekbrains.entity.RifleImpl;
 
+/**
+ * @author Alexey Shcheglov
+ * @version dated 29.11.2018
+ */
+
 @Configuration
 @ComponentScan("ru.shcheglov.geekbrains.config")
 public class AppConfig {

@@ -3,6 +3,11 @@ package ru.shcheglov.geekbrains.entity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+/**
+ * @author Alexey Shcheglov
+ * @version dated 29.11.2018
+ */
+
 @Component("rifle")
 public class RifleImpl implements Rifle {
 
