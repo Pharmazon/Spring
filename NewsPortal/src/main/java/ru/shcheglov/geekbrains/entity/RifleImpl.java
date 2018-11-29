@@ -1,5 +1,6 @@
 package ru.shcheglov.geekbrains.entity;
 
+import com.sun.istack.internal.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,7 @@ public class RifleImpl implements Rifle {
         bullet.crash();
     }
 
-    public void setBullet(Bullet bullet) {
+    public void setBullet(@NotNull final Bullet bullet) {
         this.bullet = bullet;
     }
 
