@@ -1,8 +1,8 @@
-package ru.geekbrains.lessons.lesson2.components;
+package ru.shcheglov.geekbrains.lessons.lesson1;
 
 /**
  * @author Alexey Shcheglov
- * @version dated 01.12.2018
+ * @version dated 02.12.2018
  */
 
 public interface Camera {
@@ -10,7 +10,4 @@ public interface Camera {
     CameraRoll getCameraRoll();
     void setCameraRoll(CameraRoll cameraRoll);
     void doPhotograph();
-    void breaking();
-    boolean isBroken();
-    void ready();
 }
