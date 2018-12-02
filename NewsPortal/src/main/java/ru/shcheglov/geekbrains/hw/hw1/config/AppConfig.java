@@ -1,12 +1,12 @@
-package ru.shcheglov.geekbrains.hw.config;
+package ru.shcheglov.geekbrains.hw.hw1.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import ru.shcheglov.geekbrains.hw.entity.Bullet;
-import ru.shcheglov.geekbrains.hw.entity.BulletImpl;
-import ru.shcheglov.geekbrains.hw.entity.Rifle;
-import ru.shcheglov.geekbrains.hw.entity.RifleImpl;
+import ru.shcheglov.geekbrains.hw.hw1.component.Bullet;
+import ru.shcheglov.geekbrains.hw.hw1.component.BulletImpl;
+import ru.shcheglov.geekbrains.hw.hw1.component.Rifle;
+import ru.shcheglov.geekbrains.hw.hw1.component.RifleImpl;
 
 /**
  * @author Alexey Shcheglov
@@ -14,7 +14,7 @@ import ru.shcheglov.geekbrains.hw.entity.RifleImpl;
  */
 
 @Configuration
-@ComponentScan("ru.shcheglov.geekbrains.entity")
+@ComponentScan("ru.shcheglov.geekbrains.hw.hw1.component")
 public class AppConfig {
 
     @Bean(name = "bullet")

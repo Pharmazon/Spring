@@ -1,4 +1,4 @@
-package ru.shcheglov.geekbrains.hw.hw1.entity;
+package ru.shcheglov.geekbrains.hw.hw1.component;
 
 import org.springframework.stereotype.Component;
 
