@@ -1,4 +1,4 @@
-package ru.shcheglov.geekbrains.entity;
+package ru.shcheglov.geekbrains.hw.hw1.entity;
 
 /**
  * @author Alexey Shcheglov

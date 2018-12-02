@@ -1,9 +1,9 @@
-package ru.shcheglov.geekbrains;
+package ru.shcheglov.geekbrains.hw;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.shcheglov.geekbrains.config.AppConfig;
-import ru.shcheglov.geekbrains.entity.Rifle;
+import ru.shcheglov.geekbrains.hw.config.AppConfig;
+import ru.shcheglov.geekbrains.hw.entity.Rifle;
 
 /**
  * @author Alexey Shcheglov

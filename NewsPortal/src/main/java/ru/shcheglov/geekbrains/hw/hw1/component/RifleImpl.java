@@ -1,4 +1,4 @@
-package ru.shcheglov.geekbrains.entity;
+package ru.shcheglov.geekbrains.hw.hw1.entity;
 
 import com.sun.istack.internal.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
