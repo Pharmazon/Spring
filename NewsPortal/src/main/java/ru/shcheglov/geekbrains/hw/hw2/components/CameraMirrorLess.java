@@ -1,5 +1,6 @@
 package ru.shcheglov.geekbrains.hw.hw2.components;
 
+import com.sun.istack.internal.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,7 +28,7 @@ public class CameraMirrorLess implements Camera {
         return cameraRoll;
     }
 
-    public void setCameraRoll(CameraRoll cameraRoll) {
+    public void setCameraRoll(@NotNull final CameraRoll cameraRoll) {
         this.cameraRoll = cameraRoll;
     }
 

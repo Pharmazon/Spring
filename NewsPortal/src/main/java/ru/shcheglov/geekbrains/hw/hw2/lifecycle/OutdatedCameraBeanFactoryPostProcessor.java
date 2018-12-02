@@ -1,5 +1,6 @@
 package ru.shcheglov.geekbrains.hw.hw2.lifecycle;
 
+import com.sun.istack.internal.NotNull;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
@@ -15,19 +16,19 @@ import ru.shcheglov.geekbrains.hw.hw2.annotation.OutdatedCamera;
 @Component
 public class OutdatedCameraBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+    public void postProcessBeanFactory(@NotNull final ConfigurableListableBeanFactory beanFactory) throws BeansException {
 
-        String[] beanDefinitionNames = beanFactory.getBeanDefinitionNames();
+        final String[] beanDefinitionNames = beanFactory.getBeanDefinitionNames();
         for (String name : beanDefinitionNames) {
 
-            BeanDefinition beanDefinition = beanFactory.getBeanDefinition(name);
-            String className = beanDefinition.getBeanClassName();
+            final BeanDefinition beanDefinition = beanFactory.getBeanDefinition(name);
+            final String className = beanDefinition.getBeanClassName();
 
             try {
-                Class<?> beanClass = Class.forName(className);
-                OutdatedCamera annotation = beanClass.getAnnotation(OutdatedCamera.class);
+                final Class<?> beanClass = Class.forName(className);
+                final OutdatedCamera annotation = beanClass.getAnnotation(OutdatedCamera.class);
                 if (annotation != null) {
-                    Class usingCameraName = annotation.usingCameraClass();
+                    final Class usingCameraName = annotation.usingCameraClass();
                     beanDefinition.setBeanClassName(usingCameraName.getName());
                 }
             } catch (ClassNotFoundException e) {

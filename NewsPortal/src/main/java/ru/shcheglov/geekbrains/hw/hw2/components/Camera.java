@@ -8,11 +8,18 @@ package ru.shcheglov.geekbrains.hw.hw2.components;
 public interface Camera {
 
     CameraRoll getCameraRoll();
+
     void setCameraRoll(CameraRoll cameraRoll);
+
     void doPhotograph();
+
     void breaking();
+
     boolean isBroken();
+
     boolean isOutdated();
+
     void outdating();
+
     void ready();
 }
