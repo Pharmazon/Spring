@@ -13,17 +13,17 @@ import ru.shcheglov.geekbrains.hw.hw2.config.AppConfig;
 public class Client {
 
     public static void main(String[] args) {
-
         final ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        Camera camera = context.getBean("camera", Camera.class);
-        camera.breaking();
-        camera.doPhotograph();
 
-        camera = context.getBean("camera", Camera.class);
-        camera.outdating();
-        camera.doPhotograph();
+        final Camera firstCamera = context.getBean("camera", Camera.class);
+        firstCamera.breaking();
+        firstCamera.doPhotograph();
 
-        camera = context.getBean("camera", Camera.class);
-        camera.doPhotograph();
+        final Camera secondCamera = context.getBean("camera", Camera.class);
+        secondCamera.outdating();
+        secondCamera.doPhotograph();
+
+        final Camera thirdCamera = context.getBean("camera", Camera.class);
+        thirdCamera.doPhotograph();
     }
 }

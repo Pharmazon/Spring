@@ -8,4 +8,5 @@ package ru.shcheglov.geekbrains.hw.hw2.components;
 public interface CameraRoll {
 
     void processing();
+
 }

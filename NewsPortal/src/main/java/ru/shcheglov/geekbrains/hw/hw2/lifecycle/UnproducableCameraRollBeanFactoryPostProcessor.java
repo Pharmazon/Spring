@@ -17,13 +17,10 @@ import ru.shcheglov.geekbrains.hw.hw2.annotation.UnproducableCameraRoll;
 public class UnproducableCameraRollBeanFactoryPostProcessor implements BeanFactoryPostProcessor {
 
     public void postProcessBeanFactory(@NotNull final ConfigurableListableBeanFactory beanFactory) throws BeansException {
-
         final String[] beanDefinitionNames = beanFactory.getBeanDefinitionNames();
         for (String name: beanDefinitionNames){
-
             final BeanDefinition beanDefinition = beanFactory.getBeanDefinition(name);
             final String className = beanDefinition.getBeanClassName();
-
             try {
                 final Class<?> beanClass = Class.forName(className);
                 final UnproducableCameraRoll annotation = beanClass.getAnnotation(UnproducableCameraRoll.class);

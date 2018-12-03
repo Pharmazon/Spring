@@ -7,7 +7,7 @@ package ru.shcheglov.geekbrains.hw.hw2.components;
 
 public class BlackAndWhiteCameraRoll implements CameraRoll {
 
-    public void processing(){
+    public void processing() {
         System.out.println("-1 черно-белый кадр");
     }
 }

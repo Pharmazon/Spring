@@ -22,4 +22,5 @@ public interface Camera {
     void outdating();
 
     void ready();
+
 }
