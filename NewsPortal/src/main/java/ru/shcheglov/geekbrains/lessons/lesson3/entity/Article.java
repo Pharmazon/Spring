@@ -1,9 +1,7 @@
 package ru.shcheglov.geekbrains.lessons.lesson3.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,12 +12,10 @@ import java.util.Date;
  */
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "article")
-class Article extends AbstractEntity {
+public class Article extends AbstractEntity {
 
     private static final long serialVersionUID = 5610810999814106039L;
 

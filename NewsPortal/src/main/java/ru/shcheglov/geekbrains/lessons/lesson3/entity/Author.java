@@ -14,20 +14,18 @@ import java.util.List;
  */
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "author")
-class Author extends AbstractEntity {
+public class Author extends AbstractEntity {
 
     private static final long serialVersionUID = 117525387672899743L;
     
     @Column(name = "first_name")
-    private String firstname;
+    private String firstName;
 
     @Column(name = "last_name")
-    private String lastname;
+    private String lastName;
 
     @Column(name = "email")
     private String email;

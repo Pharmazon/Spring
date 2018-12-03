@@ -1,9 +1,7 @@
 package ru.shcheglov.geekbrains.lessons.lesson3.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,12 +15,10 @@ import java.util.List;
  */
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "category")
-class Category extends AbstractEntity {
+public class Category extends AbstractEntity {
 
     private static final long serialVersionUID = -5071496579337428065L;
 

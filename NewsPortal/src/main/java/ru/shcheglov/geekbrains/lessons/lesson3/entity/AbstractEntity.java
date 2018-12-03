@@ -1,11 +1,12 @@
 package ru.shcheglov.geekbrains.lessons.lesson3.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  * @author Alexey Shcheglov
@@ -13,15 +14,12 @@ import java.io.Serializable;
  */
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @MappedSuperclass
 abstract class AbstractEntity implements Serializable {
 
     private static final long serialVersionUID = 5218556784302717906L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
+    private String id = UUID.randomUUID().toString();
 }
