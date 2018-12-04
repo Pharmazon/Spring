@@ -29,17 +29,17 @@ public class Main {
         final DAO articleDAO = context.getBean("articleDAO", DAO.class);
 
         for (int i = 0; i < 50; i++) {
-            Author author = new Author();
+            final Author author = new Author();
             author.setEmail(i + "author@yandex.ru");
             author.setFirstName("Vasya-" + i);
             author.setLastName("Pupkin" + i);
             authorDAO.create(author);
 
-            Category category = new Category();
+            final Category category = new Category();
             category.setName("Cat-" + i);
             categoryDAO.create(category);
 
-            Article article = new Article();
+            final Article article = new Article();
             article.setAuthor(author);
             article.setCategory(category);
             article.setTitle("title");
