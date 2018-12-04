@@ -17,7 +17,6 @@ import java.util.List;
 
 @Repository
 @Transactional
-@Qualifier("article")
 public class ArticleDAO implements DAO<Article, String> {
 
     @PersistenceContext

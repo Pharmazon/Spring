@@ -1,8 +1,6 @@
 package ru.shcheglov.geekbrains.lessons.lesson3.dao;
 
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.geekbrains.lessons.lesson3.entity.Author;

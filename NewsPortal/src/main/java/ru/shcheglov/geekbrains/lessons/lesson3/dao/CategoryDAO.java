@@ -18,7 +18,6 @@ import java.util.List;
 
 @Repository
 @Transactional
-@Qualifier("category")
 public class CategoryDAO implements DAO<Category, String> {
 
     @PersistenceContext
