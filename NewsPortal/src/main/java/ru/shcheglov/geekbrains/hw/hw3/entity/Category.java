@@ -3,10 +3,7 @@ package ru.shcheglov.geekbrains.hw.hw3.entity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -27,11 +24,4 @@ public class Category extends AbstractEntity {
 
     @OneToMany(mappedBy = "category")
     private List<Ad> ads;
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "name='" + name +
-                '}';
-    }
 }

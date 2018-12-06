@@ -34,16 +34,12 @@ public class CompanyDAO implements DAO<Company, String> {
     }
 
     public void update(@NotNull final Company company) {
-        entityManager.refresh(company);
+        entityManager.merge(company);
     }
 
     public void delete(@NotNull final String id) {
         @NotNull final Company company = entityManager.find(Company.class, id);
         entityManager.remove(company);
-    }
-
-    public void merge(@NotNull final Company company) {
-        entityManager.merge(company);
     }
 
     public Long getCount() {

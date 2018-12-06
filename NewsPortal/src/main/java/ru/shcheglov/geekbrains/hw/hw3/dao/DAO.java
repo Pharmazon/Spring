@@ -17,8 +17,6 @@ public interface DAO<Entity, Key> {
 
     void delete(Key key);
 
-    void merge(Entity entity);
-
     Long getCount();
 
     List<Entity> readAll();

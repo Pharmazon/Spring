@@ -34,15 +34,4 @@ public class Ad extends AbstractEntity {
     @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
-
-    @Override
-    public String toString() {
-        return "Ad{" +
-                "name='" + name + '\'' +
-                ", content='" + content + '\'' +
-                ", number='" + number + '\'' +
-                ", category=" + category +
-                ", company=" + company +
-                '}';
-    }
 }

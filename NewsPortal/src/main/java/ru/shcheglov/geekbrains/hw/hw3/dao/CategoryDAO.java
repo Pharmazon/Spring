@@ -34,16 +34,12 @@ public class CategoryDAO implements DAO<Category, String> {
     }
 
     public void update(@NotNull final Category category) {
-        entityManager.refresh(category);
+        entityManager.merge(category);
     }
 
     public void delete(@NotNull final String id) {
         @NotNull final Category category = entityManager.find(Category.class, id);
         entityManager.remove(category);
-    }
-
-    public void merge(@NotNull final Category category) {
-        entityManager.merge(category);
     }
 
     public Long getCount() {

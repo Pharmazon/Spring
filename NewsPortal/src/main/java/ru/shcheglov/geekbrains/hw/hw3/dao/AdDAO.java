@@ -36,16 +36,12 @@ public class AdDAO implements DAO<Ad, String> {
     }
 
     public void update(@NotNull final Ad ad) {
-        entityManager.refresh(ad);
+        entityManager.merge(ad);
     }
 
     public void delete(@NotNull final String id) {
         @NotNull final Ad ad = entityManager.find(Ad.class, id);
         entityManager.remove(ad);
-    }
-
-    public void merge(@NotNull final Ad ad) {
-        entityManager.merge(ad);
     }
 
     public Long getCount() {
