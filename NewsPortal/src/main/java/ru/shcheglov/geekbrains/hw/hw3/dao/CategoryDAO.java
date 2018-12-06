@@ -1,10 +1,10 @@
 package ru.shcheglov.geekbrains.hw.hw3.dao;
 
-import org.hibernate.Hibernate;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.geekbrains.hw.hw3.entity.Category;
+import ru.shcheglov.geekbrains.hw.hw3.entity.Company;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,11 +26,14 @@ public class CategoryDAO implements DAO<Category, String> {
         entityManager.persist(category);
     }
 
-    public Category read(@NotNull String id) {
-        Category category = entityManager.find(Category.class, id);
-        if (category != null)
-            Hibernate.initialize(category.getAds());
-        return category;
+    public Category findOne(@NotNull String id) {
+        return entityManager.find(Category.class, id);
+    }
+
+    public List<Category> findByName(@NotNull final String name) {
+        return entityManager.createQuery("SELECT e FROM Category e WHERE e.name = :categoryName", Category.class)
+                .setParameter("categoryName", name)
+                .getResultList();
     }
 
     public void update(@NotNull final Category category) {

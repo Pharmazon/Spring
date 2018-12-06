@@ -11,7 +11,9 @@ public interface DAO<Entity, Key> {
 
     void create(Entity entity);
 
-    Entity read(Key key);
+    Entity findOne(Key key);
+
+    List<Entity> findByName(String name);
 
     void update(Entity entity);
 

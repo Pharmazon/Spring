@@ -1,10 +1,10 @@
 package ru.shcheglov.geekbrains.hw.hw3.dao;
 
-import org.hibernate.Hibernate;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.geekbrains.hw.hw3.entity.Ad;
+import ru.shcheglov.geekbrains.hw.hw3.entity.Company;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,13 +26,14 @@ public class AdDAO implements DAO<Ad, String> {
         entityManager.persist(ad);
     }
 
-    public Ad read(@NotNull String id) {
-        Ad ad = entityManager.find(Ad.class, id);
-        if (ad != null) {
-            Hibernate.initialize(ad.getCategory());
-            Hibernate.initialize(ad.getCompany());
-        }
-        return ad;
+    public Ad findOne(@NotNull String id) {
+        return entityManager.find(Ad.class, id);
+    }
+
+    public List<Ad> findByName(@NotNull final String name) {
+        return entityManager.createQuery("SELECT e FROM Ad e WHERE e.name = :adName", Ad.class)
+                .setParameter("adName", name)
+                .getResultList();
     }
 
     public void update(@NotNull final Ad ad) {
