@@ -2,6 +2,7 @@ package ru.shcheglov.geekbrains.hw.hw3.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
+@ToString(exclude = "ads")
 @Entity
 @Table(name = "company")
 public class Company extends AbstractEntity {
