@@ -3,17 +3,13 @@ package ru.shcheglov.geekbrains.lessons.lesson3;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import ru.shcheglov.geekbrains.lessons.lesson3.config.ApplicationConfiguration;
-import ru.shcheglov.geekbrains.lessons.lesson3.dao.AuthorDAO;
 import ru.shcheglov.geekbrains.lessons.lesson3.dao.DAO;
 import ru.shcheglov.geekbrains.lessons.lesson3.entity.Article;
 import ru.shcheglov.geekbrains.lessons.lesson3.entity.Author;
 import ru.shcheglov.geekbrains.lessons.lesson3.entity.Category;
 
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Date;
-import java.util.List;
 
 /**
  * @author Alexey Shcheglov
