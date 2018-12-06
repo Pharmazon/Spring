@@ -33,4 +33,13 @@ public class Company extends AbstractEntity {
 
     @OneToMany(mappedBy = "company")
     private List<Ad> ads;
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", address='" + address +
+                '}';
+    }
 }

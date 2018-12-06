@@ -41,5 +41,8 @@ public class Main {
 //            ad.setNumber("32" + i + "23" + i + "76" + i);
 //            adDAO.create(ad);
 //        }
+        System.out.println("Company=" + companyDAO.read("ded3a6c3-7026-45f4-871a-894ee16da5c4"));
+        System.out.println("Category=" + categoryDAO.read("39d6cf8b-fa9b-4500-8eb5-2e27ac956e3c"));
+        System.out.println("Ad=" + adDAO.read("5ca6edfd-d5c9-4d57-ba36-c2b9a475b520"));
     }
 }

@@ -1,5 +1,6 @@
 package ru.shcheglov.geekbrains.hw.hw3.dao;
 
+import org.hibernate.Hibernate;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +27,10 @@ public class CategoryDAO implements DAO<Category, String> {
     }
 
     public Category read(@NotNull String id) {
-        return entityManager.find(Category.class, id);
+        Category category = entityManager.find(Category.class, id);
+        if (category != null)
+            Hibernate.initialize(category.getAds());
+        return category;
     }
 
     public void update(@NotNull final Category category) {

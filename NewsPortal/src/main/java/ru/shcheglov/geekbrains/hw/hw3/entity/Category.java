@@ -27,4 +27,11 @@ public class Category extends AbstractEntity {
 
     @OneToMany(mappedBy = "category")
     private List<Ad> ads;
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "name='" + name +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package ru.shcheglov.geekbrains.hw.hw3.dao;
 
+import org.hibernate.Hibernate;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,7 +27,12 @@ public class AdDAO implements DAO<Ad, String> {
     }
 
     public Ad read(@NotNull String id) {
-        return entityManager.find(Ad.class, id);
+        Ad ad = entityManager.find(Ad.class, id);
+        if (ad != null) {
+            Hibernate.initialize(ad.getCategory());
+            Hibernate.initialize(ad.getCompany());
+        }
+        return ad;
     }
 
     public void update(@NotNull final Ad ad) {
