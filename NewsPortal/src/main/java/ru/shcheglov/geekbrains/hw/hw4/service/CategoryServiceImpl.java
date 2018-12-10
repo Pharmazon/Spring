@@ -1,7 +1,6 @@
 package ru.shcheglov.geekbrains.hw.hw4.service;
 
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.geekbrains.hw.hw4.entity.Category;
@@ -20,7 +19,6 @@ public class CategoryServiceImpl implements CategoryService {
     @NotNull
     public static final String NAME = "categoryService";
 
-    @Autowired
     private CategoryRepository categoryRepository;
 
     @Override

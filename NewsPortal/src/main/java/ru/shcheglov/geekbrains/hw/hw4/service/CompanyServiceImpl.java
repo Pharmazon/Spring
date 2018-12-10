@@ -1,7 +1,6 @@
 package ru.shcheglov.geekbrains.hw.hw4.service;
 
 import org.jetbrains.annotations.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.geekbrains.hw.hw4.entity.Ad;
@@ -21,7 +20,6 @@ public class CompanyServiceImpl implements CompanyService {
     @NotNull
     public static final String NAME = "companyService";
 
-    @Autowired
     private CompanyRepository companyRepository;
 
     @Override
