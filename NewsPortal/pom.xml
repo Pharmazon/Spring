@@ -16,6 +16,7 @@
         <hibernate.version>5.3.7.Final</hibernate.version>
         <postgresql.version>42.2.2</postgresql.version>
         <lombok.version>1.18.2</lombok.version>
+        <junit.version>4.12</junit.version>
     </properties>
 
     <dependencies>
@@ -52,7 +53,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -77,6 +78,7 @@
             <version>16.0.2</version>
         </dependency>
     </dependencies>
+    
     <build>
         <plugins>
             <plugin>
@@ -84,7 +86,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.6.0</version>
                 <configuration>
-                    <mainClass>ru.shcheglov.geekbrains.hw.hw3.Main</mainClass>
+                    <mainClass>ru.shcheglov.geekbrains.hw.hw4.Main</mainClass>
                 </configuration>
             </plugin>
             <plugin>
