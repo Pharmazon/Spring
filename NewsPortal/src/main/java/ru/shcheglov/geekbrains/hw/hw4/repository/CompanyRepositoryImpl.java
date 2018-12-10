@@ -64,12 +64,10 @@ public class CompanyRepositoryImpl extends AbstractRepository<Company> implement
         @NotNull final CriteriaQuery<Company> query = builder.createQuery(Company.class);
         @NotNull final Root<Company> root = query.from(Company.class);
         @NotNull final Join<Company, Ad> join = root.join("ad", JoinType.INNER);
-
-        @NotNull final Path<Ad> pathAd = root.get("ad");
+        @NotNull final Path<Ad> pathAd = join.get("ad");
         @NotNull final ParameterExpression<Ad> parameterAd = builder.parameter(Ad.class, "ad");
         @NotNull final Predicate predicateByAd = builder.equal(pathAd, parameterAd);
         query.where(predicateByAd);
-
         @NotNull final TypedQuery<Company> typedQuery = entityManager.createQuery(query);
         typedQuery.setParameter("ad", ad);
         return typedQuery.getSingleResult();
