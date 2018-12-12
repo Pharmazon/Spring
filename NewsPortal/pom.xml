@@ -7,17 +7,20 @@
     <groupId>ru.shcheglov</groupId>
     <artifactId>NewsPortal</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>MARKETPLACE</name>
+    <!--<name>PORTAL</name>-->
     <packaging>war</packaging>
 
     <properties>
-        <java-version>1.8</java-version>
+        <java.version>1.8</java.version>
         <spring.version>5.1.1.RELEASE</spring.version>
         <hibernate.version>5.3.7.Final</hibernate.version>
         <postgresql.version>42.2.2</postgresql.version>
         <lombok.version>1.18.2</lombok.version>
         <junit.version>4.12</junit.version>
         <servlet.version>4.0.1</servlet.version>
+
+        <build.sourceEncoding>UTF-8</build.sourceEncoding>
+        <reporting.outputEncoding>UTF-8</reporting.outputEncoding>
     </properties>
 
     <dependencies>
@@ -108,22 +111,23 @@
     
     <build>
         <plugins>
-            <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>exec-maven-plugin</artifactId>-->
-                <!--<version>1.6.0</version>-->
-                <!--<configuration>-->
-                    <!--<mainClass>ru.shcheglov.geekbrains.hw.hw4.Main</mainClass>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <configuration>
+                    <mainClass>ru.shcheglov.geekbrains.hw.hw4.Main</mainClass>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
                 <version>3.7.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${build.sourceEncoding}</encoding>
+                </configuration>
             </plugin>
         </plugins>
     </build>
