@@ -9,10 +9,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "ad")
-@NamedQuery(name = "Ad.findAll", query = "SELECT a FROM Ad a")
-@NamedQuery(name = "Ad.deleteAll", query = "DELETE FROM Ad a")
-@NamedQuery(name = "Ad.findAllByCompany", query = "SELECT a FROM Ad a WHERE a.company = :company")
-@NamedQuery(name = "Ad.findAllByCategory", query = "SELECT a FROM Ad a WHERE a.category = :category")
+@NamedQueries({
+        @NamedQuery(name = "Ad.findAll", query = "SELECT a FROM Ad a"),
+        @NamedQuery(name = "Ad.deleteAll", query = "DELETE FROM Ad a"),
+        @NamedQuery(name = "Ad.findAllByCompany", query = "SELECT a FROM Ad a WHERE a.company = :company"),
+        @NamedQuery(name = "Ad.findAllByCategory", query = "SELECT a FROM Ad a WHERE a.category = :category")
+})
 public class Ad extends AbstractEntity {
 
     @Column(name = "name")
@@ -78,7 +80,7 @@ public class Ad extends AbstractEntity {
                 "name='" + name + '\'' +
                 ", content='" + content + '\'' +
                 ", number='" + number + '\'' +
-                ", category=" + category.getName() +
+                ", category=" + category.getName() + '\'' +
                 ", company=" + company.getName() +
                 '}';
     }

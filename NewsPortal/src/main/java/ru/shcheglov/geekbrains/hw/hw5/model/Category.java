@@ -10,8 +10,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "category")
-@NamedQuery(name = "Category.findAll", query = "SELECT a FROM Category a")
-@NamedQuery(name = "Category.deleteAll", query = "DELETE FROM Category a")
+@NamedQueries({
+        @NamedQuery(name = "Category.findAll", query = "SELECT a FROM Category a"),
+        @NamedQuery(name = "Category.deleteAll", query = "DELETE FROM Category a")
+})
 public class Category extends AbstractEntity {
 
     @Column(name = "name")
@@ -38,8 +40,6 @@ public class Category extends AbstractEntity {
 
     @Override
     public String toString() {
-        return "Category{" +
-                "name='" + name +
-                '}';
+        return name;
     }
 }
