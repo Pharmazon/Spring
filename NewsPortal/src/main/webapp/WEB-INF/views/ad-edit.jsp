@@ -36,8 +36,8 @@
                 <form:input path="company.name" />
             </td>
         </tr>
-        <p>
-            <button type="submit">SAVE</button>
-        </p>
     </table>
+    <p>
+        <button type="submit">SAVE</button>
+    </p>
 </form:form>

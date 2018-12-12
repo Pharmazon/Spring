@@ -8,11 +8,13 @@
     <tr>
         <th width="60" nowrap="nowrap" align="center">№</th>
         <th width="200" nowrap="nowrap" align="center">ID</th>
-        <th width="300" nowrap="nowrap" align="center">NAME</th>
+        <th width="100" nowrap="nowrap" align="center">NAME</th>
         <th width="100%" nowrap="nowrap" align="center">CONTENT</th>
         <th width="100" nowrap="nowrap" align="center">NUMBER</th>
-        <th width="80" nowrap="nowrap" align="center">VIEW</th>
-        <th width="80" nowrap="nowrap" align="center">EDIT</th>
+        <th width="100" nowrap="nowrap" align="center">CATEGORY</th>
+        <th width="100" nowrap="nowrap" align="center">COMPANY</th>
+        <th width="70" nowrap="nowrap" align="center">VIEW</th>
+        <th width="70" nowrap="nowrap" align="center">EDIT</th>
         <th width="80" nowrap="nowrap" align="center">REMOVE</th>
     </tr>
     <c:forEach var="ad" items="${ads}" varStatus="status">
@@ -22,6 +24,8 @@
             <td align="center">${ad.name}</td>
             <td align="center">${ad.content}</td>
             <td align="center">${ad.number}</td>
+            <td align="center">${ad.category.name}</td>
+            <td align="center">${ad.company.name}</td>
             <td align="center" nowrap="nowrap">
                 <a href="/ad-view/${ad.id}">VIEW</a>
             </td>
