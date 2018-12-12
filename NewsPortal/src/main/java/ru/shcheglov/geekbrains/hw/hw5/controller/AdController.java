@@ -4,12 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import ru.shcheglov.geekbrains.hw.hw5.model.Ad;
-import ru.shcheglov.geekbrains.hw.hw5.model.Category;
-import ru.shcheglov.geekbrains.hw.hw5.model.Company;
 import ru.shcheglov.geekbrains.hw.hw5.service.AdService;
 
 import java.util.List;
@@ -35,16 +31,8 @@ public class AdController {
 
     @GetMapping("ad-create")
     public String adCreate() {
-        final Category category = new Category();
-        category.setName("");
-        final Company company = new Company();
-        company.setName("");
-        company.setDescription("");
-        company.setAddress("");
         final Ad ad = new Ad();
-        ad.setCategory(category);
-        ad.setCompany(company);
-        ad.setName("");
+        ad.setName("New Ad");
         ad.setNumber("");
         ad.setContent("");
         adService.save(ad);
@@ -58,9 +46,9 @@ public class AdController {
         return "ad-edit";
     }
 
-    @GetMapping("ad-save")
+    @PostMapping("ad-save")
     public String adSave(@ModelAttribute("ad") final Ad ad, final BindingResult result) {
-        if (!result.hasErrors()) adService.save(ad);
+        if (!result.hasErrors()) adService.update(ad);
         return "redirect:/ad-list";
     }
 
