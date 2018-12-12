@@ -11,7 +11,7 @@ import java.util.List;
  * @version dated 07.12.2018
  */
 
-public interface AdRepository extends Repository<Ad> {
+public interface AdRepository extends BasicRepository<Ad> {
 
     List<Ad> findAllByCompany(Company company);
 

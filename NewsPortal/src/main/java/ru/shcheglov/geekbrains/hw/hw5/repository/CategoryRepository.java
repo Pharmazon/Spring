@@ -7,5 +7,5 @@ import ru.shcheglov.geekbrains.hw.hw5.model.Category;
  * @version dated 07.12.2018
  */
 
-public interface CategoryRepository extends Repository<Category> {
+public interface CategoryRepository extends BasicRepository<Category> {
 }
