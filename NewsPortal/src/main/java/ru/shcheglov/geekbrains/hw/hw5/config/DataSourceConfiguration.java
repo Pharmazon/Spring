@@ -1,8 +1,8 @@
-package ru.shcheglov.geekbrains.lessons.lesson3.config;
+package ru.shcheglov.geekbrains.hw.hw5.config;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -15,10 +15,18 @@ import java.util.Properties;
 
 /**
  * @author Alexey Shcheglov
- * @version dated 03.12.2018
+ * @version dated 11.12.2018
  */
 
+
 @EnableTransactionManagement
+@EnableJpaRepositories("ru.shcheglov.geekbrains.hw.hw5.repository")
+@ComponentScan("ru.shcheglov.geekbrains.hw.hw5.model")
+//@ComponentScans(value = {
+//        @ComponentScan("ru.shcheglov.geekbrains.hw.hw5.service"),
+//        @ComponentScan("ru.shcheglov.geekbrains.hw.hw5.model"),
+//        @ComponentScan("ru.shcheglov.geekbrains.hw.hw5.controller")
+//})
 @PropertySource("classpath:config.properties")
 public class DataSourceConfiguration {
 
@@ -50,7 +58,7 @@ public class DataSourceConfiguration {
         final LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(dataSource);
         factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        factoryBean.setPackagesToScan("ru.shcheglov.geekbrains.lessons.lesson3.model");
+        factoryBean.setPackagesToScan("ru.shcheglov.geekbrains.hw.hw5.model");
         final Properties properties = new Properties();
         properties.put("hibernate.dialect", dialect);
         properties.put("hibernate.max_fetch_depth", maxFetchDepth);
