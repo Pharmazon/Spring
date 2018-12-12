@@ -21,12 +21,7 @@ import java.util.Properties;
 
 @EnableTransactionManagement
 @EnableJpaRepositories("ru.shcheglov.geekbrains.hw.hw5.repository")
-@ComponentScan("ru.shcheglov.geekbrains.hw.hw5.model")
-//@ComponentScans(value = {
-//        @ComponentScan("ru.shcheglov.geekbrains.hw.hw5.service"),
-//        @ComponentScan("ru.shcheglov.geekbrains.hw.hw5.model"),
-//        @ComponentScan("ru.shcheglov.geekbrains.hw.hw5.controller")
-//})
+@ComponentScan("ru.shcheglov.geekbrains.hw.hw5.service")
 @PropertySource("classpath:config.properties")
 public class DataSourceConfiguration {
 
