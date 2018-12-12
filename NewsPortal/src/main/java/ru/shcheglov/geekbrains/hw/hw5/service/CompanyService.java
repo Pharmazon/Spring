@@ -8,7 +8,7 @@ import ru.shcheglov.geekbrains.hw.hw5.model.Company;
  * @version dated 10.12.2018
  */
 
-public interface CompanyService extends Service<Company> {
+public interface CompanyService extends BasicService<Company> {
 
     Company get(Ad ad);
 

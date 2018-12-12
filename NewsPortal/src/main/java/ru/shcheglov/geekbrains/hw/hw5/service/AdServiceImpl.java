@@ -1,6 +1,7 @@
 package ru.shcheglov.geekbrains.hw.hw5.service;
 
 import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.geekbrains.hw.hw5.model.Ad;
@@ -23,6 +24,7 @@ public class AdServiceImpl implements AdService {
     @NotNull
     public static final String NAME = "adService";
 
+    @Autowired
     private AdRepository adRepository;
 
     @Override
@@ -61,7 +63,7 @@ public class AdServiceImpl implements AdService {
     }
 
     @Override
-    public List<ru.shcheglov.geekbrains.hw.hw5.model.Ad> getAll() {
+    public List<Ad> getAll() {
         return adRepository.findAll();
     }
 

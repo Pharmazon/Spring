@@ -11,7 +11,7 @@ import java.util.List;
  * @version dated 10.12.2018
  */
 
-public interface AdService extends Service<Ad> {
+public interface AdService extends BasicService<Ad> {
 
     List<Ad> get(Company company);
 
