@@ -1,16 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="header.jsp">
-    <jsp:param name="title" value="VIEW AD" />
-</jsp:include>
+<h1>DETAILED AD VIEW</h1>
 
-<h1>VIEW AD</h1>
-
-<table>
+<table width="60%" cellspacing="0" cellpadding="0" border="1" style="margin-bottom: 5px">
     <tr>
-        <th width="300" align="left" nowrap="nowrap">CAPTION</th>
-        <th width="100%" align="left" nowrap="nowrap">VALUE</th>
+        <th width="300" align="center" nowrap="nowrap">CAPTION</th>
+        <th width="100%" align="center" nowrap="nowrap">VALUE</th>
     </tr>
     <tr>
         <td>ID</td>
@@ -21,16 +17,28 @@
         <td>${ad.name}</td>
     </tr>
     <tr>
-        <td>DESCRIPTION</td>
-        <td>${ad.description}</td>
+        <td>CONTENT</td>
+        <td>${ad.content}</td>
+    </tr>
+    <tr>
+        <td>NUMBER</td>
+        <td>${ad.number}</td>
+    </tr>
+    <tr>
+        <td>CATEGORY</td>
+        <td>${ad.category.name}</td>
+    </tr>
+    <tr>
+        <td>COMPANY</td>
+        <td>${ad.company.name}</td>
     </tr>
 </table>
 
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
     <tr>
         <td nowrap="nowrap">
-            <form action="/ad-create">
-                <button type="submit" class="green">CREATE AD</button>
+            <form action="/ad-list">
+                <button type="submit" class="green">BACK</button>
             </form>
         </td>
         <td width="20" nowrap="nowrap">
@@ -47,5 +55,3 @@
         </td>
     </tr>
 </table>
-
-<jsp:include page="footer.jsp" />
