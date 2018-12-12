@@ -5,7 +5,7 @@
 
 <table width="60%" cellspacing="0" cellpadding="0" border="1" style="margin-bottom: 5px">
     <tr>
-        <th width="300" align="center" nowrap="nowrap">CAPTION</th>
+        <th width="120" align="center" nowrap="nowrap">CAPTION</th>
         <th width="100%" align="center" nowrap="nowrap">VALUE</th>
     </tr>
     <tr>
