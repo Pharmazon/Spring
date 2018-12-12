@@ -1,9 +1,6 @@
 package ru.shcheglov.geekbrains.hw.hw5.model;
 
-import javax.persistence.Column;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -11,6 +8,7 @@ import java.util.List;
  * @version dated 07.12.2018
  */
 
+@Entity
 @Table(name = "company")
 @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c")
 @NamedQuery(name = "Company.deleteAll", query = "DELETE FROM Company c")
@@ -60,4 +58,12 @@ public class Company extends AbstractEntity {
         this.ads = ads;
     }
 
+    @Override
+    public String toString() {
+        return "Company{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", address='" + address +
+                '}';
+    }
 }
