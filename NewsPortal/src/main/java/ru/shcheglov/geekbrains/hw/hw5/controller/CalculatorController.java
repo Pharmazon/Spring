@@ -19,7 +19,7 @@ public class CalculatorController {
             @RequestParam("a") Double a,
             @RequestParam("b") Double b
     ) {
-        return new ModelAndView("calculator", "result", a + b);
+        return new ModelAndView("calc", "result", a + b);
     }
 
     @PostMapping("/calc")
@@ -27,7 +27,7 @@ public class CalculatorController {
             @RequestParam("a") Double a,
             @RequestParam("b") Double b
     ) {
-        return new ModelAndView("calculator", "result", a + b);
+        return new ModelAndView("calc", "result", a + b);
     }
 
 }
