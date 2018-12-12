@@ -2,24 +2,42 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<jsp:include page="header.jsp">
-    <jsp:param name="title" value="EDIT AD" />
-</jsp:include>
-
 <h1>EDIT AD</h1>
 
 <form:form method="post" action="/ad-save" modelAttribute="ad">
-    <p>
-        <div style="margin-bottom: 5px">NAME</div>
-        <form:input path="name" />
-    </p>
-    <p>
-        <div style="margin-bottom: 5px">DESCRIPTION</div>
-        <form:input path="description" />
-    </p>
-    <p>
-        <button type="submit">SAVE</button>
-    </p>
+    <table width="60%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 5px">
+        <tr>
+            <td width="10%" align="left" style="padding-right: 10px">NAME</td>
+            <td>
+                <form:input path="name" />
+            </td>
+        </tr>
+        <tr>
+            <td width="10%" align="left" style="padding-right: 10px">CONTENT</td>
+            <td>
+                <form:input path="content" />
+            </td>
+        </tr>
+        <tr>
+            <td width="10%" align="left" style="padding-right: 10px">NUMBER</td>
+            <td>
+                <form:input path="number" />
+            </td>
+        </tr>
+        <tr>
+            <td width="10%" align="left" style="padding-right: 10px">CATEGORY</td>
+            <td>
+                <form:input path="category.name" />
+            </td>
+        </tr>
+        <tr>
+            <td width="10%" align="left" style="padding-right: 10px">COMPANY</td>
+            <td>
+                <form:input path="company.name" />
+            </td>
+        </tr>
+        <p>
+            <button type="submit">SAVE</button>
+        </p>
+    </table>
 </form:form>
-
-<jsp:include page="footer.jsp" />
