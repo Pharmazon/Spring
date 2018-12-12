@@ -10,7 +10,7 @@ import java.util.Optional;
  * @version dated 10.12.2018
  */
 
-public interface Repository<T extends AbstractEntity> {
+public interface BasicRepository<T extends AbstractEntity> {
 
     void save(T entity);
 
