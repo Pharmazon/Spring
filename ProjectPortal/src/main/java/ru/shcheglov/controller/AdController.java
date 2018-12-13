@@ -9,7 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.shcheglov.model.Ad;
+import ru.shcheglov.model.Category;
+import ru.shcheglov.model.Company;
 import ru.shcheglov.service.AdService;
+import ru.shcheglov.service.CategoryService;
+import ru.shcheglov.service.CompanyService;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +29,12 @@ public class AdController {
     @Autowired
     private AdService adService;
 
+    @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
+    private CompanyService companyService;
+
     @GetMapping("ad-list")
     public String adList(final Model model) {
         final List<Ad> ads = adService.getAll();
@@ -34,7 +44,17 @@ public class AdController {
 
     @GetMapping("ad-create")
     public String adCreate() {
+        final Company company = new Company();
+        company.setName("Company Name");
+        company.setDescription("Company description");
+        company.setAddress("Company address");
+        companyService.save(company);
+        final Category category = new Category();
+        category.setName("Новая категория");
+        categoryService.save(category);
         final Ad ad = new Ad();
+        ad.setCompany(company);
+        ad.setCategory(category);
         ad.setName("New Ad");
         ad.setNumber("");
         ad.setContent("");
