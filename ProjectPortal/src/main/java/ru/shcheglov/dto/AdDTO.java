@@ -1,5 +1,6 @@
 package ru.shcheglov.dto;
 
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.shcheglov.model.Ad;
@@ -34,6 +35,9 @@ public class AdDTO {
     @NotNull
     private String companyId;
 
+    public AdDTO() {
+    }
+
     public AdDTO(@NotNull final Ad ad) {
         id = ad.getId();
         name = ad.getName();
@@ -47,6 +51,10 @@ public class AdDTO {
 
     public String getId() {
         return id;
+    }
+
+    public void setId(final String id) {
+        this.id = id;
     }
 
     public String getCategoryId() {

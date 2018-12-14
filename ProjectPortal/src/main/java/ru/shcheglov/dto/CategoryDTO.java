@@ -20,6 +20,9 @@ public class CategoryDTO {
     @Nullable
     private String name;
 
+    public CategoryDTO() {
+    }
+
     public CategoryDTO(@NotNull final Category category) {
         id = category.getId();
         name = category.getName();
@@ -27,6 +30,10 @@ public class CategoryDTO {
 
     public String getId() {
         return id;
+    }
+
+    public void setId(final String id) {
+        this.id = id;
     }
 
     public String getName() {

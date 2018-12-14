@@ -26,6 +26,9 @@ public final class CompanyDTO {
     @Nullable
     private String address;
 
+    public CompanyDTO() {
+    }
+
     public CompanyDTO(@NotNull final Company company) {
         id = company.getId();
         name = company.getName();
@@ -35,6 +38,10 @@ public final class CompanyDTO {
 
     public String getId() {
         return id;
+    }
+
+    public void setId(final String id) {
+        this.id = id;
     }
 
     public String getName() {
