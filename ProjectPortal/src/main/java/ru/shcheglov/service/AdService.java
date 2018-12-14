@@ -1,5 +1,6 @@
 package ru.shcheglov.service;
 
+import ru.shcheglov.dto.AdDTO;
 import ru.shcheglov.model.Ad;
 import ru.shcheglov.model.Category;
 import ru.shcheglov.model.Company;
@@ -16,5 +17,9 @@ public interface AdService extends BasicService<Ad> {
     List<Ad> get(Company company);
 
     List<Ad> get(Category category);
+
+    void save(AdDTO adDTO);
+
+    void delete(AdDTO adDTO);
 
 }
