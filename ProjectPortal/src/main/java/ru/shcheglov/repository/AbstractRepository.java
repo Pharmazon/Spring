@@ -2,11 +2,13 @@ package ru.shcheglov.repository;
 
 import org.jetbrains.annotations.NotNull;
 import ru.shcheglov.model.AbstractEntity;
+import ru.shcheglov.model.Ad;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Alexey Shcheglov
@@ -23,16 +25,16 @@ public abstract class AbstractRepository<T extends AbstractEntity> {
         return resultList.isEmpty() ? null : resultList.get(0);
     }
 
-    public void save(@NotNull final T entity) {
-        entityManager.persist(entity);
+    public void save(@NotNull final T model) {
+        entityManager.persist(model);
     }
 
-    public T update(@NotNull final T entity) {
-        return entityManager.merge(entity);
+    public T update(@NotNull final T model) {
+        return entityManager.merge(model);
     }
 
-    public void delete(@NotNull final T entity) {
-        entityManager.remove(entity);
+    public void delete(@NotNull final T model) {
+        entityManager.remove(model);
     }
 
 }

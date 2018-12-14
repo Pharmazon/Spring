@@ -1,5 +1,7 @@
 package ru.shcheglov.model;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,6 +18,7 @@ import java.util.List;
 })
 public class Category extends AbstractEntity {
 
+    @Getter
     @Column(name = "name")
     private String name;
 
@@ -26,7 +29,7 @@ public class Category extends AbstractEntity {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -34,12 +37,8 @@ public class Category extends AbstractEntity {
         return ads;
     }
 
-    public void setAds(List<Ad> ads) {
+    public void setAds(final List<Ad> ads) {
         this.ads = ads;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
 }

@@ -32,7 +32,7 @@ public class Company extends AbstractEntity {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -40,7 +40,7 @@ public class Company extends AbstractEntity {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -48,7 +48,7 @@ public class Company extends AbstractEntity {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(final String address) {
         this.address = address;
     }
 
@@ -56,12 +56,8 @@ public class Company extends AbstractEntity {
         return ads;
     }
 
-    public void setAds(List<Ad> ads) {
+    public void setAds(final List<Ad> ads) {
         this.ads = ads;
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
 }

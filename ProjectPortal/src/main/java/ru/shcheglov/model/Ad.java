@@ -1,5 +1,9 @@
 package ru.shcheglov.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 /**
@@ -38,7 +42,7 @@ public class Ad extends AbstractEntity {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -46,7 +50,7 @@ public class Ad extends AbstractEntity {
         return content;
     }
 
-    public void setContent(String content) {
+    public void setContent(final String content) {
         this.content = content;
     }
 
@@ -54,7 +58,7 @@ public class Ad extends AbstractEntity {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(final String number) {
         this.number = number;
     }
 
@@ -62,7 +66,7 @@ public class Ad extends AbstractEntity {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(final Category category) {
         this.category = category;
     }
 
@@ -70,7 +74,7 @@ public class Ad extends AbstractEntity {
         return company;
     }
 
-    public void setCompany(Company company) {
+    public void setCompany(final Company company) {
         this.company = company;
     }
 
