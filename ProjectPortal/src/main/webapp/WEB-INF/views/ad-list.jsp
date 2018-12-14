@@ -2,6 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<form action="/company-list">
+    <button type="submit">COMPANIES</button>
+</form>
+
 <h1>ADS MANAGEMENT</h1>
 
 <table width="100%" cellspacing="0" cellpadding="0" border="1" style="margin-bottom: 5px">
