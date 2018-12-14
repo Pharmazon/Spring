@@ -23,4 +23,7 @@ public abstract class AbstractEntity {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 }
