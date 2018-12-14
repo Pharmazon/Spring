@@ -10,7 +10,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 @XmlRootElement
-public abstract class ResultDTO {
+public class ResultDTO {
 
     @Nullable
     private Boolean success = true;
@@ -36,4 +36,5 @@ public abstract class ResultDTO {
     public void setMessage(final String message) {
         this.message = message;
     }
+
 }

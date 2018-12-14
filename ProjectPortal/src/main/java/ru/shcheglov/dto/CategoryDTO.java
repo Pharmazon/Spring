@@ -12,10 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 @XmlRootElement
-public final class CategoryDTO {
-
-    @NotNull
-    private String id;
+public final class CategoryDTO extends AbstractDTO {
 
     @Nullable
     private String name;
@@ -24,16 +21,8 @@ public final class CategoryDTO {
     }
 
     public CategoryDTO(@NotNull final Category category) {
-        id = category.getId();
+        super.setId(category.getId());
         name = category.getName();
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(final String id) {
-        this.id = id;
     }
 
     public String getName() {

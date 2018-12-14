@@ -12,10 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 @XmlRootElement
-public final class CompanyDTO {
-
-    @NotNull
-    private String id;
+public final class CompanyDTO extends AbstractDTO {
 
     @Nullable
     private String name;
@@ -30,18 +27,10 @@ public final class CompanyDTO {
     }
 
     public CompanyDTO(@NotNull final Company company) {
-        id = company.getId();
+        super.setId(company.getId());
         name = company.getName();
         description = company.getDescription();
         address = company.getAddress();
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(final String id) {
-        this.id = id;
     }
 
     public String getName() {
