@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 @XmlRootElement
-public class CategoryDTO {
+public final class CategoryDTO {
 
     @NotNull
     private String id;

@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 @XmlRootElement
-public class SuccessDTO {
+public final class SuccessDTO extends ResultDTO {
 
     {
         setSuccess(true);

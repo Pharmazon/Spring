@@ -1,6 +1,5 @@
 package ru.shcheglov.dto;
 
-import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.shcheglov.model.Ad;
@@ -15,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 
 @XmlRootElement
-public class AdDTO {
+public final class AdDTO {
 
     @NotNull
     private String id;
