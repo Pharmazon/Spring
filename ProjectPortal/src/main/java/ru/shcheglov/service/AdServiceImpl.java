@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.shcheglov.dto.AdDTO;
 import ru.shcheglov.model.Ad;
 import ru.shcheglov.model.Category;
 import ru.shcheglov.model.Company;
@@ -70,6 +71,24 @@ public class AdServiceImpl implements AdService {
     @Override
     public Ad update(Ad entity) {
         return adRepository.update(entity);
+    }
+
+    @Override
+    public void delete(@NotNull final AdDTO adDTO) {
+        delete(adDTO.getId());
+    }
+
+    @Override
+    public void save(@NotNull final AdDTO adDTO) {
+        final Optional<Ad> optional = get(adDTO.getId());
+        final Ad ad = optional.orElseGet(Ad::new);
+        ad.setId(adDTO.getId());
+        ad.setName(adDTO.getName());
+//        ad.setCategory(adDTO.getCategoryId());
+//        ad.setCompany(adDTO.getCompanyId());
+        ad.setContent(adDTO.getContent());
+        ad.setNumber(adDTO.getNumber());
+        save(ad);
     }
 
 }
