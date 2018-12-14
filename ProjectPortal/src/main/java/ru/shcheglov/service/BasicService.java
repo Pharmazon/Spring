@@ -25,5 +25,5 @@ public interface BasicService<T extends AbstractEntity> {
     List<T> getAll();
 
     T update(T entity);
-    
+
 }
