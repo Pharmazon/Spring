@@ -4,7 +4,9 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.shcheglov.dto.CompanyDTO;
 import ru.shcheglov.model.Ad;
+import ru.shcheglov.model.Category;
 import ru.shcheglov.model.Company;
 import ru.shcheglov.repository.CompanyRepository;
 
@@ -64,6 +66,22 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public Company update(Company entity) {
         return companyRepository.update(entity);
+    }
+
+    @Override
+    public void save(CompanyDTO dto) {
+        final Optional<Company> optional = get(dto.getId());
+        final Company company = optional.orElseGet(Company::new);
+        company.setId(dto.getId());
+        company.setName(dto.getName());
+        company.setAddress(dto.getAddress());
+        company.setDescription(dto.getDescription());
+        save(company);
+    }
+
+    @Override
+    public void delete(CompanyDTO dto) {
+        delete(dto.getId());
     }
 
 }

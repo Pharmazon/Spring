@@ -1,5 +1,7 @@
 package ru.shcheglov.service;
 
+import ru.shcheglov.dto.AbstractDTO;
+import ru.shcheglov.dto.AdDTO;
 import ru.shcheglov.model.AbstractEntity;
 
 import java.util.List;
@@ -10,20 +12,24 @@ import java.util.Optional;
  * @version dated 13.12.2018
  */
 
-public interface BasicService<T extends AbstractEntity> {
+public interface BasicService<Entity extends AbstractEntity, DTO extends AbstractDTO> {
 
-    void save(T entity);
+    void save(Entity entity);
 
     void delete(String id);
 
-    void delete(T entity);
+    void delete(Entity entity);
 
     void deleteAll();
 
-    Optional<T> get(String id);
+    Optional<Entity> get(String id);
 
-    List<T> getAll();
+    List<Entity> getAll();
 
-    T update(T entity);
+    Entity update(Entity entity);
+
+    void save(DTO dto);
+
+    void delete(DTO dto);
 
 }

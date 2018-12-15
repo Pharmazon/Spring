@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.shcheglov.dto.CategoryDTO;
+import ru.shcheglov.model.Ad;
 import ru.shcheglov.model.Category;
 import ru.shcheglov.repository.CategoryRepository;
 
@@ -58,6 +60,20 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category update(Category entity) {
         return categoryRepository.update(entity);
+    }
+
+    @Override
+    public void save(CategoryDTO dto) {
+        final Optional<Category> optional = get(dto.getId());
+        final Category category = optional.orElseGet(Category::new);
+        category.setId(dto.getId());
+        category.setName(dto.getName());
+        save(category);
+    }
+
+    @Override
+    public void delete(CategoryDTO dto) {
+        delete(dto.getId());
     }
 
 }

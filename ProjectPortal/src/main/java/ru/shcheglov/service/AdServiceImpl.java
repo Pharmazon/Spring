@@ -9,6 +9,8 @@ import ru.shcheglov.model.Ad;
 import ru.shcheglov.model.Category;
 import ru.shcheglov.model.Company;
 import ru.shcheglov.repository.AdRepository;
+import ru.shcheglov.repository.CategoryRepository;
+import ru.shcheglov.repository.CompanyRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +29,12 @@ public class AdServiceImpl implements AdService {
 
     @Autowired
     private AdRepository adRepository;
+
+    @Autowired
+    private CompanyRepository companyRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public List<Ad> get(Company company) {
@@ -74,20 +82,27 @@ public class AdServiceImpl implements AdService {
     }
 
     @Override
-    public void delete(@NotNull final AdDTO adDTO) {
-        delete(adDTO.getId());
+    public void delete(@NotNull final AdDTO dto) {
+        delete(dto.getId());
     }
 
     @Override
-    public void save(@NotNull final AdDTO adDTO) {
-        final Optional<Ad> optional = get(adDTO.getId());
+    public void save(@NotNull final AdDTO dto) {
+        final Optional<Ad> optional = get(dto.getId());
         final Ad ad = optional.orElseGet(Ad::new);
-        ad.setId(adDTO.getId());
-        ad.setName(adDTO.getName());
-//        ad.setCategory(adDTO.getCategoryId());
-//        ad.setCompany(adDTO.getCompanyId());
-        ad.setContent(adDTO.getContent());
-        ad.setNumber(adDTO.getNumber());
+        ad.setId(dto.getId());
+        ad.setName(dto.getName());
+        ad.setContent(dto.getContent());
+        ad.setNumber(dto.getNumber());
+
+        final String categoryId = dto.getCategoryId();
+        final Optional<Category> category = categoryRepository.findOne(categoryId);
+        category.ifPresent(ad::setCategory);
+
+        final String companyId = dto.getCategoryId();
+        final Optional<Company> company = companyRepository.findOne(companyId);
+        company.ifPresent(ad::setCompany);
+
         save(ad);
     }
 

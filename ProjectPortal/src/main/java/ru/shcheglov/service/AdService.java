@@ -12,14 +12,10 @@ import java.util.List;
  * @version dated 13.12.2018
  */
 
-public interface AdService extends BasicService<Ad> {
+public interface AdService extends BasicService<Ad, AdDTO> {
 
     List<Ad> get(Company company);
 
     List<Ad> get(Category category);
-
-    void save(AdDTO adDTO);
-
-    void delete(AdDTO adDTO);
 
 }
