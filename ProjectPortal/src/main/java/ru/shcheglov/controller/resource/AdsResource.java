@@ -1,4 +1,4 @@
-package ru.shcheglov.controller.resources;
+package ru.shcheglov.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +18,7 @@ import java.util.stream.StreamSupport;
 
 @RestController
 @RequestMapping("api/ads")
-public class AdsResource {
+public class AdsRest {
 
     @Autowired
     private AdService adService;
@@ -26,7 +26,7 @@ public class AdsResource {
     @GetMapping(produces = "application/json")
     public List<AdDTO> get() {
         final List<Ad> ads = adService.getAll();
-        return StreamSupport.stream(ads.spliterator(), false)
+        return ads.stream()
                 .map(AdDTO::new)
                 .collect(Collectors.toList());
     }
