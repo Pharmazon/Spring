@@ -1,4 +1,4 @@
-package ru.shcheglov.controller.rest;
+package ru.shcheglov.controller.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api/ad")
-public class AdRest {
+public class AdResource {
 
     @Autowired
     private AdService adService;
