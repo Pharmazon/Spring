@@ -14,19 +14,19 @@
             <td width="10%" align="left" style="padding-right: 10px">NAME</td>
             <td>
                 <form:hidden path="id" />
-                <form:input path="name" />
+                <form:input path="name" size="50"/>
             </td>
         </tr>
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">DESCRIPTION</td>
             <td>
-                <form:input path="description" />
+                <form:input path="description" size="50" />
             </td>
         </tr>
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">ADDRESS</td>
             <td>
-                <form:input path="address" />
+                <form:input path="address" size="50" />
             </td>
         </tr>
     </table>

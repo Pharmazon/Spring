@@ -52,11 +52,11 @@
 
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
     <tr>
-        <%--<td nowrap="nowrap">--%>
-            <%--<form:form action="/ad-create">--%>
-                <%--<form:button value="ADD NEW" name="submit" />--%>
-            <%--</form:form>--%>
-        <%--</td>--%>
+        <td>
+            <form action="/ad-add">
+                <button type="submit">ADD</button>
+            </form>
+        </td>
         <td width="20" nowrap="nowrap">&nbsp;</td>
         <td>
             <form>

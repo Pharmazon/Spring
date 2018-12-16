@@ -13,7 +13,7 @@
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">NAME</td>
             <td>
-                <input type="text" name="name">
+                <input type="text" name="name" size="50">
             </td>
         </tr>
     </table>

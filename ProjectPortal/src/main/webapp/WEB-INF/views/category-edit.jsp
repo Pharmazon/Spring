@@ -14,7 +14,7 @@
             <td width="10%" align="left" style="padding-right: 10px">NAME</td>
             <td>
                 <form:hidden path="id" />
-                <form:input path="name" />
+                <form:input path="name" size="50" />
             </td>
         </tr>
     </table>

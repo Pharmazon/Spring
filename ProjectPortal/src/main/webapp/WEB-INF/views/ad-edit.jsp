@@ -15,36 +15,36 @@
             <td width="10%" align="left" style="padding-right: 10px">NAME</td>
             <td>
                 <form:hidden path="id" />
-                <form:input path="name" />
+                <form:input path="name" size="50" />
             </td>
         </tr>
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">CONTENT</td>
             <td>
-                <form:input path="content" />
+                <form:input path="content" size="50" />
             </td>
         </tr>
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">NUMBER</td>
             <td>
-                <form:input path="number" />
+                <form:input path="number" size="50" />
             </td>
         </tr>
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">CATEGORY</td>
             <td>
-                <form:select path="category">
+                <form:select path="category" size="1">
                     <form:option value="---Select category:---" disabled="true" hidden="true" />
-                    <form:options items="${categories}" itemValue="id" itemLabel="name" default="${ad.category.name}"/>
+                    <form:options items="${categories}" itemValue="id" itemLabel="name" />
                 </form:select>
             </td>
         </tr>
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">COMPANY</td>
             <td>
-                <form:select path="company">
+                <form:select path="company" size="1">
                     <form:option value="---Select company:---" disabled="true" hidden="true" />
-                    <form:options items="${companies}" itemValue="id" itemLabel="name" default="${ad.company.name}" />
+                    <form:options items="${companies}" itemValue="id" itemLabel="name" />
                 </form:select>
             </td>
         </tr>
