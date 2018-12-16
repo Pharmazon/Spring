@@ -32,11 +32,6 @@ public class CompanyController {
         return "company-list";
     }
 
-    @GetMapping("company-add")
-    public String companyAdd() {
-        return "company-add";
-    }
-
     @GetMapping("company-create")
     public String companyCreate(@ModelAttribute("model") final Model model) {
         final Company company = new Company();
