@@ -1,9 +1,16 @@
 <%@ page import="ru.shcheglov.model.Ad" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
 <form action="/company-list">
     <button type="submit">COMPANIES</button>
+</form>
+<form action="/category-list">
+    <button type="submit">CATEGORIES</button>
 </form>
 
 <h1>ADS MANAGEMENT</h1>
@@ -45,16 +52,16 @@
 
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
     <tr>
-        <td nowrap="nowrap">
-            <form action="/ad-create">
-                <button type="submit" class="green">ADD NEW</button>
-            </form>
-        </td>
+        <%--<td nowrap="nowrap">--%>
+            <%--<form:form action="/ad-create">--%>
+                <%--<form:button value="ADD NEW" name="submit" />--%>
+            <%--</form:form>--%>
+        <%--</td>--%>
         <td width="20" nowrap="nowrap">&nbsp;</td>
         <td>
             <form>
                 <input type="hidden" name="time" value="<%=System.currentTimeMillis()%>">
-                <button type="submit" class="gray">REFRESH</button>
+                <button type="submit">REFRESH</button>
             </form>
         </td>
         <td width="100%">&nbsp;</td>

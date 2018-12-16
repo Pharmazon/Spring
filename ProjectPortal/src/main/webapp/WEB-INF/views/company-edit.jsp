@@ -9,10 +9,11 @@
 <h1>EDIT COMPANY</h1>
 
 <form:form method="post" action="/company-save" modelAttribute="company">
-    <table width="60%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 5px">
+    <table width="80%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 5px">
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">NAME</td>
             <td>
+                <form:hidden path="id" />
                 <form:input path="name" />
             </td>
         </tr>
