@@ -1,4 +1,4 @@
-package ru.shcheglov.controller;
+package ru.shcheglov.controller.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,14 +32,17 @@ public class CompanyController {
         return "company-list";
     }
 
-    @GetMapping("company-create")
-    public String companyCreate(@ModelAttribute("model") final Model model) {
-        final Company company = new Company();
-//        company.setName(name);
-//        company.setDescription(description);
-//        company.setAddress(address);
-//        model.addAttribute("company", company);
-        companyService.save(company);
+    @GetMapping("company-add")
+    public String companyAdd() {
+        return  "company-add";
+    }
+
+    @PostMapping("company-create")
+    public String companyCreate(final Company company, final Model model, final BindingResult result) {
+        if (!result.hasErrors()) {
+            model.addAttribute("company", company);
+            companyService.save(company);
+        }
         return "redirect:/company-list";
     }
 
