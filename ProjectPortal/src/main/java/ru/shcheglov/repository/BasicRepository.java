@@ -12,11 +12,11 @@ import java.util.Optional;
 
 public interface BasicRepository<T extends AbstractEntity> {
 
-    void save(T entity);
+    void save(T model);
 
     void delete(String id);
 
-    void delete(T entity);
+    void delete(T model);
 
     void deleteAll();
 
@@ -24,6 +24,6 @@ public interface BasicRepository<T extends AbstractEntity> {
 
     List<T> findAll();
 
-    T update(T entity);
+    T update(T model);
 
 }
