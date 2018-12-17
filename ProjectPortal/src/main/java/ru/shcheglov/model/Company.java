@@ -60,4 +60,12 @@ public class Company extends AbstractEntity {
         this.ads = ads;
     }
 
+    @Override
+    public String toString() {
+        return "Company{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
 }

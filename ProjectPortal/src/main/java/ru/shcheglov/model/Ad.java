@@ -1,9 +1,5 @@
 package ru.shcheglov.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 
 /**
@@ -84,8 +80,8 @@ public class Ad extends AbstractEntity {
                 "name='" + name + '\'' +
                 ", content='" + content + '\'' +
                 ", number='" + number + '\'' +
-                ", category=" + category.getName() + '\'' +
-                ", company=" + company.getName() +
+                ", category=" + category + '\'' +
+                ", company=" + company +
                 '}';
     }
 }
