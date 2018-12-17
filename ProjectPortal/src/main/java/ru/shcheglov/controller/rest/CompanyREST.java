@@ -53,6 +53,17 @@ public class CompanyREST {
         }
     }
 
+    @GetMapping(value = "getAdsListByCompanyId/{id}", produces = "application/json")
+    public List<AdDTO> getAdsListByCompanyId(@PathVariable("id") final String id) {
+        Optional<Company> company = companyService.get(id);
+        return company.map(co -> companyService
+                .getAllAds(co)
+                .stream()
+                .map(AdDTO::new)
+                .collect(Collectors.toList()))
+                .orElse(null);
+    }
+
     @GetMapping(value = "getCompanyById/{id}", produces = "application/json")
     public CompanyDTO getCompanyById(@PathVariable("id") final String id) {
         try {

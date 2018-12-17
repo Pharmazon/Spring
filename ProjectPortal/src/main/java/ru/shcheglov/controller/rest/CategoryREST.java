@@ -2,11 +2,9 @@ package ru.shcheglov.controller.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.shcheglov.dto.CategoryDTO;
-import ru.shcheglov.dto.FailDTO;
-import ru.shcheglov.dto.ResultDTO;
-import ru.shcheglov.dto.SuccessDTO;
+import ru.shcheglov.dto.*;
 import ru.shcheglov.model.Category;
+import ru.shcheglov.model.Company;
 import ru.shcheglov.service.CategoryService;
 
 import java.util.Collections;
@@ -53,6 +51,17 @@ public class CategoryREST {
         } catch (final Exception e) {
             return Collections.emptyList();
         }
+    }
+
+    @GetMapping(value = "getAdsListByCategoryId/{id}", produces = "application/json")
+    public List<AdDTO> getAdsListByCategoryId(@PathVariable("id") final String id) {
+        Optional<Category> category = categoryService.get(id);
+        return category.map(co -> categoryService
+                .getAllAds(co)
+                .stream()
+                .map(AdDTO::new)
+                .collect(Collectors.toList()))
+                .orElse(null);
     }
 
     @GetMapping(value = "getCategoryById/{id}", produces = "application/json")
