@@ -4,17 +4,25 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <form action="/ad-list">
-    <button type="submit">BACK</button>
+    <button type="submit">
+        <img src="../../../resources/images/icons/icon_back.png" alt="add" width="20"/>
+    </button>
 </form>
 
 <h1>EDIT AD</h1>
 
 <form:form method="post" action="/ad-save" modelAttribute="ad">
+    <p>
+        <button type="submit">
+            <img src="../../../resources/images/icons/icon_save.png" alt="add" width="20"/>
+        </button>
+    </p>
     <table width="80%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 5px">
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">NAME</td>
             <td>
                 <form:hidden path="id" />
+                <form:hidden path="date" />
                 <form:input path="name" size="50" />
             </td>
         </tr>
@@ -49,7 +57,4 @@
             </td>
         </tr>
     </table>
-    <p>
-        <button type="submit">SAVE</button>
-    </p>
 </form:form>

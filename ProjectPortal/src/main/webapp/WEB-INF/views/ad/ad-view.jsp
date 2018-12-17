@@ -2,7 +2,9 @@
 <%@ taglib prefix="" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <form action="/ad-list">
-    <button type="submit">BACK</button>
+    <button type="submit">
+        <img src="../../../resources/images/icons/icon_back.png" alt="add" width="20"/>
+    </button>
 </form>
 
 <h1>DETAILED AD VIEW</h1>
@@ -15,6 +17,10 @@
     <tr>
         <td>ID</td>
         <td>${ad.id}</td>
+    </tr>
+    <tr>
+        <td>DATE</td>
+        <td>${ad.date}</td>
     </tr>
     <tr>
         <td>NAME</td>

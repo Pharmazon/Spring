@@ -2,7 +2,9 @@
 <%@ taglib prefix="" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <form action="/category-list">
-    <button type="submit">BACK</button>
+    <button type="submit">
+        <img src="../../../resources/images/icons/icon_back.png" alt="add" width="20"/>
+    </button>
 </form>
 
 <h1>DETAILED CATEGORY VIEW</h1>
