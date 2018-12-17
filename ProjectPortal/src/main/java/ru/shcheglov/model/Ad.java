@@ -1,6 +1,7 @@
 package ru.shcheglov.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * @author Alexey Shcheglov
@@ -25,6 +26,10 @@ public class Ad extends AbstractEntity {
 
     @Column(name = "number")
     private String number;
+
+    @Column(name = "date")
+    @Temporal(value = TemporalType.DATE)
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -72,6 +77,14 @@ public class Ad extends AbstractEntity {
 
     public void setCompany(final Company company) {
         this.company = company;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     @Override
