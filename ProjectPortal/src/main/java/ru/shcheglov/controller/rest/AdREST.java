@@ -38,8 +38,6 @@ public class AdREST {
         try {
             final Ad ad = new Ad();
             ad.setName("New ad");
-//            ad.setCategory(new Category());
-//            ad.setCompany(new Company());
             ad.setContent("11");
             ad.setNumber("22");
             adService.save(ad);

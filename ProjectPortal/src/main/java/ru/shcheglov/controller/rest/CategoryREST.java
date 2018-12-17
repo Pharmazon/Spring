@@ -35,7 +35,7 @@ public class CategoryREST {
     public CategoryDTO createCategory() {
         try {
             final Category category = new Category();
-            category.setName("");
+            category.setName("567");
             categoryService.save(category);
             return new CategoryDTO(category);
         } catch (final Exception e) {

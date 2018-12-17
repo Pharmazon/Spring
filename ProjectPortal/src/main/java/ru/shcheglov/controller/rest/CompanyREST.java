@@ -33,7 +33,7 @@ public class CompanyREST {
     public CompanyDTO createAd() {
         try {
             final Company company = new Company();
-            company.setName("");
+            company.setName("8888");
             companyService.save(company);
             return new CompanyDTO(company);
         } catch (final Exception e) {
