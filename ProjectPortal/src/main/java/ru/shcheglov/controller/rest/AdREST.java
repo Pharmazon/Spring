@@ -7,6 +7,8 @@ import ru.shcheglov.dto.FailDTO;
 import ru.shcheglov.dto.ResultDTO;
 import ru.shcheglov.dto.SuccessDTO;
 import ru.shcheglov.model.Ad;
+import ru.shcheglov.model.Category;
+import ru.shcheglov.model.Company;
 import ru.shcheglov.service.AdService;
 
 import java.util.Collections;
@@ -36,6 +38,10 @@ public class AdREST {
         try {
             final Ad ad = new Ad();
             ad.setName("New ad");
+//            ad.setCategory(new Category());
+//            ad.setCompany(new Company());
+            ad.setContent("11");
+            ad.setNumber("22");
             adService.save(ad);
             return new AdDTO(ad);
         } catch (final Exception e) {
@@ -114,4 +120,5 @@ public class AdREST {
             return new FailDTO(e);
         }
     }
+
 }
