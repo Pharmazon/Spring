@@ -34,6 +34,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public List<Ad> getAllAds(Company company) {
+        return companyRepository.findAllAds(company);
+    }
+
+    @Override
     public void save(Company entity) {
         companyRepository.save(entity);
     }
