@@ -76,4 +76,8 @@ public class CategoryServiceImpl implements CategoryService {
         delete(dto.getId());
     }
 
+    @Override
+    public List<Ad> getAllAds(Category category) {
+        return categoryRepository.findAllAds(category);
+    }
 }
