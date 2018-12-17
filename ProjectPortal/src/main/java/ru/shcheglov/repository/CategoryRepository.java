@@ -1,6 +1,9 @@
 package ru.shcheglov.repository;
 
+import ru.shcheglov.model.Ad;
 import ru.shcheglov.model.Category;
+
+import java.util.List;
 
 /**
  * @author Alexey Shcheglov
@@ -8,4 +11,7 @@ import ru.shcheglov.model.Category;
  */
 
 public interface CategoryRepository extends BasicRepository<Category> {
+
+    List<Ad> findAllAds(Category model);
+
 }

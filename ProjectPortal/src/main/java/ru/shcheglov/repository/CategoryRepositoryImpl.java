@@ -2,7 +2,9 @@ package ru.shcheglov.repository;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
+import ru.shcheglov.model.Ad;
 import ru.shcheglov.model.Category;
+import ru.shcheglov.model.Company;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,8 +21,8 @@ public class CategoryRepositoryImpl extends AbstractRepository<Category> impleme
     public static final String NAME = "categoryRepository";
 
     @Override
-    public void save(@NotNull final Category entity) {
-        super.save(entity);
+    public void save(@NotNull final Category model) {
+        super.save(model);
     }
 
     @Override
@@ -30,8 +32,8 @@ public class CategoryRepositoryImpl extends AbstractRepository<Category> impleme
     }
 
     @Override
-    public void delete(@NotNull final Category entity) {
-        super.delete(entity);
+    public void delete(@NotNull final Category model) {
+        super.delete(model);
     }
 
     @Override
@@ -54,8 +56,15 @@ public class CategoryRepositoryImpl extends AbstractRepository<Category> impleme
     }
 
     @Override
-    public Category update(@NotNull final Category entity) {
-        return super.update(entity);
+    public Category update(@NotNull final Category model) {
+        return super.update(model);
     }
 
+    @Override
+    public List<Ad> findAllAds(@NotNull final Category category) {
+        return entityManager
+                .createNamedQuery("Category.findAllAds", Ad.class)
+                .setParameter("category", category)
+                .getResultList();
+    }
 }
