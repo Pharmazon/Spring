@@ -7,6 +7,7 @@ import ru.shcheglov.model.Company;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,8 +23,8 @@ public class CompanyRepositoryImpl extends AbstractRepository<Company> implement
     public static final String NAME = "companyRepository";
 
     @Override
-    public void save(@NotNull final Company entity) {
-        super.save(entity);
+    public void save(@NotNull final Company model) {
+        super.save(model);
     }
 
     @Override
@@ -33,8 +34,8 @@ public class CompanyRepositoryImpl extends AbstractRepository<Company> implement
     }
 
     @Override
-    public void delete(@NotNull final Company entity) {
-        super.delete(entity);
+    public void delete(@NotNull final Company model) {
+        super.delete(model);
     }
 
     @Override
@@ -55,8 +56,8 @@ public class CompanyRepositoryImpl extends AbstractRepository<Company> implement
     }
 
     @Override
-    public Company update(@NotNull final Company entity) {
-        return super.update(entity);
+    public Company update(@NotNull final Company model) {
+        return super.update(model);
     }
 
     @Override
@@ -72,6 +73,14 @@ public class CompanyRepositoryImpl extends AbstractRepository<Company> implement
         @NotNull final TypedQuery<Company> typedQuery = entityManager.createQuery(query);
         typedQuery.setParameter("ad", ad);
         return typedQuery.getSingleResult();
+    }
+
+    @Override
+    public List<Ad> findAllAds(@NotNull final Company company) {
+        return entityManager
+                .createNamedQuery("Company.findAllAds", Ad.class)
+                .setParameter("company", company)
+                .getResultList();
     }
 
 }
