@@ -29,13 +29,13 @@ public class CompanyController {
     public String companyList(final Model model) {
         final List<Company> companies = companyService.getAll();
         model.addAttribute("companies", companies);
-        return "company-list";
+        return "company/company-list";
     }
 
     @GetMapping("company-add")
     public String companyAdd(@ModelAttribute("company") final Company company, final Model model) {
         model.addAttribute("company", company);
-        return  "company-add";
+        return "company/company-add";
     }
 
     @PostMapping("company-create")
@@ -48,7 +48,7 @@ public class CompanyController {
     public String companyEdit(final Model model, @PathVariable("id") final String id) {
         final Optional<Company> company = companyService.get(id);
         company.ifPresent(co -> model.addAttribute("company", co));
-        return "company-edit";
+        return "company/company-edit";
     }
 
     @PostMapping("company-save")
@@ -61,7 +61,7 @@ public class CompanyController {
     public String companyView(final Model model, @PathVariable("id") final String id) {
         final Optional<Company> company = companyService.get(id);
         company.ifPresent(a -> model.addAttribute("company", a));
-        return "company-view";
+        return "company/company-view";
     }
 
     @GetMapping("company-delete/{id}")

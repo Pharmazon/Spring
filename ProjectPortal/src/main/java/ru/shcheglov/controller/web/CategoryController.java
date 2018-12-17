@@ -29,13 +29,13 @@ public class CategoryController {
     public String categoryList(final Model model) {
         final List<Category> categories = categoryService.getAll();
         model.addAttribute("categories", categories);
-        return "category-list";
+        return "category/category-list";
     }
 
     @GetMapping("category-add")
     public String categoryAdd(@ModelAttribute("category") final Category category, final Model model) {
         model.addAttribute("category", category);
-        return  "category-add";
+        return "category/category-add";
     }
 
     @PostMapping("category-create")
@@ -54,14 +54,14 @@ public class CategoryController {
     public String categoryEdit(final Model model, @PathVariable("id") final String id) {
         final Optional<Category> category = categoryService.get(id);
         category.ifPresent(cat -> model.addAttribute("category", cat));
-        return "category-edit";
+        return "category/category-edit";
     }
 
     @GetMapping("category-view/{id}")
     public String categoryView(final Model model, @PathVariable("id") final String id) {
         final Optional<Category> category = categoryService.get(id);
         category.ifPresent(a -> model.addAttribute("category", a));
-        return "category-view";
+        return "category/category-view";
     }
 
     @GetMapping("category-delete/{id}")

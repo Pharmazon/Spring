@@ -14,6 +14,9 @@ import ru.shcheglov.service.AdService;
 import ru.shcheglov.service.CategoryService;
 import ru.shcheglov.service.CompanyService;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,7 +41,7 @@ public class AdController {
     public String adList(final Model model) {
         final List<Ad> ads = adService.getAll();
         model.addAttribute("ads", ads);
-        return "ad-list";
+        return "ad/ad-list";
     }
 
     @GetMapping("ad-add")
@@ -48,11 +51,12 @@ public class AdController {
         model.addAttribute("companies", companies);
         model.addAttribute("categories", categories);
         model.addAttribute("ad", ad);
-        return "ad-add";
+        return "ad/ad-add";
     }
 
     @PostMapping("ad-create")
     public String adCreate(final Ad ad, final BindingResult result) {
+        ad.setDate(new Date());
         if (!result.hasErrors()) adService.save(ad);
         return "redirect:/ad-list";
     }
@@ -65,7 +69,7 @@ public class AdController {
         final List<Category> categories = categoryService.getAll();
         model.addAttribute("companies", companies);
         model.addAttribute("categories", categories);
-        return "ad-edit";
+        return "ad/ad-edit";
     }
 
     @PostMapping("ad-save")
@@ -78,7 +82,7 @@ public class AdController {
     public String adView(final Model model, @PathVariable("id") final String id) {
         final Optional<Ad> ad = adService.get(id);
         ad.ifPresent(a -> model.addAttribute("ad", a));
-        return "ad-view";
+        return "ad/ad-view";
     }
 
     @GetMapping("ad-delete/{id}")
