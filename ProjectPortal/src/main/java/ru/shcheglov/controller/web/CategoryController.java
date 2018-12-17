@@ -33,21 +33,19 @@ public class CategoryController {
     }
 
     @GetMapping("category-add")
-    public String categoryAdd() {
+    public String categoryAdd(@ModelAttribute("category") final Category category, final Model model) {
+        model.addAttribute("category", category);
         return  "category-add";
     }
 
     @PostMapping("category-create")
-    public String categoryCreate(final Category category, final Model model, final BindingResult result) {
-        if (!result.hasErrors()) {
-            model.addAttribute("category", category);
-            categoryService.save(category);
-        }
+    public String categoryCreate(final Category category, final BindingResult result) {
+        if (!result.hasErrors()) categoryService.save(category);
         return "redirect:/category-list";
     }
 
     @PostMapping("category-save")
-    public String categorySave(@ModelAttribute("company") final Category category, final BindingResult result) {
+    public String categorySave(final Category category, final BindingResult result) {
         if (!result.hasErrors()) categoryService.update(category);
         return "redirect:/category-list";
     }

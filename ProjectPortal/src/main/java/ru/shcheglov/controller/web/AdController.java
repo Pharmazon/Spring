@@ -1,11 +1,10 @@
-package ru.shcheglov.controller;
+package ru.shcheglov.controller.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.shcheglov.model.Ad;
@@ -42,23 +41,19 @@ public class AdController {
         return "ad-list";
     }
 
-    @GetMapping("ad-create")
-    public String adCreate() {
-        final Company company = new Company();
-        company.setName("Company Name");
-        company.setDescription("Company description");
-        company.setAddress("Company address");
-        companyService.save(company);
-        final Category category = new Category();
-        category.setName("Новая категория");
-        categoryService.save(category);
-        final Ad ad = new Ad();
-        ad.setCompany(company);
-        ad.setCategory(category);
-        ad.setName("New Ad");
-        ad.setNumber("");
-        ad.setContent("");
-        adService.save(ad);
+    @GetMapping("ad-add")
+    public String adAdd(final Ad ad, final Model model) {
+        final List<Company> companies = companyService.getAll();
+        final List<Category> categories = categoryService.getAll();
+        model.addAttribute("companies", companies);
+        model.addAttribute("categories", categories);
+        model.addAttribute("ad", ad);
+        return "ad-add";
+    }
+
+    @PostMapping("ad-create")
+    public String adCreate(final Ad ad, final BindingResult result) {
+        if (!result.hasErrors()) adService.save(ad);
         return "redirect:/ad-list";
     }
 
@@ -66,11 +61,15 @@ public class AdController {
     public String adEdit(final Model model, @PathVariable("id") final String id) {
         final Optional<Ad> ad = adService.get(id);
         ad.ifPresent(a -> model.addAttribute("ad", a));
+        final List<Company> companies = companyService.getAll();
+        final List<Category> categories = categoryService.getAll();
+        model.addAttribute("companies", companies);
+        model.addAttribute("categories", categories);
         return "ad-edit";
     }
 
     @PostMapping("ad-save")
-    public String adSave(@ModelAttribute("ad") final Ad ad, final BindingResult result) {
+    public String adSave(final Ad ad, final BindingResult result) {
         if (!result.hasErrors()) adService.update(ad);
         return "redirect:/ad-list";
     }

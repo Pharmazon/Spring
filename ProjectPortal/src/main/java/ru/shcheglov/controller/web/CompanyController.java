@@ -33,16 +33,14 @@ public class CompanyController {
     }
 
     @GetMapping("company-add")
-    public String companyAdd() {
+    public String companyAdd(@ModelAttribute("company") final Company company, final Model model) {
+        model.addAttribute("company", company);
         return  "company-add";
     }
 
     @PostMapping("company-create")
-    public String companyCreate(final Company company, final Model model, final BindingResult result) {
-        if (!result.hasErrors()) {
-            model.addAttribute("company", company);
-            companyService.save(company);
-        }
+    public String companyCreate(final Company company, final BindingResult result) {
+        if (!result.hasErrors()) companyService.save(company);
         return "redirect:/company-list";
     }
 
@@ -54,7 +52,7 @@ public class CompanyController {
     }
 
     @PostMapping("company-save")
-    public String companySave(@ModelAttribute("company") final Company company, final BindingResult result) {
+    public String companySave(final Company company, final BindingResult result) {
         if (!result.hasErrors()) companyService.update(company);
         return "redirect:/company-list";
     }
