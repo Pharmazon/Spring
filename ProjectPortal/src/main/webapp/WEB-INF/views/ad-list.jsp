@@ -6,12 +6,22 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
       integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
-<form action="/company-list">
-    <button type="submit">COMPANIES</button>
-</form>
-<form action="/category-list">
-    <button type="submit">CATEGORIES</button>
-</form>
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+        <td>
+            <form action="/company-list">
+                <button type="submit">COMPANIES</button>
+            </form>
+        </td>
+        <td width="20" nowrap="nowrap">&nbsp;</td>
+        <td>
+            <form action="/category-list">
+                <button type="submit">CATEGORIES</button>
+            </form>
+        </td>
+        <td width="100%">&nbsp;</td>
+    </tr>
+</table>
 
 <h1>ADS MANAGEMENT</h1>
 

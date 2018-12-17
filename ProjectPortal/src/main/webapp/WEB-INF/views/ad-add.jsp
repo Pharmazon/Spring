@@ -8,31 +8,31 @@
 
 <h1>ADD NEW AD</h1>
 
-<form:form method="post" action="/ad-create" modelAttribute="newAd">
+<form:form method="post" action="/ad-create" modelAttribute="ad">
     <table width="80%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 5px">
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">NAME</td>
             <td>
-                <input type="text" name="name" size="50">
+                <form:input path="name" size="50" />
             </td>
         </tr>
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">CONTENT</td>
             <td>
-                <input type="text" name="content" size="50">
+                <form:input path="content" size="50" />
             </td>
         </tr>
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">NUMBER</td>
             <td>
-                <input type="text" name="number" size="50">
+                <form:input path="number" size="50" />
             </td>
         </tr>
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">CATEGORY</td>
             <td>
-                <form:select path="category" size="1">
-                    <form:option value="---Select category:---" disabled="true" hidden="true" />
+                <form:select path="category.id" size="1">
+                    <form:option value="---Select category:---" disabled="true" selected="selected" />
                     <form:options items="${categories}" itemValue="id" itemLabel="name" />
                 </form:select>
             </td>
@@ -40,8 +40,8 @@
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">COMPANY</td>
             <td>
-                <form:select path="company" size="1">
-                    <form:option value="---Select company:---" disabled="true" hidden="true" />
+                <form:select path="company.id" size="1">
+                    <form:option value="---Select company:---" disabled="true" selected="selected" />
                     <form:options items="${companies}" itemValue="id" itemLabel="name" />
                 </form:select>
             </td>

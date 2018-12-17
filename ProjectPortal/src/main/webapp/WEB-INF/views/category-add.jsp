@@ -8,12 +8,12 @@
 
 <h1>ADD CATEGORY</h1>
 
-<form:form method="post" action="/category-create">
+<form:form method="post" action="/category-create" modelAttribute="category">
     <table width="80%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 5px">
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">NAME</td>
             <td>
-                <input type="text" name="name" size="50">
+                <form:input path="name" size="50" />
             </td>
         </tr>
     </table>

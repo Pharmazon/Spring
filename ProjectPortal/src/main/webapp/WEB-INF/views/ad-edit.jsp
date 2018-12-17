@@ -33,8 +33,8 @@
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">CATEGORY</td>
             <td>
-                <form:select path="category" size="1">
-                    <form:option value="---Select category:---" disabled="true" hidden="true" />
+                <form:select path="category.id" size="1">
+                    <form:option value="---Select category:---" disabled="true" />
                     <form:options items="${categories}" itemValue="id" itemLabel="name" />
                 </form:select>
             </td>
@@ -42,8 +42,8 @@
         <tr>
             <td width="10%" align="left" style="padding-right: 10px">COMPANY</td>
             <td>
-                <form:select path="company" size="1">
-                    <form:option value="---Select company:---" disabled="true" hidden="true" />
+                <form:select path="company.id" size="1" >
+                    <form:option value="---Select company:---" disabled="true" />
                     <form:options items="${companies}" itemValue="id" itemLabel="name" />
                 </form:select>
             </td>
