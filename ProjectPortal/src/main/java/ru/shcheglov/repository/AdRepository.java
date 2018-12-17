@@ -13,8 +13,8 @@ import java.util.List;
 
 public interface AdRepository extends BasicRepository<Ad> {
 
-    List<Ad> findAllByCompany(Company company);
+    List<Ad> findAllByCompany(Company model);
 
-    List<Ad> findAllByCategory(Category category);
+    List<Ad> findAllByCategory(Category model);
 
 }

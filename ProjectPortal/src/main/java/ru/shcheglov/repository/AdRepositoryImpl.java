@@ -21,8 +21,8 @@ public class AdRepositoryImpl extends AbstractRepository<Ad> implements AdReposi
     public static final String NAME = "adRepository";
 
     @Override
-    public void save(@NotNull final Ad entity) {
-        super.save(entity);
+    public void save(@NotNull final Ad model) {
+        super.save(model);
     }
 
     @Override
@@ -32,8 +32,8 @@ public class AdRepositoryImpl extends AbstractRepository<Ad> implements AdReposi
     }
 
     @Override
-    public void delete(@NotNull final Ad entity) {
-        super.delete(entity);
+    public void delete(@NotNull final Ad model) {
+        super.delete(model);
     }
 
     @Override
@@ -56,23 +56,23 @@ public class AdRepositoryImpl extends AbstractRepository<Ad> implements AdReposi
     }
 
     @Override
-    public Ad update(@NotNull final Ad entity) {
-        return super.update(entity);
+    public Ad update(@NotNull final Ad model) {
+        return super.update(model);
     }
 
     @Override
     public List<Ad> findAllByCompany(@NotNull final Company company) {
         return entityManager
-                .createNamedQuery("Ad.findAllByCompany", Ad.class)
+                .createNamedQuery("Ad.findAllAdsByCompany", Ad.class)
                 .setParameter("company", company)
                 .getResultList();
     }
 
     @Override
-    public List<Ad> findAllByCategory(@NotNull final Category category) {
+    public List<Ad> findAllByCategory(@NotNull final Category model) {
         return entityManager
-                .createNamedQuery("Ad.findAllByCategory", Ad.class)
-                .setParameter("category", category)
+                .createNamedQuery("Ad.findAllAdsByCategory", Ad.class)
+                .setParameter("category", model)
                 .getResultList();
     }
 
