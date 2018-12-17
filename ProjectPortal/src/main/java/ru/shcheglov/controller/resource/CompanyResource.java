@@ -3,45 +3,47 @@ package ru.shcheglov.controller.resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.shcheglov.dto.AdDTO;
+import ru.shcheglov.dto.CompanyDTO;
 import ru.shcheglov.dto.ResultDTO;
 import ru.shcheglov.model.Ad;
-import ru.shcheglov.service.AdService;
+import ru.shcheglov.model.Company;
+import ru.shcheglov.service.CompanyService;
 
 import java.util.Optional;
 
 /**
  * @author Alexey Shcheglov
- * @version dated 14.12.2018
+ * @version dated 17.12.2018
  */
 
 @RestController
-@RequestMapping("api/ad")
-public class AdResource {
+@RequestMapping("api/company")
+public class CompanyResource {
 
     @Autowired
-    private AdService adService;
+    private CompanyService companyService;
 
     @GetMapping(value = "{id}", produces = "application/json")
-    public AdDTO get(@PathVariable("id") final String id) {
-        final Optional<Ad> ad = adService.get(id);
-        return ad.map(AdDTO::new).orElse(null);
+    public CompanyDTO get(@PathVariable("id") final String id) {
+        final Optional<Company> company = companyService.get(id);
+        return company.map(CompanyDTO::new).orElse(null);
     }
 
     @PostMapping(produces = "application/json", consumes = "application/json")
-    public ResultDTO post(final AdDTO dto) {
-        adService.save(dto);
+    public ResultDTO post(final CompanyDTO dto) {
+        companyService.save(dto);
         return new ResultDTO();
     }
 
     @PutMapping(produces = "application/json", consumes = "application/json")
-    public ResultDTO put(final AdDTO dto) {
-        adService.save(dto);
+    public ResultDTO put(final CompanyDTO dto) {
+        companyService.save(dto);
         return new ResultDTO();
     }
 
     @DeleteMapping(produces = "application/json", consumes = "application/json")
-    public ResultDTO delete(final AdDTO dto) {
-        adService.delete(dto);
+    public ResultDTO delete(final CompanyDTO dto) {
+        companyService.delete(dto);
         return new ResultDTO();
     }
 
