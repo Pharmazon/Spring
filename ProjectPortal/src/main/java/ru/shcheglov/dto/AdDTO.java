@@ -7,6 +7,7 @@ import ru.shcheglov.model.Category;
 import ru.shcheglov.model.Company;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.time.LocalDateTime;
 
 /**
  * @author Alexey Shcheglov
@@ -26,6 +27,9 @@ public final class AdDTO extends AbstractDTO {
     private String number;
 
     @NotNull
+    private LocalDateTime dateTime;
+
+    @NotNull
     private String categoryId;
 
     @NotNull
@@ -39,6 +43,7 @@ public final class AdDTO extends AbstractDTO {
         name = ad.getName();
         content = ad.getContent();
         number = ad.getNumber();
+        dateTime = ad.getDateTime();
         @NotNull final Company company = ad.getCompany();
         companyId = company.getId();
         @NotNull final Category category = ad.getCategory();
@@ -77,4 +82,11 @@ public final class AdDTO extends AbstractDTO {
         this.number = number;
     }
 
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
 }

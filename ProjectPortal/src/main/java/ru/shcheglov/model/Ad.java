@@ -1,6 +1,8 @@
 package ru.shcheglov.model;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 /**
@@ -30,8 +32,7 @@ public class Ad extends AbstractEntity {
     private String number;
 
     @Column(name = "date")
-    @Temporal(value = TemporalType.DATE)
-    private Date date;
+    private LocalDateTime dateTime;
 
     @ManyToOne
     @JoinColumn(name = "category_id")
@@ -81,12 +82,16 @@ public class Ad extends AbstractEntity {
         this.company = company;
     }
 
-    public Date getDate() {
-        return date;
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public String getFormattedDateTime() {
+        return dateTime.format(DateTimeFormatter.ofPattern("dd.MM.uuuu HH:mm:ss"));
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     @Override
@@ -95,7 +100,8 @@ public class Ad extends AbstractEntity {
                 "name='" + name + '\'' +
                 ", content='" + content + '\'' +
                 ", number='" + number + '\'' +
-                ", category=" + category + '\'' +
+                ", dateTime=" + dateTime +
+                ", category=" + category +
                 ", company=" + company +
                 '}';
     }

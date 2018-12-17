@@ -19,10 +19,18 @@
     </p>
     <table width="80%" cellspacing="0" cellpadding="0" border="0" style="margin-bottom: 5px">
         <tr>
+            <td width="10%" align="left" style="padding-right: 10px">ID</td>
+            <td>${ad.id}</td>
+        </tr>
+        <tr>
+            <td width="10%" align="left" style="padding-right: 10px">CREATED</td>
+            <td>${ad.formattedDateTime}</td>
+        </tr>
+        <tr>
             <td width="10%" align="left" style="padding-right: 10px">NAME</td>
             <td>
                 <form:hidden path="id" />
-                <form:hidden path="date" />
+                <form:hidden path="dateTime" />
                 <form:input path="name" size="50" />
             </td>
         </tr>

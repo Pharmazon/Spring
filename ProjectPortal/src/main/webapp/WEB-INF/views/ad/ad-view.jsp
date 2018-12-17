@@ -19,8 +19,8 @@
         <td>${ad.id}</td>
     </tr>
     <tr>
-        <td>DATE</td>
-        <td>${ad.date}</td>
+        <td>CREATED</td>
+        <td>${ad.formattedDateTime}</td>
     </tr>
     <tr>
         <td>NAME</td>

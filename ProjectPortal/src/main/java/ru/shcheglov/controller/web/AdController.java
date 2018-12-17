@@ -1,5 +1,7 @@
 package ru.shcheglov.controller.web;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,7 @@ import ru.shcheglov.service.CompanyService;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -56,7 +59,7 @@ public class AdController {
 
     @PostMapping("ad-create")
     public String adCreate(final Ad ad, final BindingResult result) {
-        ad.setDate(new Date());
+        ad.setDateTime(LocalDateTime.now());
         if (!result.hasErrors()) adService.save(ad);
         return "redirect:/ad-list";
     }

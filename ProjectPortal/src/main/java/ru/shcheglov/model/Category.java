@@ -18,7 +18,6 @@ import java.util.List;
 })
 public class Category extends AbstractEntity {
 
-    @Getter
     @Column(name = "name")
     private String name;
 

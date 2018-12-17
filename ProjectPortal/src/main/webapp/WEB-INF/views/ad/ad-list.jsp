@@ -50,7 +50,7 @@
 <table width="100%" cellspacing="0" cellpadding="0" border="1" style="margin-bottom: 5px">
     <tr>
         <th width="30" nowrap="nowrap" align="center">№</th>
-        <th width="70" nowrap="nowrap" align="center">DATE</th>
+        <th width="90" nowrap="nowrap" align="center">CREATED</th>
         <th width="100" nowrap="nowrap" align="center">NAME</th>
         <th width="100%" nowrap="nowrap" align="center">CONTENT</th>
         <th width="100" nowrap="nowrap" align="center">NUMBER</th>
@@ -63,7 +63,7 @@
     <c:forEach var="ad" items="${ads}" varStatus="status">
         <tr>
             <td align="center" nowrap="nowrap">${status.index + 1}</td>
-            <td align="center">${ad.date}</td>
+            <td align="center">${ad.formattedDateTime}</td>
             <td align="left">${ad.name}</td>
             <td align="left">${ad.content}</td>
             <td align="left">${ad.number}</td>
