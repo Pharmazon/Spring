@@ -14,7 +14,9 @@ import java.util.Date;
         @NamedQuery(name = "Ad.findAll", query = "SELECT a FROM Ad a"),
         @NamedQuery(name = "Ad.deleteAll", query = "DELETE FROM Ad a"),
         @NamedQuery(name = "Ad.findAllByCompany", query = "SELECT a FROM Ad a WHERE a.company = :company"),
-        @NamedQuery(name = "Ad.findAllByCategory", query = "SELECT a FROM Ad a WHERE a.category = :category")
+        @NamedQuery(name = "Ad.findAllByCategory", query = "SELECT a FROM Ad a WHERE a.category = :category"),
+        @NamedQuery(name = "Company.findAllAds", query = "SELECT a FROM Ad a INNER JOIN a.company c WHERE c = :company"),
+        @NamedQuery(name = "Category.findAllAds", query = "SELECT a FROM Ad a INNER JOIN a.category c WHERE c = :category")
 })
 public class Ad extends AbstractEntity {
 
