@@ -3,8 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
-      integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+<link rel="stylesheet" href = "../../../resources/styles/styles.css">
 
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
     <tr>
@@ -47,7 +46,7 @@
     </tr>
 </table>
 
-<table width="100%" cellspacing="0" cellpadding="0" border="1" style="margin-bottom: 5px">
+<table class="adListTable" width="100%" cellspacing="0" cellpadding="0" border="1" style="margin-bottom: 5px">
     <tr>
         <th width="30" nowrap="nowrap" align="center">№</th>
         <th width="90" nowrap="nowrap" align="center">CREATED</th>

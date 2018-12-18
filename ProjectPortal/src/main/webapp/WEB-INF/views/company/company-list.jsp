@@ -2,6 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<link rel="stylesheet" href = "../../../resources/styles/styles.css">
+
 <form action="/ad-list">
     <button type="submit">ADS</button>
 </form>
@@ -30,13 +32,12 @@
     </tr>
 </table>
 
-<table width="100%" cellspacing="0" cellpadding="0" border="1" style="margin-bottom: 5px">
+<table class="listTable" width="100%" cellspacing="0" cellpadding="0" border="1" style="margin-bottom: 5px">
     <tr>
         <th width="50" nowrap="nowrap" align="center">№</th>
-        <th width="200" nowrap="nowrap" align="center">ID</th>
-        <th width="300" nowrap="nowrap" align="center">NAME</th>
+        <th width="200" nowrap="nowrap" align="center">NAME</th>
         <th width="100%" nowrap="nowrap" align="center">DESCRIPTION</th>
-        <th width="150" nowrap="nowrap" align="center">ADDRESS</th>
+        <th width="200" nowrap="nowrap" align="center">ADDRESS</th>
         <th width="30" nowrap="nowrap" align="center"></th>
         <th width="30" nowrap="nowrap" align="center"></th>
         <th width="30" nowrap="nowrap" align="center"></th>
@@ -44,7 +45,6 @@
     <c:forEach var="company" items="${companies}" varStatus="status">
         <tr>
             <td align="center" nowrap="nowrap">${status.index + 1}</td>
-            <td align="left">${company.id}</td>
             <td align="left">${company.name}</td>
             <td align="left">${company.description}</td>
             <td align="left">${company.address}</td>
