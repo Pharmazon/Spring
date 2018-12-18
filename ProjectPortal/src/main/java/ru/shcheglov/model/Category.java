@@ -1,7 +1,5 @@
 package ru.shcheglov.model;
 
-import lombok.Getter;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,21 +14,10 @@ import java.util.List;
         @NamedQuery(name = "Category.findAll", query = "SELECT a FROM Category a"),
         @NamedQuery(name = "Category.deleteAll", query = "DELETE FROM Category a")
 })
-public class Category extends AbstractEntity {
-
-    @Column(name = "name")
-    private String name;
+public class  Category extends AbstractEntity {
 
     @OneToMany(mappedBy = "category")
     private List<Ad> ads;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
 
     public List<Ad> getAds() {
         return ads;
@@ -43,7 +30,8 @@ public class Category extends AbstractEntity {
     @Override
     public String toString() {
         return "Category{" +
-                "name='" + name + '\'' +
+                "name='" + super.getName() + '\'' +
+                ", ads=" + ads +
                 '}';
     }
 }

@@ -1,5 +1,8 @@
 package ru.shcheglov.model;
 
+import ru.shcheglov.model.address.Address;
+import ru.shcheglov.model.user.User;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,25 +19,15 @@ import java.util.List;
 })
 public class Company extends AbstractEntity {
 
-    @Column(name = "name")
-    private String name;
-
     @Column(name = "description")
     private String description;
 
-    @Column(name = "address")
-    private String address;
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private Address address;
 
-    @OneToMany(mappedBy = "company")
-    private List<Ad> ads;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
+    @OneToOne
+    private User user;
 
     public String getDescription() {
         return description;
@@ -44,28 +37,28 @@ public class Company extends AbstractEntity {
         this.description = description;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(final String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
-    public List<Ad> getAds() {
-        return ads;
+    public User getUser() {
+        return user;
     }
 
-    public void setAds(final List<Ad> ads) {
-        this.ads = ads;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
     public String toString() {
         return "Company{" +
-                "name='" + name + '\'' +
+                "companyName='" + super.getName() + '\'' +
                 ", description='" + description + '\'' +
-                ", address='" + address + '\'' +
+                ", address=" + address +
                 '}';
     }
 }
