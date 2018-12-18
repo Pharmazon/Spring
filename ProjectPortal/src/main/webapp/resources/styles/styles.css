@@ -5,3 +5,31 @@
 .viewTable tr td {
     padding-left: 5px;
 }
+
+.listTable tr td {
+    padding-left: 5px;
+}
+
+.listTable tr :first-child {
+    padding-left: 0;
+}
+
+.listTable tr :nth-last-child(-n+3) {
+    padding-left: 0;
+}
+
+.adListTable tr td {
+    padding-left: 5px;
+}
+
+.adListTable tr :nth-last-child(-n+3) {
+    padding-left: 0;
+}
+
+.adListTable tr :first-child {
+    padding-left: 0;
+}
+
+.adListTable tr :nth-child(2) {
+    padding-left: 0;
+}
