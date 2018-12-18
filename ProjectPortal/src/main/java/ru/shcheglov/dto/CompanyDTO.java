@@ -2,6 +2,7 @@ package ru.shcheglov.dto;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import ru.shcheglov.model.address.Address;
 import ru.shcheglov.model.Company;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -21,7 +22,7 @@ public final class CompanyDTO extends AbstractDTO {
     private String description;
 
     @Nullable
-    private String address;
+    private Address address;
 
     public CompanyDTO() {
     }
@@ -49,11 +50,11 @@ public final class CompanyDTO extends AbstractDTO {
         this.description = description;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(final String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
