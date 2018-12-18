@@ -4,9 +4,10 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.shcheglov.model.Ad;
 import ru.shcheglov.model.Category;
-import ru.shcheglov.model.Company;
+import ru.shcheglov.model.user.User;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 /**
@@ -26,43 +27,41 @@ public final class AdDTO extends AbstractDTO {
     @Nullable
     private String number;
 
-    @NotNull
+    @Nullable
     private LocalDateTime dateTime;
 
-    @NotNull
+    @Nullable
+    private BigInteger price;
+
+    @Nullable
     private String categoryId;
 
-    @NotNull
-    private String companyId;
+    @Nullable
+    private String userId;
 
     public AdDTO() {
     }
 
     public AdDTO(@NotNull final Ad ad) {
         super.setId(ad.getId());
+        super.setName(ad.getName());
         name = ad.getName();
         content = ad.getContent();
-        number = ad.getNumber();
         dateTime = ad.getDateTime();
-        @NotNull final Company company = ad.getCompany();
-        companyId = company.getId();
+        price = ad.getPrice();
+        @NotNull final User user = ad.getUser();
+        userId = user.getId();
         @NotNull final Category category = ad.getCategory();
         categoryId = category.getId();
     }
 
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public String getCompanyId() {
-        return companyId;
-    }
-
+    @Override
     public String getName() {
         return name;
     }
 
-    public void setName(final String name) {
+    @Override
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -70,7 +69,7 @@ public final class AdDTO extends AbstractDTO {
         return content;
     }
 
-    public void setContent(final String content) {
+    public void setContent(String content) {
         this.content = content;
     }
 
@@ -78,7 +77,7 @@ public final class AdDTO extends AbstractDTO {
         return number;
     }
 
-    public void setNumber(final String number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 
@@ -89,4 +88,29 @@ public final class AdDTO extends AbstractDTO {
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
     }
+
+    public BigInteger getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigInteger price) {
+        this.price = price;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
 }

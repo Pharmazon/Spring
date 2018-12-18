@@ -23,24 +23,16 @@ public class CompanyRepositoryImpl extends AbstractRepository<Company> implement
     public static final String NAME = "companyRepository";
 
     @Override
-    public void save(@NotNull final Company model) {
-        super.save(model);
-    }
-
-    @Override
     public void delete(@NotNull final String id) {
         final Optional<Company> company = findOne(id);
         company.ifPresent(this::delete);
     }
 
     @Override
-    public void delete(@NotNull final Company model) {
-        super.delete(model);
-    }
-
-    @Override
     public void deleteAll() {
-        entityManager.createNamedQuery("Company.deleteAll", Company.class);
+        entityManager
+                .createNamedQuery("Company.deleteAll", Company.class)
+                .executeUpdate();
     }
 
     @Override
@@ -53,11 +45,6 @@ public class CompanyRepositoryImpl extends AbstractRepository<Company> implement
         return entityManager
                 .createNamedQuery("Company.findAll", Company.class)
                 .getResultList();
-    }
-
-    @Override
-    public Company update(@NotNull final Company model) {
-        return super.update(model);
     }
 
     @Override
@@ -77,10 +64,11 @@ public class CompanyRepositoryImpl extends AbstractRepository<Company> implement
 
     @Override
     public List<Ad> findAllAds(@NotNull final Company company) {
-        return entityManager
-                .createNamedQuery("Company.findAllAds", Ad.class)
-                .setParameter("company", company)
-                .getResultList();
+        return null;
+//        return entityManager
+//                .createNamedQuery("Company.findAllAds", Ad.class)
+//                .setParameter("company", company)
+//                .getResultList();
     }
 
 }

@@ -8,9 +8,11 @@ import ru.shcheglov.dto.AdDTO;
 import ru.shcheglov.model.Ad;
 import ru.shcheglov.model.Category;
 import ru.shcheglov.model.Company;
+import ru.shcheglov.model.user.User;
 import ru.shcheglov.repository.AdRepository;
 import ru.shcheglov.repository.CategoryRepository;
 import ru.shcheglov.repository.CompanyRepository;
+import ru.shcheglov.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +33,7 @@ public class AdServiceImpl implements AdService {
     private AdRepository adRepository;
 
     @Autowired
-    private CompanyRepository companyRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private CategoryRepository categoryRepository;
@@ -93,16 +95,14 @@ public class AdServiceImpl implements AdService {
         ad.setId(dto.getId());
         ad.setName(dto.getName());
         ad.setContent(dto.getContent());
-        ad.setNumber(dto.getNumber());
-
+        ad.setPrice(dto.getPrice());
+        ad.setDateTime(dto.getDateTime());
         final String categoryId = dto.getCategoryId();
         final Optional<Category> category = categoryRepository.findOne(categoryId);
         category.ifPresent(ad::setCategory);
-
-        final String companyId = dto.getCategoryId();
-        final Optional<Company> company = companyRepository.findOne(companyId);
-        company.ifPresent(ad::setCompany);
-
+        final String userId = dto.getUserId();
+        final Optional<User> user = userRepository.findOne(userId);
+        user.ifPresent(ad::setUser);
         save(ad);
     }
 

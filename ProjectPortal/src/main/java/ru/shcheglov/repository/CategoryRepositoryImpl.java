@@ -21,19 +21,9 @@ public class CategoryRepositoryImpl extends AbstractRepository<Category> impleme
     public static final String NAME = "categoryRepository";
 
     @Override
-    public void save(@NotNull final Category model) {
-        super.save(model);
-    }
-
-    @Override
     public void delete(@NotNull final String id) {
         final Optional<Category> category = findOne(id);
         category.ifPresent(this::delete);
-    }
-
-    @Override
-    public void delete(@NotNull final Category model) {
-        super.delete(model);
     }
 
     @Override
@@ -53,11 +43,6 @@ public class CategoryRepositoryImpl extends AbstractRepository<Category> impleme
         return entityManager
                 .createNamedQuery("Category.findAll", Category.class)
                 .getResultList();
-    }
-
-    @Override
-    public Category update(@NotNull final Category model) {
-        return super.update(model);
     }
 
     @Override

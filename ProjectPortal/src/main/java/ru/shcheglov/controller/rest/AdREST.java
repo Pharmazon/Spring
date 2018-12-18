@@ -39,7 +39,6 @@ public class AdREST {
             final Ad ad = new Ad();
             ad.setName("New ad");
             ad.setContent("11");
-            ad.setNumber("22");
             adService.save(ad);
             return new AdDTO(ad);
         } catch (final Exception e) {
