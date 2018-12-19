@@ -1,5 +1,9 @@
 package ru.shcheglov.model.address;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import ru.shcheglov.model.AbstractEntity;
 
 import javax.persistence.*;
@@ -10,6 +14,10 @@ import java.util.List;
  * @version dated 18.12.2018
  */
 
+@Data
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "city")
 @NamedQueries({
@@ -25,25 +33,9 @@ public class City extends AbstractEntity {
     @OneToMany(mappedBy = "city")
     private List<Address> addresses;
 
-    public CityType getCityType() {
-        return cityType;
-    }
-
-    public void setCityType(CityType cityType) {
-        this.cityType = cityType;
-    }
-
-    public List<Address> getAddresses() {
-        return addresses;
-    }
-
-    public void setAddresses(List<Address> addresses) {
-        this.addresses = addresses;
-    }
-
     @Override
     public String toString() {
-        return "City=" + cityType.getShortName() + " " + super.getName();
+        return "City=" + cityType.getShortName() + " " + getName();
     }
 
 }

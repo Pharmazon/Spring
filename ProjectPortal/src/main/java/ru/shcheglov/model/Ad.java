@@ -1,6 +1,10 @@
 package ru.shcheglov.model;
 
-import ru.shcheglov.model.eav.AttributeEAV;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import ru.shcheglov.model.eav.EntityAttributeValue;
 import ru.shcheglov.model.user.User;
 
 import javax.persistence.*;
@@ -14,6 +18,10 @@ import java.util.List;
  * @version dated 06.12.2018
  */
 
+@Data
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "ad")
 @NamedQueries({
@@ -44,36 +52,8 @@ public class Ad extends AbstractEntity {
     private User user;
 
     @ManyToMany
-    @JoinTable(name = "ad_attributes")
-    private List<AttributeEAV> attributes;
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(final String content) {
-        this.content = content;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(final Category category) {
-        this.category = category;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
+    @JoinTable(name = "ad_attribute")
+    private List<EntityAttributeValue> attributes;
 
     public String getFormattedDateTime() {
         return dateTime.format(DateTimeFormatter.ofPattern("dd.MM.uuuu HH:mm:ss"));
@@ -87,35 +67,4 @@ public class Ad extends AbstractEntity {
         return dateTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    public BigInteger getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigInteger price) {
-        this.price = price;
-    }
-
-    public List<AttributeEAV> getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(List<AttributeEAV> attributes) {
-        this.attributes = attributes;
-    }
-
-    @Override
-    public String toString() {
-        return "Ad{" +
-                "name='" + super.getName() + '\'' +
-                ", content='" + content + '\'' +
-                ", dateTime=" + dateTime +
-                ", price=" + price +
-                ", category=" + category +
-                ", user=" + user +
-                '}';
-    }
 }

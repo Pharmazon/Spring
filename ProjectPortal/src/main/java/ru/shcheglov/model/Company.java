@@ -1,16 +1,20 @@
 package ru.shcheglov.model;
 
+import lombok.*;
 import ru.shcheglov.model.address.Address;
 import ru.shcheglov.model.user.User;
 
 import javax.persistence.*;
-import java.util.List;
 
 /**
  * @author Alexey Shcheglov
  * @version dated 13.12.2018
  */
 
+@Data
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "company")
 @NamedQueries({
@@ -29,36 +33,4 @@ public class Company extends AbstractEntity {
     @OneToOne
     private User user;
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(final String description) {
-        this.description = description;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "Company{" +
-                "companyName='" + super.getName() + '\'' +
-                ", description='" + description + '\'' +
-                ", address=" + address +
-                '}';
-    }
 }

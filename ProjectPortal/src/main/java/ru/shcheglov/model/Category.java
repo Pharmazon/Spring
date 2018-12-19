@@ -1,5 +1,10 @@
 package ru.shcheglov.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,6 +13,11 @@ import java.util.List;
  * @version dated 13.12.2018
  */
 
+
+@Data
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "category")
 @NamedQueries({
@@ -19,19 +29,4 @@ public class  Category extends AbstractEntity {
     @OneToMany(mappedBy = "category")
     private List<Ad> ads;
 
-    public List<Ad> getAds() {
-        return ads;
-    }
-
-    public void setAds(final List<Ad> ads) {
-        this.ads = ads;
-    }
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "name='" + super.getName() + '\'' +
-                ", ads=" + ads +
-                '}';
-    }
 }

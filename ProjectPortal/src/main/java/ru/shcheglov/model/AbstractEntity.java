@@ -1,5 +1,7 @@
 package ru.shcheglov.model;
 
+import lombok.Data;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -10,6 +12,7 @@ import java.util.UUID;
  * @version dated 13.12.2018
  */
 
+@Data
 @MappedSuperclass
 public abstract class AbstractEntity {
 
@@ -19,21 +22,5 @@ public abstract class AbstractEntity {
 
     @Column(name = "name")
     private String name;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
 }

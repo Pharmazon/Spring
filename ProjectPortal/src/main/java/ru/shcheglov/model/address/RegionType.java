@@ -1,5 +1,9 @@
 package ru.shcheglov.model.address;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import ru.shcheglov.model.AbstractEntity;
 
 import javax.persistence.Column;
@@ -13,6 +17,10 @@ import java.util.List;
  * @version dated 18.12.2018
  */
 
+@Data
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "region_type")
 public class RegionType extends AbstractEntity {
@@ -22,22 +30,6 @@ public class RegionType extends AbstractEntity {
 
     @OneToMany(mappedBy = "regionType")
     private List<Region> regions;
-
-    public String getShortName() {
-        return shortName;
-    }
-
-    public void setShortName(String shortName) {
-        this.shortName = shortName;
-    }
-
-    public List<Region> getRegions() {
-        return regions;
-    }
-
-    public void setRegions(List<Region> regions) {
-        this.regions = regions;
-    }
 
     @Override
     public String toString() {

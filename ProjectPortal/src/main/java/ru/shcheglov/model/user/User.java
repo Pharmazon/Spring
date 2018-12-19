@@ -1,5 +1,9 @@
 package ru.shcheglov.model.user;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import ru.shcheglov.model.AbstractEntity;
 import ru.shcheglov.model.Ad;
 import ru.shcheglov.model.Company;
@@ -13,8 +17,12 @@ import java.util.List;
  * @version dated 18.12.2018
  */
 
+@Data
+@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 @NamedQueries({
         @NamedQuery(name = "User.findAll", query = "SELECT c FROM User c"),
         @NamedQuery(name = "User.deleteAll", query = "DELETE FROM User c")
@@ -47,81 +55,4 @@ public class User extends AbstractEntity {
     @JoinColumn(name = "role_id")
     private Role role;
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public LocalDateTime getDateRegistered() {
-        return dateRegistered;
-    }
-
-    public void setDateRegistered(LocalDateTime dateRegistered) {
-        this.dateRegistered = dateRegistered;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    public List<Ad> getAds() {
-        return ads;
-    }
-
-    public void setAds(List<Ad> ads) {
-        this.ads = ads;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + super.getName() + '\'' +
-                ", dateRegistered=" + dateRegistered +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", company=" + company +
-                '}';
-    }
-    
 }
