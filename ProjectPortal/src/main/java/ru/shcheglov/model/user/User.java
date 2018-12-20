@@ -4,9 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.AbstractEntity;
+import ru.shcheglov.model.basic.AbstractEntity;
 import ru.shcheglov.model.Ad;
-import ru.shcheglov.model.Company;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -22,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 @NamedQueries({
         @NamedQuery(name = "User.findAll", query = "SELECT c FROM User c"),
         @NamedQuery(name = "User.deleteAll", query = "DELETE FROM User c")

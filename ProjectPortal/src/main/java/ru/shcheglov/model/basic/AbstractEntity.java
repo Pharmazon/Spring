@@ -1,4 +1,4 @@
-package ru.shcheglov.model;
+package ru.shcheglov.model.basic;
 
 import lombok.Data;
 

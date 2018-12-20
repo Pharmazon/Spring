@@ -1,4 +1,4 @@
-package ru.shcheglov.model.user;
+package ru.shcheglov.model.eav;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,10 +21,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "roles")
-public class Role extends AbstractEntity {
+@Table(name = "attribute_types")
+public class AttributeType extends AbstractEntity {
 
-    @OneToMany(mappedBy = "role")
-    private List<User> users;
-
+    @OneToMany(mappedBy = "attributeType")
+    private List<Attribute> attributes;
+    
 }

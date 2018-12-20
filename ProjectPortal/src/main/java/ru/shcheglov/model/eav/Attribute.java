@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.AbstractEntity;
-import ru.shcheglov.model.Ad;
+import ru.shcheglov.model.basic.AbstractEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,16 +19,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "attribute")
-public class EntityAttributeValue extends AbstractEntity {
+@Table(name = "attributes")
+public class Attribute extends AbstractEntity {
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "type")
-    private String type;
+    @ManyToOne
+    @JoinColumn(name = "attribute_type_id")
+    private AttributeType attributeType;
 
-    @ManyToMany(mappedBy = "attributes")
-    private List<Ad> ads;
+    @OneToMany(mappedBy = "ad")
+    private List<AdAttributeValue> eavs;
 
 }

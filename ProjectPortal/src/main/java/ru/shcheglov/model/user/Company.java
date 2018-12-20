@@ -1,8 +1,8 @@
-package ru.shcheglov.model;
+package ru.shcheglov.model.user;
 
 import lombok.*;
+import ru.shcheglov.model.basic.AbstractEntity;
 import ru.shcheglov.model.address.Address;
-import ru.shcheglov.model.user.User;
 
 import javax.persistence.*;
 
@@ -16,7 +16,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "company")
+@Table(name = "companies")
 @NamedQueries({
         @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c"),
         @NamedQuery(name = "Company.deleteAll", query = "DELETE FROM Company c")
@@ -30,7 +30,7 @@ public class Company extends AbstractEntity {
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToOne
+    @OneToOne(mappedBy = "company")
     private User user;
 
 }
