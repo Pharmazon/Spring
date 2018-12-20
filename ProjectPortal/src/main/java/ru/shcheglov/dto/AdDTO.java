@@ -1,5 +1,9 @@
 package ru.shcheglov.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.shcheglov.model.Ad;
@@ -15,6 +19,10 @@ import java.time.LocalDateTime;
  * @version dated 14.12.2018
  */
 
+@Data
+@EqualsAndHashCode(callSuper = true)
+@NoArgsConstructor
+@AllArgsConstructor
 @XmlRootElement
 public final class AdDTO extends AbstractDTO {
 
@@ -39,9 +47,6 @@ public final class AdDTO extends AbstractDTO {
     @Nullable
     private String userId;
 
-    public AdDTO() {
-    }
-
     public AdDTO(@NotNull final Ad ad) {
         super.setId(ad.getId());
         super.setName(ad.getName());
@@ -53,64 +58,6 @@ public final class AdDTO extends AbstractDTO {
         userId = user.getId();
         @NotNull final Category category = ad.getCategory();
         categoryId = category.getId();
-    }
-
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public LocalDateTime getDateTime() {
-        return dateTime;
-    }
-
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
-    }
-
-    public BigInteger getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigInteger price) {
-        this.price = price;
-    }
-
-    public String getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
 }

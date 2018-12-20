@@ -1,5 +1,9 @@
 package ru.shcheglov.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -10,6 +14,8 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @version dated 14.12.2018
  */
 
+@Data
+@NoArgsConstructor
 @XmlRootElement
 public abstract class AbstractDTO {
 
@@ -18,21 +24,5 @@ public abstract class AbstractDTO {
 
     @Nullable
     private String name;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
 }
