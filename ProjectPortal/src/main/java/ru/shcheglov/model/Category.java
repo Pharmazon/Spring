@@ -27,8 +27,12 @@ import java.util.List;
 })
 public class Category extends AbstractEntity {
 
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Category parentId;
 
-    private String parentId;
+    @OneToMany(mappedBy = "parentId")
+    private List<Category> subCategories;
 
     @OneToMany(mappedBy = "category")
     private List<Ad> ads;
