@@ -20,38 +20,4 @@ public class AddressRepository extends AbstractRepository<Address> implements Ba
     @NotNull
     public static final String NAME = "addressRepository";
 
-    @Override
-    public void save(Address model) {
-
-    }
-
-    @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public void delete(Address model) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public Optional<Address> findOne(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<Address> findAll() {
-        return null;
-    }
-
-    @Override
-    public Address update(Address model) {
-        return null;
-    }
 }

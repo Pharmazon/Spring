@@ -20,38 +20,4 @@ public class RegionRepository extends AbstractRepository<Region> implements Basi
     @NotNull
     public static final String NAME = "regionRepository";
 
-    @Override
-    public void save(Region model) {
-
-    }
-
-    @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public void delete(Region model) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public Optional<Region> findOne(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<Region> findAll() {
-        return null;
-    }
-
-    @Override
-    public Region update(Region model) {
-        return null;
-    }
 }

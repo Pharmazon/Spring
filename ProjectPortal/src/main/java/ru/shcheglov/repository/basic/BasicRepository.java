@@ -12,18 +12,4 @@ import java.util.Optional;
 
 public interface BasicRepository<Entity extends AbstractEntity> {
 
-    void save(Entity model);
-
-    void delete(String id);
-
-    void delete(Entity model);
-
-    void deleteAll();
-
-    Optional<Entity> findOne(String id);
-
-    List<Entity> findAll();
-
-    Entity update(Entity model);
-
 }

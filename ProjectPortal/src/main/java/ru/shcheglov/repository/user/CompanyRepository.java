@@ -23,31 +23,6 @@ public class CompanyRepository extends AbstractRepository<Company> implements Ba
     @NotNull
     public static final String NAME = "companyRepository";
 
-    @Override
-    public void delete(@NotNull final String id) {
-        final Optional<Company> company = findOne(id);
-        company.ifPresent(this::delete);
-    }
-
-    @Override
-    public void deleteAll() {
-        entityManager
-                .createNamedQuery("Company.deleteAll", Company.class)
-                .executeUpdate();
-    }
-
-    @Override
-    public Optional<Company> findOne(@NotNull final String id) {
-        return Optional.of(entityManager.find(Company.class, id));
-    }
-
-    @Override
-    public List<Company> findAll() {
-        return entityManager
-                .createNamedQuery("Company.findAll", Company.class)
-                .getResultList();
-    }
-
     public Company findOneByAd(@NotNull final Ad ad) {
         @NotNull final CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         @NotNull final CriteriaQuery<Company> query = builder.createQuery(Company.class);

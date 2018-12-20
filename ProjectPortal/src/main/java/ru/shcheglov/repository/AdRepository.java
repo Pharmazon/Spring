@@ -22,31 +22,6 @@ public class AdRepository extends AbstractRepository<Ad> implements BasicReposit
     @NotNull
     public static final String NAME = "adRepository";
 
-    @Override
-    public void delete(@NotNull final String id) {
-        final Optional<Ad> ad = findOne(id);
-        ad.ifPresent(this::delete);
-    }
-
-    @Override
-    public void deleteAll() {
-        entityManager
-                .createNamedQuery("Ad.deleteAll", Ad.class)
-                .executeUpdate();
-    }
-
-    @Override
-    public Optional<Ad> findOne(@NotNull final String id) {
-        return Optional.of(entityManager.find(Ad.class, id));
-    }
-
-    @Override
-    public List<Ad> findAll() {
-        return entityManager
-                .createNamedQuery("Ad.findAll", Ad.class)
-                .getResultList();
-    }
-
     public List<Ad> findAllByCompany(@NotNull final Company company) {
         return null;
 //        return entityManager

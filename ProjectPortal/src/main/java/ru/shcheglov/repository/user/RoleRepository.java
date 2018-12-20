@@ -20,24 +20,4 @@ public class RoleRepository extends AbstractRepository<Role> implements BasicRep
     @NotNull
     public static final String NAME = "roleRepository";
 
-    @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public Optional<Role> findOne(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<Role> findAll() {
-        return null;
-    }
-
 }

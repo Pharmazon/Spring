@@ -20,23 +20,4 @@ public class AttributeTypeRepository extends AbstractRepository<AttributeType> i
     @NotNull
     public static final String NAME = "attributeTypeRepository";
 
-    @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public Optional<AttributeType> findOne(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<AttributeType> findAll() {
-        return null;
-    }
 }

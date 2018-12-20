@@ -20,38 +20,4 @@ public class RegionTypeRepository extends AbstractRepository<RegionType> impleme
     @NotNull
     public static final String NAME = "regionTypeRepository";
 
-    @Override
-    public void save(RegionType model) {
-
-    }
-
-    @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public void delete(RegionType model) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public Optional<RegionType> findOne(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<RegionType> findAll() {
-        return null;
-    }
-
-    @Override
-    public RegionType update(RegionType model) {
-        return null;
-    }
 }

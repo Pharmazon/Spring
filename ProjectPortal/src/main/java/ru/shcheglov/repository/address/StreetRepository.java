@@ -20,38 +20,4 @@ public class StreetRepository extends AbstractRepository<Street> implements Basi
     @NotNull
     public static final String NAME = "streetRepository";
 
-    @Override
-    public void save(Street model) {
-
-    }
-
-    @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public void delete(Street model) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public Optional<Street> findOne(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<Street> findAll() {
-        return null;
-    }
-
-    @Override
-    public Street update(Street model) {
-        return null;
-    }
 }

@@ -20,38 +20,4 @@ public class CityTypeRepository extends AbstractRepository<CityType> implements 
     @NotNull
     public static final String NAME = "cityTypeRepository";
 
-    @Override
-    public void save(CityType model) {
-
-    }
-
-    @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public void delete(CityType model) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public Optional<CityType> findOne(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<CityType> findAll() {
-        return null;
-    }
-
-    @Override
-    public CityType update(CityType model) {
-        return null;
-    }
 }

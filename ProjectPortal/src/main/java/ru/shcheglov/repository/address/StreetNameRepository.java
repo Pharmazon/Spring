@@ -20,38 +20,4 @@ public class StreetNameRepository extends AbstractRepository<StreetName> impleme
     @NotNull
     public static final String NAME = "streetNameRepository";
 
-    @Override
-    public void save(StreetName model) {
-
-    }
-
-    @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public void delete(StreetName model) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public Optional<StreetName> findOne(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<StreetName> findAll() {
-        return null;
-    }
-
-    @Override
-    public StreetName update(StreetName model) {
-        return null;
-    }
 }

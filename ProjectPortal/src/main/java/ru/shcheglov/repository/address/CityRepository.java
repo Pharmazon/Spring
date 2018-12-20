@@ -20,38 +20,4 @@ public class CityRepository extends AbstractRepository<City> implements BasicRep
     @NotNull
     public static final String NAME = "cityRepository";
 
-    @Override
-    public void save(City model) {
-
-    }
-
-    @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public void delete(City model) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public Optional<City> findOne(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<City> findAll() {
-        return null;
-    }
-
-    @Override
-    public City update(City model) {
-        return null;
-    }
 }

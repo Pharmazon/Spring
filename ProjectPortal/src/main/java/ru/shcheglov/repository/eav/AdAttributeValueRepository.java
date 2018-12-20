@@ -21,23 +21,4 @@ public class AdAttributeValueRepository extends AbstractRepository<AdAttributeVa
     @NotNull
     public static final String NAME = "adAttributeValueRepository";
 
-    @Override
-    public void delete(String id) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public Optional<AdAttributeValue> findOne(String id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<AdAttributeValue> findAll() {
-        return null;
-    }
 }

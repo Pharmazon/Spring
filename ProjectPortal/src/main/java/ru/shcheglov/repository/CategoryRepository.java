@@ -21,35 +21,4 @@ public class CategoryRepository extends AbstractRepository<Category> implements 
     @NotNull
     public static final String NAME = "categoryRepository";
 
-    @Override
-    public void delete(@NotNull final String id) {
-        final Optional<Category> category = findOne(id);
-        category.ifPresent(this::delete);
-    }
-
-    @Override
-    public void deleteAll() {
-        entityManager
-                .createNamedQuery("Category.deleteAll", Category.class)
-                .executeUpdate();
-    }
-
-    @Override
-    public Optional<Category> findOne(@NotNull final String id) {
-        return Optional.of(entityManager.find(Category.class, id));
-    }
-
-    @Override
-    public List<Category> findAll() {
-        return entityManager
-                .createNamedQuery("Category.findAll", Category.class)
-                .getResultList();
-    }
-
-    public List<Ad> findAllAds(@NotNull final Category category) {
-        return entityManager
-                .createNamedQuery("Category.findAllAds", Ad.class)
-                .setParameter("category", category)
-                .getResultList();
-    }
 }
