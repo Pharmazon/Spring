@@ -2,11 +2,9 @@ package ru.shcheglov.controller.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import ru.shcheglov.dto.CategoryDTO;
 import ru.shcheglov.dto.CompanyDTO;
 import ru.shcheglov.dto.ResultDTO;
-import ru.shcheglov.model.Category;
-import ru.shcheglov.model.Company;
+import ru.shcheglov.model.user.Company;
 import ru.shcheglov.service.CompanyService;
 
 import java.util.List;
