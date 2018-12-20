@@ -4,7 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.eav.EntityAttributeValue;
+import ru.shcheglov.model.basic.AbstractEntity;
+import ru.shcheglov.model.eav.AdAttributeValue;
 import ru.shcheglov.model.user.User;
 
 import javax.persistence.*;
@@ -23,7 +24,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "ad")
+@Table(name = "ads")
 @NamedQueries({
         @NamedQuery(name = "Ad.findAll", query = "SELECT a FROM Ad a"),
         @NamedQuery(name = "Ad.deleteAll", query = "DELETE FROM Ad a"),
@@ -51,9 +52,8 @@ public class Ad extends AbstractEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany
-    @JoinTable(name = "ad_attribute")
-    private List<EntityAttributeValue> attributes;
+    @OneToMany(mappedBy = "attribute")
+    private List<AdAttributeValue> eavs;
 
     public String getFormattedDateTime() {
         return dateTime.format(DateTimeFormatter.ofPattern("dd.MM.uuuu HH:mm:ss"));

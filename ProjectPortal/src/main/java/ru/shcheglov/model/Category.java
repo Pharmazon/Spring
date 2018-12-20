@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import ru.shcheglov.model.basic.AbstractEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,12 +20,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "category")
+@Table(name = "categories")
 @NamedQueries({
         @NamedQuery(name = "Category.findAll", query = "SELECT a FROM Category a"),
         @NamedQuery(name = "Category.deleteAll", query = "DELETE FROM Category a")
 })
-public class  Category extends AbstractEntity {
+public class Category extends AbstractEntity {
+
+
+    private String parentId;
 
     @OneToMany(mappedBy = "category")
     private List<Ad> ads;
