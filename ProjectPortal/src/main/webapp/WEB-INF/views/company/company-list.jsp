@@ -1,4 +1,4 @@
-<%@ page import="ru.shcheglov.model.Company" %>
+<%@ page import="ru.shcheglov.model.user.Company" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
