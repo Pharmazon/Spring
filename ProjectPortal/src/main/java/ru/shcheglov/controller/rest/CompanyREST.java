@@ -3,8 +3,7 @@ package ru.shcheglov.controller.rest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.shcheglov.dto.*;
-import ru.shcheglov.model.Ad;
-import ru.shcheglov.model.Company;
+import ru.shcheglov.model.user.Company;
 import ru.shcheglov.service.CompanyService;
 
 import java.util.Collections;

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.shcheglov.dto.*;
 import ru.shcheglov.model.Category;
-import ru.shcheglov.model.Company;
 import ru.shcheglov.service.CategoryService;
 
 import java.util.Collections;

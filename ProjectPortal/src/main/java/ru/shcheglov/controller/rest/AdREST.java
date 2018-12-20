@@ -7,8 +7,6 @@ import ru.shcheglov.dto.FailDTO;
 import ru.shcheglov.dto.ResultDTO;
 import ru.shcheglov.dto.SuccessDTO;
 import ru.shcheglov.model.Ad;
-import ru.shcheglov.model.Category;
-import ru.shcheglov.model.Company;
 import ru.shcheglov.service.AdService;
 
 import java.util.Collections;
