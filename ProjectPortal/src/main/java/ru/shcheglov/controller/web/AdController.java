@@ -1,7 +1,5 @@
 package ru.shcheglov.controller.web;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import net.bytebuddy.asm.Advice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,15 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.shcheglov.model.Ad;
 import ru.shcheglov.model.Category;
-import ru.shcheglov.model.Company;
+import ru.shcheglov.model.user.Company;
 import ru.shcheglov.service.AdService;
 import ru.shcheglov.service.CategoryService;
 import ru.shcheglov.service.CompanyService;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
