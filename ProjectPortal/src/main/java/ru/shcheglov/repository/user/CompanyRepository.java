@@ -1,13 +1,14 @@
-package ru.shcheglov.repository;
+package ru.shcheglov.repository.user;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
 import ru.shcheglov.model.Ad;
-import ru.shcheglov.model.Company;
+import ru.shcheglov.model.user.Company;
+import ru.shcheglov.repository.basic.AbstractRepository;
+import ru.shcheglov.repository.basic.BasicRepository;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,8 +17,8 @@ import java.util.Optional;
  * @version dated 13.12.2018
  */
 
-@Repository(CompanyRepositoryImpl.NAME)
-public class CompanyRepositoryImpl extends AbstractRepository<Company> implements CompanyRepository {
+@Repository(CompanyRepository.NAME)
+public class CompanyRepository extends AbstractRepository<Company> implements BasicRepository<Company> {
 
     @NotNull
     public static final String NAME = "companyRepository";
@@ -47,7 +48,6 @@ public class CompanyRepositoryImpl extends AbstractRepository<Company> implement
                 .getResultList();
     }
 
-    @Override
     public Company findOneByAd(@NotNull final Ad ad) {
         @NotNull final CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         @NotNull final CriteriaQuery<Company> query = builder.createQuery(Company.class);
@@ -62,7 +62,6 @@ public class CompanyRepositoryImpl extends AbstractRepository<Company> implement
         return typedQuery.getSingleResult();
     }
 
-    @Override
     public List<Ad> findAllAds(@NotNull final Company company) {
         return null;
 //        return entityManager
