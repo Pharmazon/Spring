@@ -6,9 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import ru.shcheglov.model.basic.AbstractEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -22,7 +20,11 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "attribute_types")
-public class AttributeType extends AbstractEntity {
+@NamedQueries({
+        @NamedQuery(name = "AttributeType.findAll", query = "SELECT a FROM AttributeType a"),
+        @NamedQuery(name = "AttributeType.deleteAll", query = "DELETE FROM AttributeType a")
+})
+public final class AttributeType extends AbstractEntity {
 
     @OneToMany(mappedBy = "attributeType")
     private List<Attribute> attributes;

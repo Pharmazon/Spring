@@ -26,7 +26,7 @@ import java.util.List;
         @NamedQuery(name = "User.findAll", query = "SELECT c FROM User c"),
         @NamedQuery(name = "User.deleteAll", query = "DELETE FROM User c")
 })
-public class User extends AbstractEntity {
+public final class User extends AbstractEntity {
 
     @Column(name = "login")
     private String login;

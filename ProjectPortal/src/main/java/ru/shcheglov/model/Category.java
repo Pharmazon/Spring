@@ -25,7 +25,7 @@ import java.util.List;
         @NamedQuery(name = "Category.findAll", query = "SELECT a FROM Category a"),
         @NamedQuery(name = "Category.deleteAll", query = "DELETE FROM Category a")
 })
-public class Category extends AbstractEntity {
+public final class Category extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "parent_id")

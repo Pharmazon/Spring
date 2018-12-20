@@ -6,9 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import ru.shcheglov.model.basic.AbstractEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -22,7 +20,11 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "roles")
-public class Role extends AbstractEntity {
+@NamedQueries({
+        @NamedQuery(name = "Role.findAll", query = "SELECT a FROM Role a"),
+        @NamedQuery(name = "Role.deleteAll", query = "DELETE FROM Role a")
+})
+public final class Role extends AbstractEntity {
 
     @OneToMany(mappedBy = "role")
     private List<User> users;

@@ -22,7 +22,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Entity
 @Table(name = "ads_attributes_values")
-public class AdAttributeValue extends AbstractEntity {
+@NamedQueries({
+        @NamedQuery(name = "AdAttributeValue.findAll", query = "SELECT a FROM AdAttributeValue a"),
+        @NamedQuery(name = "AdAttributeValue.deleteAll", query = "DELETE FROM AdAttributeValue a")
+})
+public final class AdAttributeValue extends AbstractEntity {
 
     @Column(name = "string_value")
     private String stringValue;

@@ -24,7 +24,7 @@ import java.util.List;
         @NamedQuery(name = "Street.findAll", query = "SELECT c FROM Street c"),
         @NamedQuery(name = "Street.deleteAll", query = "DELETE FROM Street c")
 })
-public class Street extends AbstractEntity {
+public final class Street extends AbstractEntity {
 
     @Column(name = "house")
     private Integer house;

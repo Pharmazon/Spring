@@ -24,7 +24,7 @@ import java.util.List;
         @NamedQuery(name = "City.findAll", query = "SELECT c FROM City c"),
         @NamedQuery(name = "City.deleteAll", query = "DELETE FROM City c")
 })
-public class City extends AbstractEntity {
+public final class City extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "city_type_id")

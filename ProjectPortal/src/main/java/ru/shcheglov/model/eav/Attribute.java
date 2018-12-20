@@ -20,7 +20,11 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "attributes")
-public class Attribute extends AbstractEntity {
+@NamedQueries({
+        @NamedQuery(name = "Attribute.findAll", query = "SELECT a FROM Attribute a"),
+        @NamedQuery(name = "Attribute.deleteAll", query = "DELETE FROM Attribute a")
+})
+public final class Attribute extends AbstractEntity {
 
     @Column(name = "description")
     private String description;

@@ -21,7 +21,7 @@ import javax.persistence.*;
         @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c"),
         @NamedQuery(name = "Company.deleteAll", query = "DELETE FROM Company c")
 })
-public class Company extends AbstractEntity {
+public final class Company extends AbstractEntity {
 
     @Column(name = "description")
     private String description;

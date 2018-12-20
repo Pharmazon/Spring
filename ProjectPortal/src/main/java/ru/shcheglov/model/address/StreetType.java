@@ -6,10 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import ru.shcheglov.model.basic.AbstractEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -23,7 +20,11 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "street_types")
-public class StreetType extends AbstractEntity {
+@NamedQueries({
+        @NamedQuery(name = "StreetType.findAll", query = "SELECT c FROM StreetType c"),
+        @NamedQuery(name = "StreetType.deleteAll", query = "DELETE FROM StreetType c")
+})
+public final class StreetType extends AbstractEntity {
 
     @Column(name = "short")
     private String shortName;

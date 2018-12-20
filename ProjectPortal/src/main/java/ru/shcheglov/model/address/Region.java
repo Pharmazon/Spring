@@ -24,7 +24,7 @@ import java.util.List;
         @NamedQuery(name = "Region.findAll", query = "SELECT c FROM Region c"),
         @NamedQuery(name = "Region.deleteAll", query = "DELETE FROM Region c")
 })
-public class Region extends AbstractEntity {
+public final class Region extends AbstractEntity {
 
     @ManyToOne
     @JoinColumn(name = "region_type_id")

@@ -29,11 +29,11 @@ import java.util.List;
         @NamedQuery(name = "Ad.findAll", query = "SELECT a FROM Ad a"),
         @NamedQuery(name = "Ad.deleteAll", query = "DELETE FROM Ad a"),
 //        @NamedQuery(name = "Ad.findAllAdsByCompany", query = "SELECT a FROM Ad a WHERE a.company = :company"),
-        @NamedQuery(name = "Ad.findAllAdsByCategory", query = "SELECT a FROM Ad a WHERE a.category = :category"),
+//        @NamedQuery(name = "Ad.findAllAdsByCategory", query = "SELECT a FROM Ad a WHERE a.category = :category"),
 //        @NamedQuery(name = "Company.findAllAds", query = "SELECT a FROM Ad a INNER JOIN a.company c WHERE c = :company"),
-        @NamedQuery(name = "Category.findAllAds", query = "SELECT a FROM Ad a INNER JOIN a.category c WHERE c = :category")
+//        @NamedQuery(name = "Category.findAllAds", query = "SELECT a FROM Ad a INNER JOIN a.category c WHERE c = :category")
 })
-public class Ad extends AbstractEntity {
+public final class Ad extends AbstractEntity {
 
     @Column(name = "content")
     private String content;
