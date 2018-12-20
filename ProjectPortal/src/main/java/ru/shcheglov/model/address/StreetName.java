@@ -6,7 +6,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import ru.shcheglov.model.basic.AbstractEntity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -14,7 +13,7 @@ import java.util.List;
 
 /**
  * @author Alexey Shcheglov
- * @version dated 18.12.2018
+ * @version dated 19.12.2018
  */
 
 @Data
@@ -22,17 +21,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "region_types")
-public class RegionType extends AbstractEntity {
+@Table(name = "street_names")
+public class StreetName extends AbstractEntity {
 
-    @Column(name = "short")
-    private String shortName;
+    @OneToMany(mappedBy = "streetName")
+    private List<Street> streets;
 
-    @OneToMany(mappedBy = "regionType")
-    private List<Region> regions;
-
-    @Override
-    public String toString() {
-        return "RegionTypeRepository=" + shortName;
-    }
 }

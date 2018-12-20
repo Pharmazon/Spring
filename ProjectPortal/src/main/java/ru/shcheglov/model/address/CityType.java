@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.AbstractEntity;
+import ru.shcheglov.model.basic.AbstractEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +22,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "city_type")
+@Table(name = "city_types")
 public class CityType extends AbstractEntity {
 
     @Column(name = "short")

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.AbstractEntity;
+import ru.shcheglov.model.basic.AbstractEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "city")
+@Table(name = "cities")
 @NamedQueries({
         @NamedQuery(name = "City.findAll", query = "SELECT c FROM City c"),
         @NamedQuery(name = "City.deleteAll", query = "DELETE FROM City c")

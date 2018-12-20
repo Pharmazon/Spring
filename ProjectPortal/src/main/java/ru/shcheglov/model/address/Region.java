@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.AbstractEntity;
+import ru.shcheglov.model.basic.AbstractEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "region")
+@Table(name = "regions")
 @NamedQueries({
         @NamedQuery(name = "Region.findAll", query = "SELECT c FROM Region c"),
         @NamedQuery(name = "Region.deleteAll", query = "DELETE FROM Region c")
