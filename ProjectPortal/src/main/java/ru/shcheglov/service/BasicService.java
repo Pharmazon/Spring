@@ -1,8 +1,7 @@
 package ru.shcheglov.service;
 
 import ru.shcheglov.dto.AbstractDTO;
-import ru.shcheglov.dto.AdDTO;
-import ru.shcheglov.model.AbstractEntity;
+import ru.shcheglov.model.basic.AbstractEntity;
 
 import java.util.List;
 import java.util.Optional;
