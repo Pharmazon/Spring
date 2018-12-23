@@ -1,35 +1,59 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<link rel="stylesheet" href = "../../../resources/styles/styles.css">
+<jsp:include page="header.jsp" />
 
-<form action="/ad-list">
-    <button type="submit">
-        <img src="../../../resources/images/icons/icon_back.png" alt="add" width="20"/>
-    </button>
-</form>
+<title>User view</title>
 
-<h1>USER PROFILE</h1>
+<h1>DETAILED USER VIEW</h1>
 
-<table class="viewTable" width="60%" cellspacing="0" cellpadding="0" border="1" style="margin-bottom: 5px">
+<table class="viewTable" cellspacing="0" cellpadding="0" border="1" style="margin-bottom: 5px">
     <tr>
-        <th width="120" align="left" nowrap="nowrap">CAPTION</th>
-        <th width="100%" align="left" nowrap="nowrap">VALUE</th>
+        <th width="200" align="left" nowrap="nowrap">CAPTION</th>
+        <th width="400" align="left" nowrap="nowrap">VALUE</th>
     </tr>
     <tr>
-        <td>ID</td>
-        <td>${user.id}</td>
+        <td>Id</td>
+        <td>${user.user.id}</td>
     </tr>
     <tr>
-        <td>NAME</td>
-        <td>${user.name}</td>
+        <td>Login</td>
+        <td>${user.user.login}</td>
     </tr>
     <tr>
-        <td>DESCRIPTION</td>
-        <td>${company.description}</td>
+        <td>First Name</td>
+        <td>${user.firstName}</td>
     </tr>
     <tr>
-        <td>ADDRESS</td>
-        <td>${company.address}</td>
+        <td>Last Name</td>
+        <td>${user.lastName}</td>
+    </tr>
+    <tr>
+        <td>E-Mail</td>
+        <td>${user.email}</td>
+    </tr>
+    <tr>
+        <td>Phone</td>
+        <td>${user.phone}</td>
+    </tr>
+    <tr>
+        <td>Date Registered</td>
+        <td>${user.formattedDateTime}</td>
+    </tr>
+    <tr>
+        <td>Role</td>
+        <td>${user.role.name}</td>
+    </tr>
+    <tr>
+        <td>Company Name</td>
+        <td>${user.company.name}</td>
+    </tr>
+    <tr>
+        <td>Company Address</td>
+        <td>${user.company.address}</td>
+    </tr>
+    <tr>
+        <td>Company Description</td>
+        <td>${user.company.description}</td>
     </tr>
 </table>
