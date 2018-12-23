@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.basic.AbstractEntity;
+import ru.shcheglov.model.common.AbstractEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,18 +19,18 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "cities")
+@Table(name = "app_cities")
 @NamedQueries({
         @NamedQuery(name = "City.findAll", query = "SELECT c FROM City c"),
         @NamedQuery(name = "City.deleteAll", query = "DELETE FROM City c")
 })
-public final class City extends AbstractEntity {
+public class City extends AbstractEntity {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_type_id")
     private CityType cityType;
 
-    @OneToMany(mappedBy = "city")
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
     private List<Address> addresses;
 
     @Override

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.basic.AbstractEntity;
+import ru.shcheglov.model.common.AbstractEntity;
 import ru.shcheglov.model.Ad;
 
 import javax.persistence.*;
@@ -21,12 +21,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "ads_attributes_values")
+@Table(name = "app_ads_attributes_values")
 @NamedQueries({
         @NamedQuery(name = "AdAttributeValue.findAll", query = "SELECT a FROM AdAttributeValue a"),
         @NamedQuery(name = "AdAttributeValue.deleteAll", query = "DELETE FROM AdAttributeValue a")
 })
-public final class AdAttributeValue extends AbstractEntity {
+public class AdAttributeValue extends AbstractEntity {
 
     @Column(name = "string_value")
     private String stringValue;
@@ -40,11 +40,11 @@ public final class AdAttributeValue extends AbstractEntity {
     @Column(name = "numeric_value")
     private BigDecimal numericValue;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ad_id")
     private Ad ad;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attribute_id")
     private Attribute attribute;
     

@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.basic.AbstractEntity;
+import ru.shcheglov.model.common.AbstractEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,21 +19,21 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "region_types")
+@Table(name = "app_region_types")
 @NamedQueries({
         @NamedQuery(name = "RegionType.findAll", query = "SELECT c FROM RegionType c"),
         @NamedQuery(name = "RegionType.deleteAll", query = "DELETE FROM RegionType c")
 })
-public final class RegionType extends AbstractEntity {
+public class RegionType extends AbstractEntity {
 
     @Column(name = "short")
     private String shortName;
 
-    @OneToMany(mappedBy = "regionType")
+    @OneToMany(mappedBy = "regionType", fetch = FetchType.LAZY)
     private List<Region> regions;
 
     @Override
     public String toString() {
-        return "RegionTypeRepository=" + shortName;
+        return "RegionTypeRepositoryImpl=" + shortName;
     }
 }

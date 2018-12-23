@@ -1,10 +1,7 @@
 package ru.shcheglov.model.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import ru.shcheglov.model.basic.AbstractEntity;
+import lombok.*;
+import ru.shcheglov.model.common.AbstractEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,14 +16,19 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "roles")
+@Table(name = "app_roles")
 @NamedQueries({
         @NamedQuery(name = "Role.findAll", query = "SELECT a FROM Role a"),
-        @NamedQuery(name = "Role.deleteAll", query = "DELETE FROM Role a")
+        @NamedQuery(name = "Role.deleteAll", query = "DELETE FROM Role a"),
+        @NamedQuery(name = "Role.findOneByUser", query = "SELECT a FROM UserProfile a INNER JOIN a.role c WHERE c = :role")
 })
-public final class Role extends AbstractEntity {
+public class Role extends AbstractEntity {
 
-    @OneToMany(mappedBy = "role")
-    private List<User> users;
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+    private List<UserProfile> users;
 
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

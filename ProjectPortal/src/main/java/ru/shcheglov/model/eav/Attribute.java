@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.basic.AbstractEntity;
+import ru.shcheglov.model.common.AbstractEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,21 +19,21 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "attributes")
+@Table(name = "app_attributes")
 @NamedQueries({
         @NamedQuery(name = "Attribute.findAll", query = "SELECT a FROM Attribute a"),
         @NamedQuery(name = "Attribute.deleteAll", query = "DELETE FROM Attribute a")
 })
-public final class Attribute extends AbstractEntity {
+public class Attribute extends AbstractEntity {
 
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attribute_type_id")
     private AttributeType attributeType;
 
-    @OneToMany(mappedBy = "ad")
+    @OneToMany(mappedBy = "ad", fetch = FetchType.LAZY)
     private List<AdAttributeValue> eavs;
 
 }

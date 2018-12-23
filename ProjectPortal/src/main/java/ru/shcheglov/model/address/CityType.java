@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.basic.AbstractEntity;
+import ru.shcheglov.model.common.AbstractEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,22 +19,22 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "city_types")
+@Table(name = "app_city_types")
 @NamedQueries({
         @NamedQuery(name = "CityType.findAll", query = "SELECT c FROM CityType c"),
         @NamedQuery(name = "CityType.deleteAll", query = "DELETE FROM CityType c")
 })
-public final class CityType extends AbstractEntity {
+public class CityType extends AbstractEntity {
 
     @Column(name = "short")
     private String shortName;
 
-    @OneToMany(mappedBy = "cityType")
+    @OneToMany(mappedBy = "cityType", fetch = FetchType.LAZY)
     private List<City> cities;
 
     @Override
     public String toString() {
-        return "CityType=" + shortName;
+        return "CityTypeRepository=" + shortName;
     }
 
 }

@@ -4,9 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.basic.AbstractEntity;
+import ru.shcheglov.model.common.AbstractEntity;
 import ru.shcheglov.model.eav.AdAttributeValue;
 import ru.shcheglov.model.user.User;
+import ru.shcheglov.model.user.UserProfile;
 
 import javax.persistence.*;
 import java.math.BigInteger;
@@ -24,16 +25,12 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "ads")
+@Table(name = "app_ads")
 @NamedQueries({
         @NamedQuery(name = "Ad.findAll", query = "SELECT a FROM Ad a"),
-        @NamedQuery(name = "Ad.deleteAll", query = "DELETE FROM Ad a"),
-//        @NamedQuery(name = "Ad.findAllAdsByCompany", query = "SELECT a FROM Ad a WHERE a.company = :company"),
-//        @NamedQuery(name = "Ad.findAllAdsByCategory", query = "SELECT a FROM Ad a WHERE a.category = :category"),
-//        @NamedQuery(name = "Company.findAllAds", query = "SELECT a FROM Ad a INNER JOIN a.company c WHERE c = :company"),
-//        @NamedQuery(name = "Category.findAllAds", query = "SELECT a FROM Ad a INNER JOIN a.category c WHERE c = :category")
+        @NamedQuery(name = "Ad.deleteAll", query = "DELETE FROM Ad a")
 })
-public final class Ad extends AbstractEntity {
+public class Ad extends AbstractEntity {
 
     @Column(name = "content")
     private String content;
@@ -44,27 +41,15 @@ public final class Ad extends AbstractEntity {
     @Column(name = "price")
     private BigInteger price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User user;
+    private UserProfile user;
 
-    @OneToMany(mappedBy = "attribute")
+    @OneToMany(mappedBy = "attribute", fetch = FetchType.LAZY)
     private List<AdAttributeValue> eavs;
-
-    public String getFormattedDateTime() {
-        return dateTime.format(DateTimeFormatter.ofPattern("dd.MM.uuuu HH:mm:ss"));
-    }
-
-    public String getFormattedDate() {
-        return dateTime.format(DateTimeFormatter.ofPattern("dd.MM.uuuu"));
-    }
-
-    public String getFormattedTime() {
-        return dateTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
-    }
 
 }

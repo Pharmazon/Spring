@@ -1,7 +1,7 @@
 package ru.shcheglov.model.user;
 
 import lombok.*;
-import ru.shcheglov.model.basic.AbstractEntity;
+import ru.shcheglov.model.common.AbstractEntity;
 import ru.shcheglov.model.address.Address;
 
 import javax.persistence.*;
@@ -15,22 +15,23 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString(exclude = "user")
 @Entity
-@Table(name = "companies")
+@Table(name = "app_companies")
 @NamedQueries({
         @NamedQuery(name = "Company.findAll", query = "SELECT c FROM Company c"),
         @NamedQuery(name = "Company.deleteAll", query = "DELETE FROM Company c")
 })
-public final class Company extends AbstractEntity {
+public class Company extends AbstractEntity {
 
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
     private Address address;
 
-    @OneToOne(mappedBy = "company")
-    private User user;
+    @OneToOne(mappedBy = "company", fetch = FetchType.LAZY)
+    private UserProfile user;
 
 }

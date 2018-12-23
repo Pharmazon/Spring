@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.basic.AbstractEntity;
+import ru.shcheglov.model.common.AbstractEntity;
 import ru.shcheglov.model.user.Company;
 
 import javax.persistence.*;
@@ -20,26 +20,26 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "addresses")
+@Table(name = "app_addresses")
 @NamedQueries({
         @NamedQuery(name = "Address.findAll", query = "SELECT c FROM Address c"),
         @NamedQuery(name = "Address.deleteAll", query = "DELETE FROM Address c")
 })
-public final class Address extends AbstractEntity {
+public class Address extends AbstractEntity {
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "region_id")
     private Region region;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
     private City city;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "street_id")
     private Street street;
 
-    @OneToMany(mappedBy = "address")
+    @OneToMany(mappedBy = "address", fetch = FetchType.LAZY)
     private List<Company> companies;
 
     @Override

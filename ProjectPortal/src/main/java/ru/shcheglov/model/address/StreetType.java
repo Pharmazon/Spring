@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.basic.AbstractEntity;
+import ru.shcheglov.model.common.AbstractEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,17 +19,17 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "street_types")
+@Table(name = "app_street_types")
 @NamedQueries({
         @NamedQuery(name = "StreetType.findAll", query = "SELECT c FROM StreetType c"),
         @NamedQuery(name = "StreetType.deleteAll", query = "DELETE FROM StreetType c")
 })
-public final class StreetType extends AbstractEntity {
+public class StreetType extends AbstractEntity {
 
     @Column(name = "short")
     private String shortName;
 
-    @OneToMany(mappedBy = "streetType")
+    @OneToMany(mappedBy = "streetType", fetch = FetchType.LAZY)
     private List<Street> streets;
 
     @Override
