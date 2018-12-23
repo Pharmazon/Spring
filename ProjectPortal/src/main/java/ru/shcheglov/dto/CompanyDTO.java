@@ -1,11 +1,11 @@
 package ru.shcheglov.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import ru.shcheglov.dto.common.AbstractDTO;
 import ru.shcheglov.model.address.Address;
 import ru.shcheglov.model.user.Company;
 
@@ -19,12 +19,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-@AllArgsConstructor
 @XmlRootElement
-public final class CompanyDTO extends AbstractDTO {
-
-    @Nullable
-    private String name;
+public final class CompanyDTO extends AbstractDTO<Company> {
 
     @Nullable
     private String description;
@@ -33,8 +29,6 @@ public final class CompanyDTO extends AbstractDTO {
     private Address address;
 
     public CompanyDTO(@NotNull final Company company) {
-        super.setId(company.getId());
-        name = company.getName();
         description = company.getDescription();
         address = company.getAddress();
     }
