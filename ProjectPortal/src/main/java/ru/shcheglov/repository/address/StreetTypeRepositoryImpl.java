@@ -2,12 +2,7 @@ package ru.shcheglov.repository.address;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
-import ru.shcheglov.model.address.StreetType;
 import ru.shcheglov.repository.basic.AbstractRepository;
-import ru.shcheglov.repository.basic.BasicRepository;
-
-import java.util.List;
-import java.util.Optional;
 
 /**
  * @author Alexey Shcheglov
@@ -15,7 +10,7 @@ import java.util.Optional;
  */
 
 @Repository(StreetTypeRepository.NAME)
-public class StreetTypeRepository extends AbstractRepository<StreetType> implements BasicRepository<StreetType> {
+public class StreetTypeRepository extends AbstractRepository {
 
     @NotNull
     public static final String NAME = "streetTypeRepository";

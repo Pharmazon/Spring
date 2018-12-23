@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import ru.shcheglov.model.basic.AbstractEntity;
+import ru.shcheglov.model.common.AbstractEntity;
 import ru.shcheglov.model.Ad;
 
 import javax.persistence.*;
@@ -26,7 +26,7 @@ import java.util.List;
         @NamedQuery(name = "User.findAll", query = "SELECT c FROM User c"),
         @NamedQuery(name = "User.deleteAll", query = "DELETE FROM User c")
 })
-public final class User extends AbstractEntity {
+public class User extends AbstractEntity {
 
     @Column(name = "login")
     private String login;
