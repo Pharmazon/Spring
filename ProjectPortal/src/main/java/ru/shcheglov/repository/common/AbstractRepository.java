@@ -1,9 +1,8 @@
-package ru.shcheglov.repository.basic;
+package ru.shcheglov.repository.common;
 
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.data.repository.NoRepositoryBean;
-import ru.shcheglov.model.basic.AbstractEntity;
+import ru.shcheglov.model.common.AbstractEntity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,7 +14,6 @@ import java.util.List;
  * @version dated 13.12.2018
  */
 
-@NoRepositoryBean
 public abstract class AbstractRepository<T extends AbstractEntity> implements CommonRepository<T> {
 
     @PersistenceContext
@@ -33,6 +31,10 @@ public abstract class AbstractRepository<T extends AbstractEntity> implements Co
 
     public void saveOne(@NotNull final T model) {
         entityManager.persist(model);
+    }
+
+    public void saveAll(@NotNull final List<T> list) {
+        for (T t : list) entityManager.persist(t);
     }
 
     public T updateOne(@NotNull final T model) {
