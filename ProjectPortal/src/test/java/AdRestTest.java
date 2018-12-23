@@ -1,7 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.web.client.RestTemplate;
-import ru.shcheglov.dto.AdDTO;
 
 /**
  * @author Alexey Shcheglov
