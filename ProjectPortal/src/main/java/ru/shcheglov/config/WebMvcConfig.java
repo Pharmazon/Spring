@@ -26,6 +26,7 @@ import ru.shcheglov.interceptor.LoggerInterceptor;
 @Import(DataSourceConfiguration.class)
 public class WebMvcConfig implements WebMvcConfigurer {
 
+    @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
