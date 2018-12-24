@@ -2,5 +2,12 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<a href="/user-list">Users list</a><br>
-<a href="/role-list">Roles list</a><br>
+<jsp:include page="header.jsp" />
+
+<title>Welcome!</title>
+
+<h1>WELCOME</h1>
+
+
+
+
