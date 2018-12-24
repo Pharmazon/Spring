@@ -16,9 +16,10 @@
         <spring.data.version>2.1.2.RELEASE</spring.data.version>
         <hibernate.version>5.3.7.Final</hibernate.version>
         <postgresql.version>42.2.2</postgresql.version>
-        <lombok.version>1.18.2</lombok.version>
+        <lombok.version>1.18.4</lombok.version>
         <junit.version>4.12</junit.version>
         <servlet.version>4.0.1</servlet.version>
+        <jackson.version>2.9.6</jackson.version>
         <build.sourceEncoding>UTF-8</build.sourceEncoding>
         <reporting.outputEncoding>UTF-8</reporting.outputEncoding>
 
@@ -41,6 +42,16 @@
             <groupId>taglibs</groupId>
             <artifactId>standard</artifactId>
             <version>1.1.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -109,6 +120,16 @@
             <artifactId>annotations</artifactId>
             <version>16.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -123,6 +144,20 @@
                     <target>${java.version}</target>
                     <encoding>${build.sourceEncoding}</encoding>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.zeroturnaround</groupId>
+                <artifactId>jrebel-maven-plugin</artifactId>
+                <version>1.1.8</version>
+                <executions>
+                    <execution>
+                        <id>generate-rebel-xml</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

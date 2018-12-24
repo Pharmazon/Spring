@@ -1,5 +1,8 @@
 package ru.shcheglov.model;
 
+import lombok.*;
+import ru.shcheglov.model.common.AbstractEntity;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,38 +11,28 @@ import java.util.List;
  * @version dated 13.12.2018
  */
 
+
+@Getter
+@Setter
 @Entity
-@Table(name = "category")
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "app_categories")
+@EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "Category.findAll", query = "SELECT a FROM Category a"),
         @NamedQuery(name = "Category.deleteAll", query = "DELETE FROM Category a")
 })
 public class Category extends AbstractEntity {
 
-    @Column(name = "name")
-    private String name;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id")
+    private Category parentId;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "parentId", fetch = FetchType.LAZY)
+    private List<Category> subCategories;
+
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Ad> ads;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List<Ad> getAds() {
-        return ads;
-    }
-
-    public void setAds(List<Ad> ads) {
-        this.ads = ads;
-    }
-
-    @Override
-    public String toString() {
-        return name;
-    }
 }

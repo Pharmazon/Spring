@@ -1,87 +1,51 @@
 package ru.shcheglov.model;
 
+import lombok.*;
+import ru.shcheglov.model.common.AbstractEntity;
+import ru.shcheglov.model.eav.AdAttributeValue;
+import ru.shcheglov.model.user.UserProfile;
+
 import javax.persistence.*;
+import java.math.BigInteger;
+import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author Alexey Shcheglov
  * @version dated 06.12.2018
  */
 
+@Getter
+@Setter
 @Entity
-@Table(name = "ad")
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "app_ads")
+@EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "Ad.findAll", query = "SELECT a FROM Ad a"),
-        @NamedQuery(name = "Ad.deleteAll", query = "DELETE FROM Ad a"),
-        @NamedQuery(name = "Ad.findAllByCompany", query = "SELECT a FROM Ad a WHERE a.company = :company"),
-        @NamedQuery(name = "Ad.findAllByCategory", query = "SELECT a FROM Ad a WHERE a.category = :category")
+        @NamedQuery(name = "Ad.deleteAll", query = "DELETE FROM Ad a")
 })
 public class Ad extends AbstractEntity {
-
-    @Column(name = "name")
-    private String name;
 
     @Column(name = "content")
     private String content;
 
-    @Column(name = "number")
-    private String number;
+    @Column(name = "date")
+    private LocalDateTime dateTime;
 
-    @ManyToOne
+    @Column(name = "price")
+    private BigInteger price;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private UserProfile user;
 
-    public String getName() {
-        return name;
-    }
+    @OneToMany(mappedBy = "attribute", fetch = FetchType.LAZY)
+    private List<AdAttributeValue> eavs;
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    @Override
-    public String toString() {
-        return "Ad{" +
-                "name='" + name + '\'' +
-                ", content='" + content + '\'' +
-                ", number='" + number + '\'' +
-                ", category=" + category.getName() + '\'' +
-                ", company=" + company.getName() +
-                '}';
-    }
 }
