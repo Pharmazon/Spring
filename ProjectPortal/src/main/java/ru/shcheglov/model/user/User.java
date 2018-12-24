@@ -10,16 +10,17 @@ import javax.persistence.*;
  * @version dated 18.12.2018
  */
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString(exclude = "userProfile")
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "app_users")
+@EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "User.findAll", query = "SELECT c FROM User c"),
-        @NamedQuery(name = "User.deleteAll", query = "DELETE FROM User c")
+        @NamedQuery(name = "User.deleteAll", query = "DELETE FROM User c"),
+        @NamedQuery(name = "User.findByLogin", query = "SELECT u FROM User u WHERE u.login = :login")
 })
 public class User extends AbstractEntity {
 
@@ -28,6 +29,9 @@ public class User extends AbstractEntity {
 
     @Column(name = "password")
     private String password;
+
+    @Column(name = "enabled")
+    private Boolean enabled;
 
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private UserProfile userProfile;

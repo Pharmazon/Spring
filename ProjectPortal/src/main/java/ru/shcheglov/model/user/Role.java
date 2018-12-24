@@ -11,12 +11,13 @@ import java.util.List;
  * @version dated 19.12.2018
  */
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "app_roles")
+@EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "Role.findAll", query = "SELECT a FROM Role a"),
         @NamedQuery(name = "Role.deleteAll", query = "DELETE FROM Role a"),

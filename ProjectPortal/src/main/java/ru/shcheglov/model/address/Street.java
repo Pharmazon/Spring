@@ -1,9 +1,6 @@
 package ru.shcheglov.model.address;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ru.shcheglov.model.common.AbstractEntity;
 
 import javax.persistence.*;
@@ -14,12 +11,13 @@ import java.util.List;
  * @version dated 18.12.2018
  */
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "app_streets")
+@EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "Street.findAll", query = "SELECT c FROM Street c"),
         @NamedQuery(name = "Street.deleteAll", query = "DELETE FROM Street c")

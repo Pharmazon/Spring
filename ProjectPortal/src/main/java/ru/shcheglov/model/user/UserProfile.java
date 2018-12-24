@@ -14,17 +14,17 @@ import java.util.List;
  * @version dated 23.12.2018
  */
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString(exclude = "ads")
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "app_user_profiles")
+@EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "UserProfile.findAll",
                 query = "SELECT up FROM UserProfile up LEFT JOIN FETCH up.company " +
-                "INNER JOIN FETCH up.role LEFT JOIN FETCH up.user"),
+                        "INNER JOIN FETCH up.role LEFT JOIN FETCH up.user"),
         @NamedQuery(name = "UserProfile.deleteAll", query = "DELETE FROM UserProfile c"),
         @NamedQuery(name = "UserProfile.findOne",
                 query = "SELECT DISTINCT up FROM UserProfile up INNER JOIN FETCH up.company " +

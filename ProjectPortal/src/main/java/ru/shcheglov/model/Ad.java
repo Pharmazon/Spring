@@ -1,18 +1,13 @@
 package ru.shcheglov.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ru.shcheglov.model.common.AbstractEntity;
 import ru.shcheglov.model.eav.AdAttributeValue;
-import ru.shcheglov.model.user.User;
 import ru.shcheglov.model.user.UserProfile;
 
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -20,12 +15,13 @@ import java.util.List;
  * @version dated 06.12.2018
  */
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "app_ads")
+@EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "Ad.findAll", query = "SELECT a FROM Ad a"),
         @NamedQuery(name = "Ad.deleteAll", query = "DELETE FROM Ad a")

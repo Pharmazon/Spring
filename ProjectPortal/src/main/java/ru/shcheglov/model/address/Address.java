@@ -1,9 +1,6 @@
 package ru.shcheglov.model.address;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ru.shcheglov.model.common.AbstractEntity;
 import ru.shcheglov.model.user.Company;
 
@@ -15,12 +12,13 @@ import java.util.List;
  * @version dated 18.12.2018
  */
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "app_addresses")
+@EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "Address.findAll", query = "SELECT c FROM Address c"),
         @NamedQuery(name = "Address.deleteAll", query = "DELETE FROM Address c")

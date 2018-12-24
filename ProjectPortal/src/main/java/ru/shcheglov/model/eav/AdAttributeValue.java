@@ -1,11 +1,8 @@
 package ru.shcheglov.model.eav;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import ru.shcheglov.model.common.AbstractEntity;
+import lombok.*;
 import ru.shcheglov.model.Ad;
+import ru.shcheglov.model.common.AbstractEntity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -16,12 +13,13 @@ import java.time.LocalDateTime;
  * @version dated 19.12.2018
  */
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "app_ads_attributes_values")
+@EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "AdAttributeValue.findAll", query = "SELECT a FROM AdAttributeValue a"),
         @NamedQuery(name = "AdAttributeValue.deleteAll", query = "DELETE FROM AdAttributeValue a")
@@ -47,5 +45,5 @@ public class AdAttributeValue extends AbstractEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "attribute_id")
     private Attribute attribute;
-    
+
 }

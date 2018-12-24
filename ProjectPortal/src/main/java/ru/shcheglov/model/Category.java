@@ -1,9 +1,6 @@
 package ru.shcheglov.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import ru.shcheglov.model.common.AbstractEntity;
 
 import javax.persistence.*;
@@ -15,12 +12,13 @@ import java.util.List;
  */
 
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-@AllArgsConstructor
-@NoArgsConstructor
+@Getter
+@Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "app_categories")
+@EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "Category.findAll", query = "SELECT a FROM Category a"),
         @NamedQuery(name = "Category.deleteAll", query = "DELETE FROM Category a")

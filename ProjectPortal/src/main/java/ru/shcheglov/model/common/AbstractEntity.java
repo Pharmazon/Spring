@@ -1,6 +1,7 @@
 package ru.shcheglov.model.common;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -12,7 +13,8 @@ import java.util.UUID;
  * @version dated 13.12.2018
  */
 
-@Data
+@Getter
+@Setter
 @MappedSuperclass
 public abstract class AbstractEntity {
 
