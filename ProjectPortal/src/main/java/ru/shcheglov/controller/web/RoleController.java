@@ -7,7 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.shcheglov.controller.common.CommonController;
 import ru.shcheglov.model.user.Role;
 import ru.shcheglov.service.user.RoleService;
 
@@ -20,7 +19,7 @@ import java.util.Optional;
  */
 
 @Controller
-public class RoleController implements CommonController<Role> {
+public class RoleController {
 
     @Autowired
     private RoleService service;

@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import ru.shcheglov.controller.common.CommonController;
+import org.springframework.web.bind.annotation.*;
 import ru.shcheglov.model.user.Role;
 import ru.shcheglov.model.user.UserProfile;
 import ru.shcheglov.service.user.RoleService;
@@ -22,7 +19,7 @@ import java.util.Optional;
  */
 
 @Controller
-public class UserProfileController implements CommonController<UserProfile> {
+public class UserController {
 
     @Autowired
     private UserProfileService service;
@@ -37,15 +34,10 @@ public class UserProfileController implements CommonController<UserProfile> {
         return "user-list";
     }
 
-    @Override
-    public String entityAdd(UserProfile entity, Model model) {
-        return null;
-    }
-
     @PostMapping("user-create")
     public String entityCreate(final UserProfile entity, final BindingResult result) {
         if (!result.hasErrors()) service.saveOne(entity);
-        return "redirect:/user-list";
+        return "user-list";
     }
 
     @GetMapping("user-edit/{id}")
@@ -54,13 +46,11 @@ public class UserProfileController implements CommonController<UserProfile> {
         List<Role> roles = roleService.getAll();
         model.addAttribute("roles", roles);
         optional.ifPresent(u -> model.addAttribute("user", u));
-        System.out.println(model);
         return "user-edit";
     }
 
     @PostMapping("user-save")
     public String entitySave(final UserProfile entity, final BindingResult result) {
-        System.out.println(entity);
         if (!result.hasErrors()) service.updateOne(entity);
         return "redirect:/user-list";
     }
