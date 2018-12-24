@@ -2,7 +2,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<jsp:include page="header.jsp" />
+<jsp:include page="../views/header.jsp" />
 
 <title>Edit user</title>
 
@@ -87,6 +87,10 @@
                     <form:options items="${roles}" itemValue="id" itemLabel="name" />
                 </form:select>
             </td>
+        </tr>
+        <tr>
+            <td align="left" style="padding-right: 10px">ENABLED</td>
+            <td>${user.company.description}</td>
         </tr>
     </table>
 

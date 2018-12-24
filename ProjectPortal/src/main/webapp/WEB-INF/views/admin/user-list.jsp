@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<jsp:include page="header.jsp" />
+<jsp:include page="../views/header.jsp" />
 
 <title>Users list</title>
 
@@ -36,6 +36,7 @@
         <th width="200" nowrap="nowrap" align="center">Login</th>
         <th width="200" nowrap="nowrap" align="center">E-mail</th>
         <th width="200" nowrap="nowrap" align="center">Role</th>
+        <th width="200" nowrap="nowrap" align="center">Enabled</th>
         <th width="30" nowrap="nowrap" align="center"></th>
         <th width="30" nowrap="nowrap" align="center"></th>
         <th width="30" nowrap="nowrap" align="center"></th>
@@ -46,6 +47,7 @@
             <td align="left">${user.user.login}</td>
             <td align="left">${user.email}</td>
             <td align="left">${user.role.name}</td>
+            <td align="left">${user.user.enabled}</td>
             <td align="center" nowrap="nowrap">
                 <a href="/user-view/${user.id}">
                     <img src="../../resources/images/icons/icon_view.png" alt="view" width="20" />
