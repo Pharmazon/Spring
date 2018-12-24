@@ -83,4 +83,9 @@ public class UserServiceImpl implements UserService {
         deleteOne(dto.getId());
     }
 
+    @Override
+    public User getByLogin(String login) {
+        return repository.findByLogin(login);
+    }
+
 }

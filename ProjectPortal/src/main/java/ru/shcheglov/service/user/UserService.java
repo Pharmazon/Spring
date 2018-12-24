@@ -10,4 +10,7 @@ import ru.shcheglov.service.common.CommonService;
  */
 
 public interface UserService extends CommonService<User, UserDTO> {
+
+    User getByLogin(String login);
+
 }
