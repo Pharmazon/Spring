@@ -21,8 +21,8 @@ public class UserProfileRepositoryImpl extends AbstractRepository<UserProfile> i
 
     @Override
     public void deleteOne(@NotNull final String id) {
-        final Optional<UserProfile> entity = findOneSingle(id);
-        entity.ifPresent(this::deleteOne);
+        final UserProfile up = getEntityManager().find(UserProfile.class, id);
+        deleteOne(up);
     }
 
     @Override
@@ -38,10 +38,6 @@ public class UserProfileRepositoryImpl extends AbstractRepository<UserProfile> i
                 .createNamedQuery("UserProfile.findOne", UserProfile.class)
                 .setParameter("userId", id)
                 .getSingleResult());
-    }
-
-    private Optional<UserProfile> findOneSingle(@NotNull final String id) {
-        return Optional.of(getEntityManager().find(UserProfile.class, id));
     }
 
     @Override

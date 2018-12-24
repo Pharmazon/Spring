@@ -10,4 +10,6 @@ import ru.shcheglov.repository.common.CommonRepository;
 
 public interface UserRepository extends CommonRepository<User> {
 
+    User findByLogin(String login);
+
 }
