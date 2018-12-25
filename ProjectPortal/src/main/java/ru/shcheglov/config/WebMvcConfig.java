@@ -1,10 +1,11 @@
 package ru.shcheglov.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -22,14 +23,13 @@ import ru.shcheglov.interceptor.LoggerInterceptor;
 
 @Configuration
 @EnableWebMvc
-//@EnableWebSecurity
 @ComponentScan(basePackages = "ru.shcheglov")
 @Import(DataSourceConfiguration.class)
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("WEB-INF/views/resources/");
+        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 
     @Bean

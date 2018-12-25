@@ -1,5 +1,6 @@
 package ru.shcheglov.controller.web;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,6 +34,8 @@ public class LoginController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @NotNull
+    @Contract(pure = true)
     @GetMapping("/login")
     private String login() {
         return "login";

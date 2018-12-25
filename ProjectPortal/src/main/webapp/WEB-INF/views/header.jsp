@@ -20,7 +20,7 @@
         <a href="<c:url value="/profile/profile-view"/>">Profile</a>
     </div>
     <div class="headerChild">
-        <a href="<c:url value="/profile/profile-view"/>">Log out</a>
+        <a href="<c:url value="/logout"/>">Log out</a>
     </div>
 </div>
 
