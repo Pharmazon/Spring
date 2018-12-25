@@ -3,6 +3,7 @@ package ru.shcheglov.component;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.service.user.UserService;
 
 /**
@@ -11,6 +12,7 @@ import ru.shcheglov.service.user.UserService;
  */
 
 @Component
+@Transactional
 public class Bootstrap implements InitializingBean {
 
     @Autowired

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.dto.UserProfileDTO;
+import ru.shcheglov.model.user.Role;
 import ru.shcheglov.model.user.User;
 import ru.shcheglov.model.user.UserProfile;
 import ru.shcheglov.repository.user.UserProfileRepository;
@@ -85,5 +86,10 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Override
     public UserProfile getOneByUser(User user) {
         return repository.findOneByUser(user);
+    }
+
+    @Override
+    public Role getRole(UserProfile user) {
+        return user.getRole();
     }
 }

@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.shcheglov.model.user.Role;
 import ru.shcheglov.model.user.User;
 import ru.shcheglov.model.user.UserProfile;
 import ru.shcheglov.repository.user.UserProfileRepository;
@@ -25,16 +26,28 @@ public class AuthServiceImpl implements AuthService {
     @NotNull
     public static final String NAME = "authService";
 
-    @Autowired
-    private UserProfileRepository userProfileRepository;
+    private final UserProfileRepository userProfileRepository;
+
+    private final UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
+    public AuthServiceImpl(
+            @NotNull final UserProfileRepository userProfileRepository,
+            @NotNull final UserRepository userRepository) {
+        this.userProfileRepository = userProfileRepository;
+        this.userRepository = userRepository;
+    }
 
     public UserProfile getUser(@NotNull final HttpServletRequest request) {
         final HttpSession session = request.getSession();
         final String userId = (String) session.getAttribute("userId");
         Optional<User> optional = userRepository.findOne(userId);
-        return optional.map(user -> userProfileRepository.findOneByUser(user)).orElse(null);
+        return optional.map(userProfileRepository::findOneByUser).orElse(null);
     }
+
+    @Override
+    public Role getUserRole(@NotNull final UserProfile up) {
+        return up.getRole();
+    }
+
 }

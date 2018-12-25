@@ -6,6 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -21,10 +22,10 @@ import ru.shcheglov.interceptor.LoggerInterceptor;
  * @version dated 13.12.2018
  */
 
-@Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "ru.shcheglov")
+@Configuration
 @Import(DataSourceConfiguration.class)
+@ComponentScan(basePackages = "ru.shcheglov.model")
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
@@ -33,7 +34,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

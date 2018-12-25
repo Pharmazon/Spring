@@ -1,6 +1,6 @@
 package ru.shcheglov.service.user;
 
-import org.jetbrains.annotations.NotNull;
+import ru.shcheglov.model.user.Role;
 import ru.shcheglov.model.user.UserProfile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,5 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 public interface AuthService {
 
     UserProfile getUser(HttpServletRequest request);
+
+    Role getUserRole(UserProfile up);
 
 }

@@ -148,4 +148,18 @@ public class UserServiceImpl implements UserService {
         return repository.isExist(login);
     }
 
+    @Override
+    public Role getRole(@NotNull final User user) {
+        final UserProfile profile = userProfileRepository.findOneByUser(user);
+        return profile.getRole();
+    }
+
+    @Override
+    public Role getRoleByUserId(@NotNull final String id) {
+        Optional<User> user = repository.findOne(id);
+        return user
+                .map(us -> userProfileRepository.findOneByUser(us).getRole())
+                .orElse(null);
+    }
+
 }
