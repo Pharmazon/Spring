@@ -13,8 +13,6 @@ import ru.shcheglov.repository.user.RoleRepository;
 import ru.shcheglov.repository.user.UserProfileRepository;
 import ru.shcheglov.repository.user.UserRepository;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -31,17 +29,25 @@ public class UserServiceImpl implements UserService {
     @NotNull
     public static final String NAME = "userService";
 
-    @Autowired
-    private UserRepository repository;
+    private final UserRepository repository;
+
+    private final RoleRepository roleRepository;
+
+    private final UserProfileRepository userProfileRepository;
+
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
-    private UserProfileRepository userProfileRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    public UserServiceImpl(
+            @NotNull final UserRepository repository,
+            @NotNull final RoleRepository roleRepository,
+            @NotNull final UserProfileRepository userProfileRepository,
+            @NotNull final PasswordEncoder passwordEncoder) {
+        this.repository = repository;
+        this.roleRepository = roleRepository;
+        this.userProfileRepository = userProfileRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public void saveOne(User entity) {

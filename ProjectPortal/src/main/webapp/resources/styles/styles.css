@@ -39,6 +39,34 @@
     color: white;
     width: inherit;
     height: 100px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-size: 20pt;
+}
+
+.headerChild a:visited {
+    color: white;
+}
+
+.headerChild a:link {
+    color: white;
+}
+
+.headerChild a:hover {
+    color: red;
+}
+
+.headerChild {
+    margin-right: 10px;
+    line-height: 100px;
+}
+
+.header :first-child {
+    margin-left: 10px;
+}
+.header :nth-last-child(2) {
+    margin-left: auto;
 }
 
 .footer {
