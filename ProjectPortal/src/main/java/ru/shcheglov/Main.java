@@ -1,11 +1,9 @@
 package ru.shcheglov;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.shcheglov.config.ApplicationConfiguration;
-import ru.shcheglov.model.user.UserProfile;
-import ru.shcheglov.service.user.UserProfileService;
-
-import java.util.Optional;
+import ru.shcheglov.service.user.UserService;
 
 /**
  * @author Alexey Shcheglov
@@ -16,6 +14,9 @@ public class Main {
 
     public static void main(String[] args) {
         final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
-        UserProfileService service = context.getBean("userProfileService", UserProfileService.class);
+        final PasswordEncoder encoder = context.getBean("passwordEncoder", PasswordEncoder.class);
+//        UserService service = context.getBean("userService", UserService.class);
+
+//        service.initUser("admin", "admin");
     }
 }

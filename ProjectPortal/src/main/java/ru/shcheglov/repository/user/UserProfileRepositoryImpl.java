@@ -2,6 +2,8 @@ package ru.shcheglov.repository.user;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Repository;
+import ru.shcheglov.model.user.Role;
+import ru.shcheglov.model.user.User;
 import ru.shcheglov.model.user.UserProfile;
 import ru.shcheglov.repository.common.AbstractRepository;
 
@@ -47,4 +49,16 @@ public class UserProfileRepositoryImpl extends AbstractRepository<UserProfile> i
                 .getResultList();
     }
 
+    @Override
+    public UserProfile findOneByUserId(@NotNull final String id) {
+        return getEntityManager()
+                .createNamedQuery("UserProfile.findOneByUserId", UserProfile.class)
+                .setParameter("userId", id)
+                .getSingleResult();
+    }
+
+    @Override
+    public UserProfile findOneByUser(User user) {
+        return findOneByUserId(user.getId());
+    }
 }

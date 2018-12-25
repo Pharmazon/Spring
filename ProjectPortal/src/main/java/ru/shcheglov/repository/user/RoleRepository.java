@@ -9,4 +9,7 @@ import ru.shcheglov.repository.common.CommonRepository;
  */
 
 public interface RoleRepository extends CommonRepository<Role> {
+
+    Role findUser();
+
 }

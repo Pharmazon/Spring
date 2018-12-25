@@ -12,4 +12,10 @@ public interface UserRepository extends CommonRepository<User> {
 
     User findByLogin(String login);
 
+    Boolean isEnabled(String login);
+
+    Long countByLogin(String login);
+
+    Boolean isExist(String login);
+
 }

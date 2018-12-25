@@ -2,11 +2,9 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<jsp:include page="../header.jsp" />
-
-<title>Edit user</title>
-
-<h1>EDIT USER</h1>
+<jsp:include page="../header.jsp">
+    <jsp:param name="title" value="User edit" />
+</jsp:include>
 
 <form:form method="post" action="/user-save" modelAttribute="user">
     <form:hidden path="id" />
@@ -93,5 +91,6 @@
             <td>${user.company.description}</td>
         </tr>
     </table>
-
 </form:form>
+
+<jsp:include page="../footer.jsp" />

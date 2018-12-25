@@ -1,11 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="../header.jsp" />
-
-<title>User view</title>
-
-<h1>DETAILED USER VIEW</h1>
+<jsp:include page="../header.jsp">
+    <jsp:param name="title" value="User view" />
+</jsp:include>
 
 <table class="viewTable" cellspacing="0" cellpadding="0" border="1" style="margin-bottom: 5px">
     <tr>
@@ -57,3 +55,5 @@
         <td>${user.company.description}</td>
     </tr>
 </table>
+
+<jsp:include page="../footer.jsp" />

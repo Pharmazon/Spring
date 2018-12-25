@@ -26,7 +26,8 @@ import java.util.Properties;
 @EnableJpaRepositories("ru.shcheglov.repository")
 @ComponentScans({
         @ComponentScan("ru.shcheglov.service"),
-        @ComponentScan("ru.shcheglov.repository")
+        @ComponentScan("ru.shcheglov.repository"),
+        @ComponentScan("ru.shcheglov.component")
 })
 @PropertySource("classpath:config.properties")
 public class DataSourceConfiguration {

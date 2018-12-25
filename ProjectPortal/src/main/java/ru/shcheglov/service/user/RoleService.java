@@ -10,4 +10,7 @@ import ru.shcheglov.service.common.CommonService;
  */
 
 public interface RoleService extends CommonService<Role, RoleDTO> {
+
+    Role getUser();
+
 }

@@ -2,13 +2,11 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<jsp:include page="../header.jsp" />
+<jsp:include page="../header.jsp">
+    <jsp:param name="title" value="Edit profile" />
+</jsp:include>
 
-<title>Edit user</title>
-
-<h1>EDIT USER</h1>
-
-<form:form method="post" action="/userprofile-save" modelAttribute="userProfile">
+<form:form method="post" action="/profile-save" modelAttribute="user">
     <form:hidden path="id" />
     <form:hidden path="name" />
     <form:hidden path="user.id" />
@@ -36,7 +34,7 @@
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">LOGIN</td>
-            <td>${userProfile.user.login}</td>
+            <td>${user.user.login}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">FIRST NAME</td>
@@ -48,7 +46,7 @@
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">E-MAIL</td>
-            <td>${userProfile.email}</td>
+            <td>${user.email}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">PHONE</td>
@@ -56,12 +54,13 @@
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">DATE REGISTRATION</td>
-            <td>${userProfile.formattedDateTime}</td>
+            <td>${user.formattedDateTime}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">COMPANY NAME</td>
-            <td>${userProfile.company.name}</td>
+            <td>${user.company.name}</td>
         </tr>
     </table>
-
 </form:form>
+
+<jsp:include page="../footer.jsp" />

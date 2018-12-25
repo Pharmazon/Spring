@@ -1,5 +1,6 @@
 package ru.shcheglov.repository.user;
 
+import ru.shcheglov.model.user.User;
 import ru.shcheglov.model.user.UserProfile;
 import ru.shcheglov.repository.common.CommonRepository;
 
@@ -9,5 +10,9 @@ import ru.shcheglov.repository.common.CommonRepository;
  */
 
 public interface UserProfileRepository extends CommonRepository<UserProfile> {
+
+    UserProfile findOneByUserId(String id);
+
+    UserProfile findOneByUser(User user);
 
 }

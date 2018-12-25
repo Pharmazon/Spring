@@ -1,4 +1,4 @@
-package ru.shcheglov.controller.web;
+package ru.shcheglov.controller.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,45 +27,45 @@ public class UserController {
     @Autowired
     private RoleService roleService;
 
-    @GetMapping("user-list")
-    public String entityList(final Model model) {
+    @GetMapping("/admin/user-list")
+    public String list(final Model model) {
         final List<UserProfile> entities = service.getAll();
         model.addAttribute("users", entities);
-        return "user-list";
+        return "admin/user-list";
     }
 
-    @PostMapping("user-create")
-    public String entityCreate(final UserProfile entity, final BindingResult result) {
+    @PostMapping("/admin/user-create")
+    public String create(final UserProfile entity, final BindingResult result) {
         if (!result.hasErrors()) service.saveOne(entity);
-        return "user-list";
+        return "redirect:/admin/user-list";
     }
 
-    @GetMapping("user-edit/{id}")
-    public String entityEdit(final Model model, @PathVariable("id") final String id) {
+    @GetMapping("/admin/user-edit/{id}")
+    public String edit(final Model model, @PathVariable("id") final String id) {
         final Optional<UserProfile> optional = service.getOne(id);
         List<Role> roles = roleService.getAll();
         model.addAttribute("roles", roles);
         optional.ifPresent(u -> model.addAttribute("user", u));
-        return "user-edit";
+        return "admin/user-edit";
     }
 
-    @PostMapping("user-save")
-    public String entitySave(final UserProfile entity, final BindingResult result) {
+    @PostMapping("/admin/user-save")
+    public String save(final UserProfile entity, final BindingResult result) {
         if (!result.hasErrors()) service.updateOne(entity);
-        return "redirect:/user-list";
+        return "redirect:/admin/user-list";
     }
 
-    @GetMapping("user-view/{id}")
-    public String entityView(final Model model, @PathVariable("id") final String id) {
+    @GetMapping("/admin/user-view/{id}")
+    public String view(final Model model, @PathVariable("id") final String id) {
         final Optional<UserProfile> entity = service.getOne(id);
         entity.ifPresent(a -> model.addAttribute("user", a));
-        return "user-view";
+        return "admin/user-view";
     }
 
-    @GetMapping("user-delete/{id}")
-    public String entityDelete(@PathVariable("id") final String id) {
+    @GetMapping("/admin/user-delete/{id}")
+    public String delete(@PathVariable("id") final String id) {
         service.deleteOne(id);
-        return "redirect:/user-list";
+        return "redirect:/admin/user-list";
     }
 
 }

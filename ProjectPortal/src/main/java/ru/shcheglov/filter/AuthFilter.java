@@ -19,27 +19,28 @@ public class AuthFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         final HttpServletRequest request = (HttpServletRequest) servletRequest;
         final HttpServletResponse response = (HttpServletResponse) servletResponse;
-        if (isAuth(request)) filterChain.doFilter(request, response);
+        if (isAuth(request)) filterChain.doFilter(servletRequest, servletResponse);
         else response.sendRedirect("/login");
     }
 
-    private boolean isAuth(@Nullable final HttpServletRequest request) {
+    private Boolean isAuth(@Nullable final HttpServletRequest request) {
         if (request == null) return false;
         final HttpSession session = request.getSession();
-        
-        return true;
+        if (session == null) return false;
+        final Object auth = session.getAttribute("auth");
+        if (auth == null) return false;
+        if (!(auth instanceof Boolean))return false;
+        return (Boolean) auth;
     }
 
     @Override
     public void destroy() {
-
     }
 
 }

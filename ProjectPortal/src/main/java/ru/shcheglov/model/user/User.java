@@ -20,6 +20,7 @@ import javax.persistence.*;
 @NamedQueries({
         @NamedQuery(name = "User.findAll", query = "SELECT c FROM User c"),
         @NamedQuery(name = "User.deleteAll", query = "DELETE FROM User c"),
+        @NamedQuery(name = "User.countByLogin", query = "SELECT COUNT(u.id) FROM User u WHERE u.login = :login"),
         @NamedQuery(name = "User.findByLogin", query = "SELECT u FROM User u WHERE u.login = :login")
 })
 public class User extends AbstractEntity {

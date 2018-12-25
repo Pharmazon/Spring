@@ -21,6 +21,7 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Role.findAll", query = "SELECT a FROM Role a"),
         @NamedQuery(name = "Role.deleteAll", query = "DELETE FROM Role a"),
+        @NamedQuery(name = "Role.getUserRole", query = "SELECT r FROM Role r WHERE r.name = :roleName"),
         @NamedQuery(name = "Role.findOneByUser", query = "SELECT a FROM UserProfile a INNER JOIN a.role c WHERE c = :role")
 })
 public class Role extends AbstractEntity {

@@ -45,4 +45,11 @@ public class RoleRepositoryImpl extends AbstractRepository<Role> implements Role
                 .getResultList();
     }
 
+    @Override
+    public Role findUser() {
+        return getEntityManager()
+                .createNamedQuery("Role.getUserRole", Role.class)
+                .setParameter("roleName", "user")
+                .getSingleResult();
+    }
 }

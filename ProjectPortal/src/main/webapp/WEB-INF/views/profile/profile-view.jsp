@@ -1,11 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="../header.jsp" />
-
-<title>User profile</title>
-
-<h1>USER PROFILE</h1>
+<jsp:include page="../header.jsp">
+    <jsp:param name="title" value="User profile" />
+</jsp:include>
 
 <table class="viewTable" cellspacing="0" cellpadding="0" border="1" style="margin-bottom: 5px">
     <tr>
@@ -15,30 +13,32 @@
 
     <tr>
         <td>Login</td>
-        <td>${userProfile.user.login}</td>
+        <td>${user.user.login}</td>
     </tr>
     <tr>
         <td>First Name</td>
-        <td>${userProfile.firstName}</td>
+        <td>${user.firstName}</td>
     </tr>
     <tr>
         <td>Last Name</td>
-        <td>${userProfile.lastName}</td>
+        <td>${user.lastName}</td>
     </tr>
     <tr>
         <td>Date registered</td>
-        <td>${userProfile.formattedDateTime}</td>
+        <td>${user.formattedDateTime}</td>
     </tr>
     <tr>
         <td>E-mail</td>
-        <td>${userProfile.email}</td>
+        <td>${user.email}</td>
     </tr>
     <tr>
         <td>Phone</td>
-        <td>${userProfile.phone}</td>
+        <td>${user.phone}</td>
     </tr>
     <tr>
         <td>Company</td>
-        <td>${userProfile.company.name}</td>
+        <td>${user.company.name}</td>
     </tr>
 </table>
+
+<jsp:include page="../footer.jsp" />

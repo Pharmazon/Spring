@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.dto.UserProfileDTO;
+import ru.shcheglov.model.user.User;
 import ru.shcheglov.model.user.UserProfile;
 import ru.shcheglov.repository.user.UserProfileRepository;
 
@@ -76,4 +77,13 @@ public class UserProfileServiceImpl implements UserProfileService {
         deleteOne(dto.getId());
     }
 
+    @Override
+    public UserProfile getOneByUserId(String id) {
+        return repository.findOneByUserId(id);
+    }
+
+    @Override
+    public UserProfile getOneByUser(User user) {
+        return repository.findOneByUser(user);
+    }
 }

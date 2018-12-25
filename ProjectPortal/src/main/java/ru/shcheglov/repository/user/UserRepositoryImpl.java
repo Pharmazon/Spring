@@ -45,10 +45,29 @@ public class UserRepositoryImpl extends AbstractRepository<User> implements User
     }
 
     @Override
-    public User findByLogin(String login) {
+    public User findByLogin(@NotNull final String login) {
         return getEntityManager()
                 .createNamedQuery("User.findByLogin", User.class)
                 .setParameter("login", login)
                 .getSingleResult();
+    }
+
+    @Override
+    public Boolean isEnabled(@NotNull final String login) {
+        User user = findByLogin(login);
+        return user.getEnabled();
+    }
+
+    @Override
+    public Long countByLogin(@NotNull final String login) {
+        return (long) getEntityManager()
+                .createNamedQuery("User.countByLogin", User.class)
+                .setParameter("login", login).getFirstResult();
+    }
+
+    @Override
+    public Boolean isExist(@NotNull final String login) {
+        final User user = findByLogin(login);
+        return user != null;
     }
 }
