@@ -27,7 +27,7 @@ import java.util.Properties;
         @ComponentScan("ru.shcheglov.service"),
         @ComponentScan("ru.shcheglov.repository"),
         @ComponentScan("ru.shcheglov.controller"),
-        @ComponentScan("ru.shcheglov.component")
+        @ComponentScan("ru.shcheglov.bootstrap")
 })
 @PropertySource("classpath:config.properties")
 public class DataSourceConfiguration {

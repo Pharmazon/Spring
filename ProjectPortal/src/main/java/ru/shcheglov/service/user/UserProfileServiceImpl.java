@@ -2,7 +2,6 @@ package ru.shcheglov.service.user;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.dto.UserProfileDTO;
@@ -126,24 +125,37 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
-    public void initUser(@NotNull final String login, @NotNull final String password) {
+    public void initUser(
+            @NotNull final String login,
+            @NotNull final String password,
+            @NotNull final UserRole userRole) {
         if (userRepository.isExist(login)) return;
-        createUser(login, password);
+        createUser(login, password, userRole);
     }
 
     @Override
-    public void createUser(@NotNull final String login, @NotNull final String password) {
+    public void createUser(
+            @NotNull final String login,
+            @NotNull final String password,
+            @NotNull final UserRole userRole) {
 //        final String passwordHash = passwordEncoder.encode(password);
         final String passwordHash = password;
         final User user = new User();
         user.setLogin(login);
         user.setEnabled(true);
         user.setPassword(passwordHash);
-        final Optional<Role> role = roleRepository.findRole(UserRole.USER.toString());
+        final Optional<Role> role = roleRepository.findOneByName(userRole.name());
+        if (!role.isPresent()) {
+            final Role newRole = new Role();
+            newRole.setName(userRole.name());
+            roleRepository.saveOne(newRole);
+        }
+
         final UserProfile up = new UserProfile();
         role.ifPresent(up::setRole);
         up.setUser(user);
         up.setDateRegistered(LocalDateTime.now());
+        
         userRepository.saveOne(user);
         userProfileRepository.saveOne(up);
     }

@@ -1,6 +1,7 @@
 package ru.shcheglov.service.user;
 
 import ru.shcheglov.dto.UserProfileDTO;
+import ru.shcheglov.enums.UserRole;
 import ru.shcheglov.model.user.Role;
 import ru.shcheglov.model.user.User;
 import ru.shcheglov.model.user.UserProfile;
@@ -23,9 +24,9 @@ public interface UserProfileService extends CommonService<UserProfile, UserProfi
 
     boolean getEnabledByLogin(String login);
 
-    void initUser(String login, String password);
+    void initUser(String login, String password, UserRole userRole);
 
-    void createUser(String login, String password);
+    void createUser(String login, String password, UserRole userRole);
 
     boolean isExist(String login);
 

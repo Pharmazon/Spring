@@ -12,6 +12,7 @@ import java.util.Optional;
 
 public interface RoleRepository extends CommonRepository<Role> {
 
-    Optional<Role> findRole(String role);
+    Optional<Role> findOneByName(String role);
 
+    boolean isExist(String name);
 }

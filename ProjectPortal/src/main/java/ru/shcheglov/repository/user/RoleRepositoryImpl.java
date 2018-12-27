@@ -1,6 +1,7 @@
 package ru.shcheglov.repository.user;
 
 import org.jetbrains.annotations.NotNull;
+import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Repository;
 import ru.shcheglov.model.user.Role;
 import ru.shcheglov.model.user.UserProfile;
@@ -46,10 +47,18 @@ public class RoleRepositoryImpl extends AbstractRepository<Role> implements Role
     }
 
     @Override
-    public Optional<Role> findRole(@NotNull final String role) {
-        return Optional.of(getEntityManager()
-                .createNamedQuery("Role.getUserRole", Role.class)
-                .setParameter("roleName", role)
-                .getSingleResult());
+    public Optional<Role> findOneByName(@NotNull final String name) {
+        List<Role> roles = getEntityManager()
+                .createNamedQuery("Role.findOneByName", Role.class)
+                .setParameter("roleName", name)
+                .getResultList();
+        return Optional.ofNullable(DataAccessUtils.singleResult(roles));
     }
+
+    @Override
+    public boolean isExist(@NotNull final String name) {
+        Optional<Role> optional = findOneByName(name);
+        return optional.isPresent();
+    }
+
 }

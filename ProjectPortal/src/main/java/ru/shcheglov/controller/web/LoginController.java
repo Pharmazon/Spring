@@ -1,11 +1,9 @@
 package ru.shcheglov.controller.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.shcheglov.model.user.User;
 import ru.shcheglov.model.user.UserProfile;
 import ru.shcheglov.service.user.UserProfileService;
 

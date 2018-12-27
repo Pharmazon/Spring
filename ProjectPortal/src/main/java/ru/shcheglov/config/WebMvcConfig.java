@@ -24,7 +24,7 @@ import ru.shcheglov.interceptor.LoggerInterceptor;
 @Configuration
 @EnableWebMvc
 @Import(DataSourceConfiguration.class)
-@ComponentScan(basePackages = {"ru.shcheglov.model"})
+@ComponentScan({"ru.shcheglov.model", "ru.shcheglov.config"})
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
@@ -33,7 +33,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

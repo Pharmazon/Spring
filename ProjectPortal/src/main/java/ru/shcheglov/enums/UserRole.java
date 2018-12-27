@@ -7,18 +7,8 @@ package ru.shcheglov.enums;
 
 public enum UserRole {
 
-    USER("user"),
-    ADMIN("admin"),
-    MANAGER("manager");
+    USER,
+    ADMINISTRATOR,
+    MANAGER
 
-    private String name;
-
-    UserRole(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return name;
-    }
 }
