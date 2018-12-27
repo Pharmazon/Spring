@@ -42,7 +42,6 @@ public class CategoryController {
     @PostMapping("/admin/category-create")
     public String create(final Category entity, final BindingResult result) {
         System.out.println(entity);
-        System.out.println(result);
         if (!result.hasErrors()) categoryService.saveOne(entity);
         return "redirect:/admin/category-list";
     }

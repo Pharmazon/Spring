@@ -29,7 +29,7 @@ import java.util.List;
                 query = "SELECT a FROM Ad a LEFT JOIN FETCH a.category"),
         @NamedQuery(name = "Ad.deleteAll", query = "DELETE FROM Ad a"),
         @NamedQuery(name = "Ad.findOne",
-                query = "SELECT a FROM Ad a LEFT JOIN FETCH a.category WHERE a.id = :adId")
+                query = "SELECT a FROM Ad a LEFT JOIN FETCH a.category cat LEFT JOIN FETCH cat.parent WHERE a.id = :adId")
 })
 public class Ad extends AbstractEntity {
 

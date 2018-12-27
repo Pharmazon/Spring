@@ -1,6 +1,7 @@
 package ru.shcheglov.model;
 
 import lombok.*;
+import org.jetbrains.annotations.NotNull;
 import ru.shcheglov.model.common.AbstractEntity;
 
 import javax.persistence.*;
@@ -34,5 +35,4 @@ public class Category extends AbstractEntity {
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<Ad> ads;
-
 }

@@ -24,7 +24,6 @@
             <td width="20%" align="left" style="padding-right: 10px">PARENT</td>
             <td>
                 <form:select path="parent.id" size="1">
-                    <form:option value="---Select parent:---" disabled="true" />
                     <form:options items="${categories}" itemValue="id" itemLabel="name" />
                 </form:select>
             </td>

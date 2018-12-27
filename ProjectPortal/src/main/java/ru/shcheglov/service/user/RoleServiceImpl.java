@@ -84,7 +84,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Optional<Role> getRole(String role) {
+    public Optional<Role> getRole(@NotNull final String role) {
         return roleRepository.findOneByName(role);
     }
 
@@ -103,7 +103,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public void initAllRoles() {
-        for (UserRole role : UserRole.values()) {
+        for (final UserRole role : UserRole.values()) {
             initRole(role.name());
         }
     }

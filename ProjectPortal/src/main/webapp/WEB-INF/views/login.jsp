@@ -16,13 +16,13 @@
         <tr>
             <td>USERNAME:</td>
             <td>
-                <input type="text" name="login">
+                <input type="text" name="login" value="admin">
             </td>
         </tr>
         <tr>
             <td>PASSWORD:</td>
             <td>
-                <input type="password" name="password" />
+                <input type="password" name="password" value="admin"/>
             </td>
         </tr>
         <tr>

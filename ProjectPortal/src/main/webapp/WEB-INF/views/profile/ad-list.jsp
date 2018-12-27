@@ -14,8 +14,9 @@
     <tr>
         <th width="50" nowrap="nowrap" align="center">№</th>
         <th width="200" nowrap="nowrap" align="center">Name</th>
-        <th width="300" nowrap="nowrap" align="center">Content</th>
+        <th width="auto" nowrap="nowrap" align="center">Content</th>
         <th width="50" nowrap="nowrap" align="center">Price</th>
+        <%--<th width="70" nowrap="nowrap" align="center">Parent category</th>--%>
         <th width="70" nowrap="nowrap" align="center">Category</th>
         <th width="30" nowrap="nowrap" align="center"></th>
         <th width="30" nowrap="nowrap" align="center"></th>
@@ -27,6 +28,7 @@
             <td align="left">${ad.name}</td>
             <td align="left">${ad.content}</td>
             <td align="left">${ad.price}</td>
+            <%--<td align="left">${ad.category.parent.name}</td>--%>
             <td align="left">${ad.category.name}</td>
             <td align="center" nowrap="nowrap">
                 <a href="/profile/ad-view/${ad.id}">
