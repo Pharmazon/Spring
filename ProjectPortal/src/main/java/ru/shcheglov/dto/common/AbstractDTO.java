@@ -1,7 +1,6 @@
 package ru.shcheglov.dto.common;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.shcheglov.model.common.AbstractEntity;
@@ -13,9 +12,11 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @version dated 14.12.2018
  */
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 @XmlRootElement
+@NoArgsConstructor
+@EqualsAndHashCode
 public abstract class AbstractDTO<T extends AbstractEntity> {
 
     @NotNull

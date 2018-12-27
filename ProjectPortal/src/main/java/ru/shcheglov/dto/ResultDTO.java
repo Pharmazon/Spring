@@ -1,5 +1,9 @@
 package ru.shcheglov.dto;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.jetbrains.annotations.Nullable;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -9,7 +13,11 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @version dated 14.12.2018
  */
 
+@Getter
+@Setter
 @XmlRootElement
+@NoArgsConstructor
+@EqualsAndHashCode
 public class ResultDTO {
 
     @Nullable
@@ -17,24 +25,5 @@ public class ResultDTO {
 
     @Nullable
     private String message = "";
-
-    public ResultDTO() {
-    }
-
-    public Boolean getSuccess() {
-        return success;
-    }
-
-    public void setSuccess(final Boolean success) {
-        this.success = success;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(final String message) {
-        this.message = message;
-    }
 
 }

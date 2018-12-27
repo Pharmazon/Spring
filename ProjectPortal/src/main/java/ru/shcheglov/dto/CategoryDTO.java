@@ -1,8 +1,8 @@
 package ru.shcheglov.dto;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import ru.shcheglov.dto.common.AbstractDTO;
 import ru.shcheglov.model.Category;
 
@@ -13,9 +13,19 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @version dated 27.12.2018
  */
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
+@Getter
+@Setter
 @XmlRootElement
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class CategoryDTO extends AbstractDTO<Category> {
+
+    @Nullable
+    private String parentId;
+
+    public CategoryDTO(@NotNull final Category category) {
+        @Nullable final Category parent = category.getParent();
+        parentId = parent != null ? parent.getId() : null;
+    }
+
 }
