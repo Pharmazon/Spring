@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * @version dated 17.12.2018
  */
 
-//@RestController
+@RestController
 @RequestMapping("CompanyService")
 public class CompanyREST {
 
