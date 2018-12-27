@@ -1,8 +1,9 @@
-package ru.shcheglov.controller;
+package ru.shcheglov.component;
 
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.shcheglov.service.user.UserProfileService;
 import ru.shcheglov.service.user.UserService;
 
 /**
@@ -14,12 +15,12 @@ import ru.shcheglov.service.user.UserService;
 public class Bootstrap implements InitializingBean {
 
     @Autowired
-    private UserService userService;
+    private UserProfileService userProfileService;
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        userService.initUser("admin", "admin");
-        userService.initUser("test", "test");
+        userProfileService.initUser("admin", "admin");
+        userProfileService.initUser("test", "test");
     }
 
 }

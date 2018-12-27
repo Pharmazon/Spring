@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
  * @version dated 17.12.2018
  */
 
-@RestController
+//@RestController
 @RequestMapping("api/companies")
 public class CompaniesResource {
 

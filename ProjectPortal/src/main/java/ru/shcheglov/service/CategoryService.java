@@ -1,6 +1,9 @@
 package ru.shcheglov.service;
 
+import ru.shcheglov.dto.CategoryDTO;
+import ru.shcheglov.model.Category;
 import ru.shcheglov.model.common.AbstractEntity;
+import ru.shcheglov.service.common.CommonService;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,24 +13,8 @@ import java.util.Optional;
  * @version dated 25.12.2018
  */
 
-public interface CategoryService<T extends AbstractEntity> {
+public interface CategoryService extends CommonService<Category, CategoryDTO> {
 
-    void saveOne(T entity);
-
-    void saveAll(List<T> list);
-
-    void deleteOne(String id);
-
-    void deleteOne(T entity);
-
-    void deleteAll();
-
-    Optional<T> getOne(String id);
-
-    List<T> getAll();
-
-    T updateOne(T entity);
-
-    Optional<T> getOneParent(String id);
+    Optional<Category> getOneParent(String id);
 
 }

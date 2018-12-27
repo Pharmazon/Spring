@@ -19,4 +19,14 @@ public interface UserProfileService extends CommonService<UserProfile, UserProfi
 
     Role getRole(UserProfile user);
 
+    UserProfile getByLogin(String login);
+
+    boolean getEnabledByLogin(String login);
+
+    void initUser(String login, String password);
+
+    void createUser(String login, String password);
+
+    boolean isExist(String login);
+
 }

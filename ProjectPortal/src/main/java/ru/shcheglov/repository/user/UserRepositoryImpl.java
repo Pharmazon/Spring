@@ -1,7 +1,9 @@
 package ru.shcheglov.repository.user;
 
 import org.jetbrains.annotations.NotNull;
+import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.model.user.User;
 import ru.shcheglov.repository.common.AbstractRepository;
 
@@ -45,29 +47,26 @@ public class UserRepositoryImpl extends AbstractRepository<User> implements User
     }
 
     @Override
-    public User findByLogin(@NotNull final String login) {
+    public Long countByLogin(@NotNull final String login) {
         return getEntityManager()
-                .createNamedQuery("User.findByLogin", User.class)
-                .setParameter("login", login)
+                .createQuery("SELECT COUNT (u) FROM User u WHERE u.login = :userLogin", Long.class)
+                .setParameter("userLogin", login)
                 .getSingleResult();
     }
 
     @Override
-    public Boolean isEnabled(@NotNull final String login) {
-        User user = findByLogin(login);
-        return user.getEnabled();
-    }
-
-    @Override
-    public Long countByLogin(@NotNull final String login) {
-        return (long) getEntityManager()
-                .createNamedQuery("User.countByLogin", User.class)
-                .setParameter("login", login).getFirstResult();
-    }
-
-    @Override
-    public Boolean isExist(@NotNull final String login) {
-        final User user = findByLogin(login);
+    public boolean isExist(String login) {
+        final User user = findOneByLogin(login);
         return user != null;
     }
+
+    @Override
+    public User findOneByLogin(String login) {
+        List<User> users = getEntityManager()
+                .createNamedQuery("User.findByLogin", User.class)
+                .setParameter("userLogin", login)
+                .getResultList();
+        return DataAccessUtils.singleResult(users);
+    }
+
 }

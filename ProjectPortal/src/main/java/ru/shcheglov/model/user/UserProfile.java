@@ -29,8 +29,10 @@ import java.util.List;
         @NamedQuery(name = "UserProfile.findOneByUserId",
                 query = "SELECT up FROM UserProfile up INNER JOIN FETCH up.user u WHERE u.id = :userId"),
         @NamedQuery(name = "UserProfile.findOne",
-                query = "SELECT DISTINCT up FROM UserProfile up INNER JOIN FETCH up.company " +
-                        "INNER JOIN FETCH up.role INNER JOIN FETCH up.user WHERE up.id = :userId")
+                query = "SELECT up FROM UserProfile up LEFT JOIN FETCH up.company " +
+                        "INNER JOIN FETCH up.role INNER JOIN FETCH up.user WHERE up.id = :userProfileId"),
+        @NamedQuery(name = "UserProfile.findByLogin",
+                query = "SELECT up FROM UserProfile up JOIN FETCH up.user u WHERE u.login = :userLogin")
 })
 public class UserProfile extends AbstractEntity {
 

@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.dto.RoleDTO;
-import ru.shcheglov.dto.common.AbstractDTO;
 import ru.shcheglov.model.user.Role;
 import ru.shcheglov.repository.user.RoleRepository;
 
@@ -28,7 +27,7 @@ public class RoleServiceImpl implements RoleService {
     private RoleRepository repository;
 
     @Override
-    public void saveOne(Role entity) {
+    public void saveOne(@NotNull final Role entity) {
         repository.saveOne(entity);
     }
 
@@ -38,12 +37,12 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void deleteOne(String id) {
+    public void deleteOne(@NotNull final String id) {
         repository.deleteOne(id);
     }
 
     @Override
-    public void deleteOne(Role entity) {
+    public void deleteOne(@NotNull final Role entity) {
         repository.deleteOne(entity);
     }
 
@@ -53,7 +52,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Optional<Role> getOne(String id) {
+    public Optional<Role> getOne(@NotNull final String id) {
         return repository.findOne(id);
     }
 
@@ -63,17 +62,17 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role updateOne(Role entity) {
+    public Role updateOne(@NotNull final Role entity) {
         return repository.updateOne(entity);
     }
 
     @Override
-    public void deleteOne(RoleDTO dto) {
+    public void deleteOne(@NotNull final RoleDTO dto) {
         deleteOne(dto.getId());
     }
 
     @Override
-    public void saveOne(RoleDTO dto) {
+    public void saveOne(@NotNull final RoleDTO dto) {
         final Optional<Role> optional = getOne(dto.getId());
         if (!optional.isPresent()) {
             final Role entity = new Role();
@@ -84,7 +83,7 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role getUser() {
-        return repository.findUser();
+    public Optional<Role> getRole(String role) {
+        return repository.findRole(role);
     }
 }

@@ -16,12 +16,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "app_users")
+@ToString(exclude = "userProfile")
 @EqualsAndHashCode(callSuper = true)
 @NamedQueries({
-        @NamedQuery(name = "User.findAll", query = "SELECT c FROM User c"),
+        @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
         @NamedQuery(name = "User.deleteAll", query = "DELETE FROM User c"),
-        @NamedQuery(name = "User.countByLogin", query = "SELECT COUNT(u.id) FROM User u WHERE u.login = :login"),
-        @NamedQuery(name = "User.findByLogin", query = "SELECT u FROM User u WHERE u.login = :login")
+        @NamedQuery(name = "User.findByLogin", query = "SELECT u FROM User u WHERE u.login = :userLogin")
 })
 public class User extends AbstractEntity {
 

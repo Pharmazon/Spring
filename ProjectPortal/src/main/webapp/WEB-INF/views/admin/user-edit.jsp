@@ -6,25 +6,13 @@
     <jsp:param name="title" value="User edit" />
 </jsp:include>
 
-<form:form method="post" action="/user-save" modelAttribute="user">
+<form:form method="post" action="/admin/user-save" modelAttribute="userProfile">
     <form:hidden path="id" />
-    <form:hidden path="name" />
     <form:hidden path="user.id" />
-    <form:hidden path="user.name" />
-    <form:hidden path="user.login" />
-    <form:hidden path="user.password" />
-    <form:hidden path="firstName" />
-    <form:hidden path="lastName" />
-    <form:hidden path="email" />
-    <form:hidden path="phone" />
-    <form:hidden path="dateRegistered" />
-    <form:hidden path="company.id" />
-    <form:hidden path="company.name" />
-    <form:hidden path="company.description" />
 
     <p>
         <button type="submit">
-            <img src="../../../resources/images/icons/icon_save.png" alt="add" width="20"/>
+            <img src="../../../resources/images/icons/icon_save.png" alt="save" width="20"/>
         </button>
     </p>
 
@@ -35,47 +23,47 @@
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">ID</td>
-            <td>${user.id}</td>
+            <td>${userProfile.id}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">NAME</td>
-            <td>${user.name}</td>
+            <td>${userProfile.name}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">LOGIN</td>
-            <td>${user.user.login}</td>
+            <td>${userProfile.user.login}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">FIRST NAME</td>
-            <td>${user.firstName}</td>
+            <td>${userProfile.firstName}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">LAST NAME</td>
-            <td>${user.lastName}</td>
+            <td>${userProfile.lastName}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">E-MAIL</td>
-            <td>${user.email}</td>
+            <td>${userProfile.email}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">PHONE</td>
-            <td>${user.phone}</td>
+            <td>${userProfile.phone}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">DATE REGISTRATION</td>
-            <td>${user.formattedDateTime}</td>
+            <td>${userProfile.formattedDateTime}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">COMPANY NAME</td>
-            <td>${user.company.name}</td>
+            <td>${userProfile.company.name}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">COMPANY ADDRESS</td>
-            <td>${user.company.address}</td>
+            <td>${userProfile.company.address}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">COMPANY DESCRIPTION</td>
-            <td>${user.company.description}</td>
+            <td>${userProfile.company.description}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">ROLE</td>
@@ -88,7 +76,12 @@
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">ENABLED</td>
-            <td>${user.company.description}</td>
+            <td>
+                <form:select path="user.enabled" size="1">
+                    <form:option value="true" />
+                    <form:option value="false" />
+                </form:select>
+            </td>
         </tr>
     </table>
 </form:form>

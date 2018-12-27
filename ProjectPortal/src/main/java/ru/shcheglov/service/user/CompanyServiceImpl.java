@@ -28,7 +28,7 @@ public class CompanyServiceImpl implements CompanyService {
     private CompanyRepository repository;
 
     @Override
-    public void saveOne(Company entity) {
+    public void saveOne(@NotNull final Company entity) {
         repository.saveOne(entity);
     }
 
@@ -38,12 +38,12 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public void deleteOne(String id) {
+    public void deleteOne(@NotNull final String id) {
         repository.deleteOne(id);
     }
 
     @Override
-    public void deleteOne(Company entity) {
+    public void deleteOne(@NotNull final Company entity) {
         repository.deleteOne(entity);
     }
 
@@ -63,17 +63,17 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public Company updateOne(Company entity) {
+    public Company updateOne(@NotNull final Company entity) {
         return repository.updateOne(entity);
     }
 
     @Override
-    public void deleteOne(CompanyDTO dto) {
+    public void deleteOne(@NotNull final CompanyDTO dto) {
         deleteOne(dto.getId());
     }
 
     @Override
-    public void saveOne(CompanyDTO dto) {
+    public void saveOne(@NotNull final CompanyDTO dto) {
         final Optional<Company> optional = getOne(dto.getId());
         if (!optional.isPresent()) {
             final Company entity = new Company();

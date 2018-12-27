@@ -15,4 +15,10 @@ public interface UserProfileRepository extends CommonRepository<UserProfile> {
 
     UserProfile findOneByUser(User user);
 
+    UserProfile findOneByLogin(String login);
+
+    boolean isEnabled(String login);
+
+    boolean isExist(String login);
+
 }

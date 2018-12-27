@@ -6,7 +6,9 @@
     <jsp:param name="title" value="Edit category" />
 </jsp:include>
 
-<form:form method="post" action="/category-save" modelAttribute="category">
+<form:form method="post" action="/admin/category-save" modelAttribute="category">
+    <form:hidden path="id" />
+
     <p>
         <button type="submit">
             <img src="../../../resources/images/icons/icon_save.png" alt="add" width="20"/>
@@ -20,14 +22,18 @@
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">PARENT-CATEGORY</td>
-            <form:select path="id" size="1">
-                <form:option value="---Select parent:---" disabled="true" />
-                <form:options items="${categories}" itemValue="id" itemLabel="name" />
-            </form:select>
+            <td>
+                <form:select path="parent.id" size="1">
+                    <form:option value="---Select parent:---" disabled="true" />
+                    <form:options items="${categories}" itemValue="id" itemLabel="name" />
+                </form:select>
+            </td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">SUB-CATEGORY</td>
-            <form:input path="name" />
+            <td>
+                <form:input path="name" />
+            </td>
         </tr>
     </table>
 </form:form>

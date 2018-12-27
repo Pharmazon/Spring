@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.shcheglov.dto.CategoryDTO;
 import ru.shcheglov.model.Category;
 import ru.shcheglov.repository.CategoryRepository;
 
@@ -17,7 +18,7 @@ import java.util.Optional;
 
 @Service(CategoryServiceImpl.NAME)
 @Transactional
-public class CategoryServiceImpl implements CategoryService<Category> {
+public class CategoryServiceImpl implements CategoryService {
 
     @NotNull
     public static final String NAME = "categoryService";
@@ -66,7 +67,17 @@ public class CategoryServiceImpl implements CategoryService<Category> {
     }
 
     @Override
-    public Optional<Category> getOneParent(String id) {
+    public void saveOne(CategoryDTO dto) {
+
+    }
+
+    @Override
+    public void deleteOne(CategoryDTO dto) {
+
+    }
+
+    @Override
+    public Optional<Category> getOneParent(@NotNull final String id) {
         return categoryRepository.findOneParent(id);
     }
 

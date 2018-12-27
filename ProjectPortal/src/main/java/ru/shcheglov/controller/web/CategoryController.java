@@ -1,4 +1,4 @@
-package ru.shcheglov.controller.user;
+package ru.shcheglov.controller.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +22,7 @@ import java.util.Optional;
 public class CategoryController {
 
     @Autowired
-    private CategoryService<Category> categoryService;
+    private CategoryService categoryService;
 
     @GetMapping("/admin/category-list")
     public String list(final Model model) {
@@ -41,6 +41,8 @@ public class CategoryController {
 
     @PostMapping("/admin/category-create")
     public String create(final Category entity, final BindingResult result) {
+        System.out.println(entity);
+        System.out.println(result);
         if (!result.hasErrors()) categoryService.saveOne(entity);
         return "redirect:/admin/category-list";
     }

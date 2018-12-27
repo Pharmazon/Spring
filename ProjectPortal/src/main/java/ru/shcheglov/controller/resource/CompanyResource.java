@@ -14,7 +14,7 @@ import java.util.Optional;
  * @version dated 17.12.2018
  */
 
-@RestController
+//@RestController
 @RequestMapping("api/company")
 public class CompanyResource {
 

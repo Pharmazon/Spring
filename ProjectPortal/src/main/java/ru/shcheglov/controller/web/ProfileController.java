@@ -1,4 +1,4 @@
-package ru.shcheglov.controller.user;
+package ru.shcheglov.controller.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,13 +24,15 @@ import java.util.Optional;
 public class ProfileController {
 
     @Autowired
-    private UserProfileService service;
+    private UserProfileService userProfileService;
 
     @Autowired
     private AuthService authService;
 
     @GetMapping("/profile/profile-view")
-    public String get(final Model model, final HttpServletRequest request) {
+    public String get(
+            final Model model,
+            final HttpServletRequest request) {
         final UserProfile user = authService.getUser(request);
         if (user == null) return "redirect:/login";
         model.addAttribute("user", user);
@@ -38,21 +40,21 @@ public class ProfileController {
     }
 
     @GetMapping("/profile/profile-edit/{id}")
-    public String edit(final Model model, @PathVariable("id") final String id) {
-        final Optional<UserProfile> optional = service.getOne(id);
+    public String edit(
+            final Model model,
+            @PathVariable("id") final String id) {
+        final Optional<UserProfile> optional = userProfileService.getOne(id);
         optional.ifPresent(u -> model.addAttribute("user", u));
         return "profile/profile-edit";
     }
 
     @PostMapping("/profile/profile-save")
     public String save(
-            HttpServletRequest request,
             @ModelAttribute("user") final UserProfile user,
             final BindingResult result
     ) {
         if (!result.hasErrors()) {
-            final UserProfile userSession = authService.getUser(request);
-            service.saveOne(userSession);
+            userProfileService.updateOne(user);
         }
         return "redirect:/profile/profile-view";
     }

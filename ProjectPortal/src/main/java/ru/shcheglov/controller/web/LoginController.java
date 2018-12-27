@@ -1,7 +1,5 @@
 package ru.shcheglov.controller.web;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -10,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.shcheglov.model.user.User;
 import ru.shcheglov.model.user.UserProfile;
 import ru.shcheglov.service.user.UserProfileService;
-import ru.shcheglov.service.user.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -23,27 +20,15 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController {
 
-    private final UserService userService;
-
-    private final UserProfileService userProfileService;
-
-    private final PasswordEncoder passwordEncoder;
-
     @Autowired
-    public LoginController(
-            @NotNull final UserService userService,
-            @NotNull final PasswordEncoder passwordEncoder,
-            @NotNull final UserProfileService userProfileService) {
-        this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
-        this.userProfileService = userProfileService;
-    }
+    private UserProfileService userProfileService;
 
-    @NotNull
-    @Contract(pure = true)
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
+
     @GetMapping("/login")
     private String login() {
-        return "login";
+        return "/login";
     }
 
     @RequestMapping(value = "/loginAction", method = RequestMethod.POST)
@@ -56,17 +41,17 @@ public class LoginController {
         if (login == null || password == null) return "redirect:/login";
         if (login.isEmpty() || password.isEmpty()) return "redirect:/login";
 
-        final User user = userService.getByLogin(login);
-        final UserProfile up = userProfileService.getOneByUser(user);
-        if (user == null) return "redirect:/login";
+        UserProfile up = userProfileService.getByLogin(login);
+        if (up == null || !up.getUser().getEnabled()) return "redirect:/login";
 
-        final boolean passwordCorrect = passwordEncoder.matches(password, user.getPassword());
+//        final boolean passwordCorrect = passwordEncoder.matches(password, up.getUser().getPassword());
+        final boolean passwordCorrect = password.equals(up.getUser().getPassword());
         if (!passwordCorrect) return "redirect:/login";
 
         if (!result.hasErrors()) {
             final HttpSession session = request.getSession();
             session.setAttribute("auth", true);
-            session.setAttribute("userId", user.getId());
+            session.setAttribute("userId", up.getUser().getId());
         }
 
         return "redirect:/profile/profile-view";

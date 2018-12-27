@@ -16,6 +16,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString(exclude = "user")
 @Table(name = "app_companies")
 @EqualsAndHashCode(callSuper = true)
 @NamedQueries({

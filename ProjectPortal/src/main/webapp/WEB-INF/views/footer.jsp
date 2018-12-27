@@ -1,6 +1,5 @@
-
 </div>
 
 <div class="footer">
-    &copy; All rights reserved - 2018
+    <p>&copy; All rights reserved - 2018</p>
 </div>

@@ -26,23 +26,13 @@ public class AuthServiceImpl implements AuthService {
     @NotNull
     public static final String NAME = "authService";
 
-    private final UserProfileRepository userProfileRepository;
-
-    private final UserRepository userRepository;
-
     @Autowired
-    public AuthServiceImpl(
-            @NotNull final UserProfileRepository userProfileRepository,
-            @NotNull final UserRepository userRepository) {
-        this.userProfileRepository = userProfileRepository;
-        this.userRepository = userRepository;
-    }
+    private UserProfileRepository userProfileRepository;
 
     public UserProfile getUser(@NotNull final HttpServletRequest request) {
         final HttpSession session = request.getSession();
         final String userId = (String) session.getAttribute("userId");
-        Optional<User> optional = userRepository.findOne(userId);
-        return optional.map(userProfileRepository::findOneByUser).orElse(null);
+        return userProfileRepository.findOneByUserId(userId);
     }
 
     @Override
