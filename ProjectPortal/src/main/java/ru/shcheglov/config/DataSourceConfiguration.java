@@ -21,12 +21,13 @@ import java.util.Properties;
  * @version dated 13.12.2018
  */
 
-
 @EnableTransactionManagement
 @EnableJpaRepositories("ru.shcheglov.repository")
 @ComponentScans({
         @ComponentScan("ru.shcheglov.service"),
-        @ComponentScan("ru.shcheglov.repository")
+        @ComponentScan("ru.shcheglov.repository"),
+        @ComponentScan("ru.shcheglov.controller"),
+        @ComponentScan("ru.shcheglov.bootstrap")
 })
 @PropertySource("classpath:config.properties")
 public class DataSourceConfiguration {

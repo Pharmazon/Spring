@@ -27,9 +27,9 @@ public class Category extends AbstractEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
-    private Category parentId;
+    private Category parent;
 
-    @OneToMany(mappedBy = "parentId", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private List<Category> subCategories;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)

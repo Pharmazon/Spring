@@ -2,26 +2,17 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<jsp:include page="../header.jsp" />
+<jsp:include page="../header.jsp">
+    <jsp:param name="title" value="Edit profile" />
+</jsp:include>
 
-<title>Edit user</title>
-
-<h1>EDIT USER</h1>
-
-<form:form method="post" action="/userprofile-save" modelAttribute="userProfile">
+<form:form method="post" action="/profile/profile-save" modelAttribute="user">
     <form:hidden path="id" />
     <form:hidden path="name" />
-    <form:hidden path="user.id" />
-    <form:hidden path="user.name" />
-    <form:hidden path="user.login" />
-    <form:hidden path="user.password" />
-    <form:hidden path="email" />
     <form:hidden path="dateRegistered" />
-    <form:hidden path="company.id" />
-    <form:hidden path="company.name" />
-    <form:hidden path="company.description" />
+    <form:hidden path="email" />
     <form:hidden path="role.id" />
-    <form:hidden path="role.name" />
+    <form:hidden path="user.id" />
 
     <p>
         <button type="submit">
@@ -36,32 +27,39 @@
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">LOGIN</td>
-            <td>${userProfile.user.login}</td>
+            <td>${user.user.login}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">FIRST NAME</td>
-            <form:input path="firstName" />
+            <td>
+                <form:input path="firstName" />
+            </td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">LAST NAME</td>
-            <form:input path="lastName" />
+            <td>
+                <form:input path="lastName" />
+            </td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">E-MAIL</td>
-            <td>${userProfile.email}</td>
+            <td>${user.email}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">PHONE</td>
-            <form:input path="phone" />
+            <td>
+                <form:input path="phone" />
+            </td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">DATE REGISTRATION</td>
-            <td>${userProfile.formattedDateTime}</td>
+            <td>${user.formattedDateTime}</td>
         </tr>
         <tr>
             <td align="left" style="padding-right: 10px">COMPANY NAME</td>
-            <td>${userProfile.company.name}</td>
+            <td>${user.company.name}</td>
         </tr>
     </table>
-
 </form:form>
+
+<jsp:include page="../footer.jsp" />

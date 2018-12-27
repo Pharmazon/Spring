@@ -7,8 +7,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.shcheglov.model.user.Role;
 import ru.shcheglov.model.user.UserProfile;
+import ru.shcheglov.service.user.CompanyService;
 import ru.shcheglov.service.user.RoleService;
 import ru.shcheglov.service.user.UserProfileService;
+import ru.shcheglov.service.user.UserService;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,50 +24,54 @@ import java.util.Optional;
 public class UserController {
 
     @Autowired
-    private UserProfileService service;
+    private UserProfileService userProfileService;
 
     @Autowired
     private RoleService roleService;
 
-    @GetMapping("user-list")
-    public String entityList(final Model model) {
-        final List<UserProfile> entities = service.getAll();
+    @GetMapping("/admin/user-list")
+    public String list(final Model model) {
+        final List<UserProfile> entities = userProfileService.getAll();
         model.addAttribute("users", entities);
-        return "user-list";
+        return "admin/user-list";
     }
 
-    @PostMapping("user-create")
-    public String entityCreate(final UserProfile entity, final BindingResult result) {
-        if (!result.hasErrors()) service.saveOne(entity);
-        return "user-list";
+    @PostMapping("/admin/user-create")
+    public String create(final UserProfile entity, final BindingResult result) {
+        if (!result.hasErrors()) userProfileService.saveOne(entity);
+        return "redirect:/admin/user-list";
     }
 
-    @GetMapping("user-edit/{id}")
-    public String entityEdit(final Model model, @PathVariable("id") final String id) {
-        final Optional<UserProfile> optional = service.getOne(id);
+    @GetMapping("/admin/user-edit/{id}")
+    public String edit(final Model model, @PathVariable("id") final String id) {
+        final Optional<UserProfile> optional = userProfileService.getOne(id);
         List<Role> roles = roleService.getAll();
         model.addAttribute("roles", roles);
-        optional.ifPresent(u -> model.addAttribute("user", u));
-        return "user-edit";
+        optional.ifPresent(u -> model.addAttribute("userProfile", u));
+        return "admin/user-edit";
     }
 
-    @PostMapping("user-save")
-    public String entitySave(final UserProfile entity, final BindingResult result) {
-        if (!result.hasErrors()) service.updateOne(entity);
-        return "redirect:/user-list";
+    @PostMapping("/admin/user-save")
+    public String save(final UserProfile entity, final BindingResult result) {
+        System.out.println(entity);
+        System.out.println(result);
+        if (!result.hasErrors()) {
+            userProfileService.updateOne(entity);
+        }
+        return "redirect:/admin/user-list";
     }
 
-    @GetMapping("user-view/{id}")
-    public String entityView(final Model model, @PathVariable("id") final String id) {
-        final Optional<UserProfile> entity = service.getOne(id);
+    @GetMapping("/admin/user-view/{id}")
+    public String view(final Model model, @PathVariable("id") final String id) {
+        final Optional<UserProfile> entity = userProfileService.getOne(id);
         entity.ifPresent(a -> model.addAttribute("user", a));
-        return "user-view";
+        return "admin/user-view";
     }
 
-    @GetMapping("user-delete/{id}")
-    public String entityDelete(@PathVariable("id") final String id) {
-        service.deleteOne(id);
-        return "redirect:/user-list";
+    @GetMapping("/admin/user-delete/{id}")
+    public String delete(@PathVariable("id") final String id) {
+        userProfileService.deleteOne(id);
+        return "redirect:/admin/user-list";
     }
 
 }

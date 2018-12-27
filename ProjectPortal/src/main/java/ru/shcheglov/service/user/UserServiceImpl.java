@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.dto.UserDTO;
+import ru.shcheglov.model.user.Role;
 import ru.shcheglov.model.user.User;
+import ru.shcheglov.model.user.UserProfile;
+import ru.shcheglov.repository.user.UserProfileRepository;
 import ru.shcheglov.repository.user.UserRepository;
 
 import java.util.List;
@@ -26,6 +29,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository repository;
 
+    @Autowired
+    private UserProfileRepository userProfileRepository;
+
     @Override
     public void saveOne(User entity) {
         repository.saveOne(entity);
@@ -37,12 +43,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteOne(String id) {
+    public void deleteOne(@NotNull final String id) {
         repository.deleteOne(id);
     }
 
     @Override
-    public void deleteOne(User entity) {
+    public void deleteOne(@NotNull final User entity) {
         repository.deleteOne(entity);
     }
 
@@ -52,7 +58,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> getOne(String id) {
+    public Optional<User> getOne(@NotNull final String id) {
         return repository.findOne(id);
     }
 
@@ -62,12 +68,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateOne(User entity) {
+    public User updateOne(@NotNull final User entity) {
         return repository.updateOne(entity);
     }
 
     @Override
-    public void saveOne(UserDTO dto) {
+    public void saveOne(@NotNull final UserDTO dto) {
         final Optional<User> optional = getOne(dto.getId());
         if (!optional.isPresent()) {
             final User entity = new User();
@@ -79,13 +85,33 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteOne(UserDTO dto) {
+    public void deleteOne(@NotNull final UserDTO dto) {
         deleteOne(dto.getId());
     }
 
+
     @Override
-    public User getByLogin(String login) {
-        return repository.findByLogin(login);
+    public Long countByLogin(@NotNull final String login) {
+        return repository.countByLogin(login);
+    }
+
+    @Override
+    public boolean isExist(String login) {
+        return repository.isExist(login);
+    }
+
+    @Override
+    public Role getRole(@NotNull final User user) {
+        final UserProfile profile = userProfileRepository.findOneByUser(user);
+        return profile.getRole();
+    }
+
+    @Override
+    public Role getRoleByUserId(@NotNull final String id) {
+        Optional<User> user = repository.findOne(id);
+        return user
+                .map(us -> userProfileRepository.findOneByUser(us).getRole())
+                .orElse(null);
     }
 
 }

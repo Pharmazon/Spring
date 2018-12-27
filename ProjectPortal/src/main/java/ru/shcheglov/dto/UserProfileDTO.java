@@ -1,8 +1,6 @@
 package ru.shcheglov.dto;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.shcheglov.dto.common.AbstractDTO;
@@ -19,10 +17,11 @@ import java.time.LocalDateTime;
  * @version dated 24.12.2018
  */
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
+@Getter
+@Setter
 @XmlRootElement
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class UserProfileDTO extends AbstractDTO<UserProfile> {
 
     @Nullable

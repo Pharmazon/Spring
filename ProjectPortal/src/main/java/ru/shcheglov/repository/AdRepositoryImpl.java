@@ -21,8 +21,8 @@ public class AdRepositoryImpl extends AbstractRepository<Ad> implements AdReposi
 
     @Override
     public void deleteOne(@NotNull final String id) {
-        final Optional<Ad> entity = findOne(id);
-        entity.ifPresent(this::deleteOne);
+        final Ad ad = getEntityManager().find(Ad.class, id);
+        deleteOne(ad);
     }
 
     @Override
@@ -34,7 +34,10 @@ public class AdRepositoryImpl extends AbstractRepository<Ad> implements AdReposi
 
     @Override
     public Optional<Ad> findOne(@NotNull final String id) {
-        return Optional.of(getEntityManager().find(Ad.class, id));
+        return Optional.ofNullable(getEntityManager()
+                .createNamedQuery("Ad.findOne", Ad.class)
+                .setParameter("adId", id)
+                .getSingleResult());
     }
 
     @Override

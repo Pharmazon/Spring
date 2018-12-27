@@ -44,4 +44,9 @@ public class CategoryRepositoryImpl extends AbstractRepository<Category> impleme
                 .getResultList();
     }
 
+    public Optional<Category> findOneParent(@NotNull final String id) {
+        final Optional<Category> sub = findOne(id);
+        return sub.map(category -> Optional.of(category.getParent())).orElse(null);
+    }
+
 }

@@ -25,10 +25,6 @@ public abstract class AbstractRepository<T extends AbstractEntity> implements Co
         return resultList.isEmpty() ? null : resultList;
     }
 
-    public T getEntity(@NotNull final TypedQuery<T> query) {
-        return query.getSingleResult();
-    }
-
     public void saveOne(@NotNull final T model) {
         entityManager.persist(model);
     }

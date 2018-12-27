@@ -9,11 +9,11 @@ import org.springframework.web.client.RestTemplate;
 
 public class AdRestTest extends Assert {
 
-    @Test
-    public void testGet() {
-        final RestTemplate template = new RestTemplate();
-        final String url = "http://localhost:8080/AdService/getAdList";
-        final AdDTO[] ads = template.getForObject(url, AdDTO[].class);
-        assertNotNull(ads);
-    }
+//    @Test
+//    public void testGet() {
+//        final RestTemplate template = new RestTemplate();
+//        final String url = "http://localhost:8080/AdService/getAdList";
+//        final AdDTO[] ads = template.getForObject(url, AdDTO[].class);
+//        assertNotNull(ads);
+//    }
 }

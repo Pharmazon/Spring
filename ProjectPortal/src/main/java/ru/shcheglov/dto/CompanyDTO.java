@@ -1,8 +1,6 @@
 package ru.shcheglov.dto;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.shcheglov.dto.common.AbstractDTO;
@@ -16,21 +14,23 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @version dated 14.12.2018
  */
 
-@Data
-@EqualsAndHashCode(callSuper = true)
-@NoArgsConstructor
+@Getter
+@Setter
 @XmlRootElement
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public final class CompanyDTO extends AbstractDTO<Company> {
 
     @Nullable
     private String description;
 
     @Nullable
-    private Address address;
+    private String addressId;
 
     public CompanyDTO(@NotNull final Company company) {
         description = company.getDescription();
-        address = company.getAddress();
+        @Nullable final Address address = company.getAddress();
+        addressId = address != null ? address.getId() : null;
     }
 
 }
