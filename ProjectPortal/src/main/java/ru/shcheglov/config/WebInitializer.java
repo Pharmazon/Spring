@@ -15,7 +15,7 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class<?>[] {DataSourceConfiguration.class};
+        return new Class<?>[] {WebSecurityConfig.class, DataSourceConfiguration.class};
     }
 
     @Override
