@@ -13,6 +13,7 @@ import ru.shcheglov.service.user.AuthService;
 import ru.shcheglov.service.user.UserProfileService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.util.Optional;
 
 /**
@@ -23,28 +24,20 @@ import java.util.Optional;
 @Controller
 public class ProfileController {
 
-    @Autowired
-    private UserProfileService userProfileService;
+    private final UserProfileService userProfileService;
+
+    private final AuthService authService;
 
     @Autowired
-    private AuthService authService;
-
-    @GetMapping("/profile/profile-view")
-    public String get(
-            final Model model,
-            final HttpServletRequest request) {
-        final UserProfile user = authService.getUser(request);
-        if (user == null) return "redirect:/login";
-        model.addAttribute("user", user);
-        return "profile/profile-view";
+    public ProfileController(UserProfileService userProfileService, AuthService authService) {
+        this.userProfileService = userProfileService;
+        this.authService = authService;
     }
 
-    @GetMapping("/profile/profile-edit/{id}")
-    public String edit(
-            final Model model,
-            @PathVariable("id") final String id) {
-        final Optional<UserProfile> optional = userProfileService.getOne(id);
-        optional.ifPresent(u -> model.addAttribute("user", u));
+    @GetMapping("/profile/profile-edit")
+    public String edit(final Model model, final Principal principal) {
+        final UserProfile userProfile = authService.getUser(principal);
+        model.addAttribute("user", userProfile);
         return "profile/profile-edit";
     }
 
@@ -56,7 +49,7 @@ public class ProfileController {
         if (!result.hasErrors()) {
             userProfileService.updateOne(user);
         }
-        return "redirect:/profile/profile-view";
+        return "redirect:/profile/profile-edit";
     }
 
 }
