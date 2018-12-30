@@ -16,7 +16,7 @@ import ru.shcheglov.interceptor.LoggerInterceptor;
 
 @Configuration
 @EnableWebMvc
-@Import(DataSourceConfiguration.class)
+@Import({DataSourceConfiguration.class, WebSecurityConfig.class})
 @ComponentScan({"ru.shcheglov.controller", "ru.shcheglov.model"})
 public class WebMvcConfig implements WebMvcConfigurer {
 
@@ -46,10 +46,10 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return source;
     }
 
-//    @Override
-//    public void addViewControllers(final ViewControllerRegistry registry) {
-//        registry.addViewController("/login").setViewName("login");
-//    }
+    @Override
+    public void addViewControllers(final ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
+    }
 
     @Override
     public void configureViewResolvers(final ViewResolverRegistry registry) {

@@ -14,15 +14,15 @@
     <h2>Welcome, <c:out value="${username}"/>!</h2>
 </sec:authorize>
 
-<sec:authorize access="hasRole('USER')">
+<sec:authorize access="hasAuthority('USER')">
     <h3>You authorized as USER.</h3><br>
 </sec:authorize>
 
-<sec:authorize access="hasRole('ADMINISTRATOR')">
+<sec:authorize access="hasAuthority('ADMINISTRATOR')">
     <h3>You authorized as ADMINISTRATOR.</h3><br>
 </sec:authorize>
 
-<sec:authorize access="hasRole('MANAGER')">
+<sec:authorize access="hasAuthority('MANAGER')">
     <h3>You authorized as MANAGER.</h3><br>
 </sec:authorize>
 

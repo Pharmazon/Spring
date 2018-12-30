@@ -10,7 +10,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.shcheglov.enums.UserRole;
 
 /**
  * @author Alexey Shcheglov
@@ -37,8 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/*").hasAnyAuthority(UserRole.ADMINISTRATOR.name(), UserRole.USER.name())
-                .antMatchers("/admin/*").hasAuthority(UserRole.ADMINISTRATOR.name())
+                .antMatchers("/*").hasAnyAuthority("ADMINISTRATOR", "USER")
+                .antMatchers("/admin/*").hasAuthority("ADMINISTRATOR")
                 .and()
                 .formLogin().loginPage("/login").loginProcessingUrl("/loginAction")
                 .usernameParameter("login").passwordParameter("password").failureUrl("/login")
