@@ -6,11 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.servlet.config.annotation.*;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
 import ru.shcheglov.interceptor.LoggerInterceptor;
 
 /**
@@ -25,14 +21,14 @@ import ru.shcheglov.interceptor.LoggerInterceptor;
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
 
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new LoggerInterceptor());
-//    }
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoggerInterceptor());
+    }
 
 //    @Bean
 //    public InternalResourceViewResolver resolver() {
@@ -43,20 +39,20 @@ public class WebMvcConfig implements WebMvcConfigurer {
 //        return resolver;
 //    }
 
-//    @Bean
-//    public MessageSource messageSource() {
-//        final ResourceBundleMessageSource source = new ResourceBundleMessageSource();
-//        source.setBasename("messages");
-//        return source;
+    @Bean
+    public MessageSource messageSource() {
+        final ResourceBundleMessageSource source = new ResourceBundleMessageSource();
+        source.setBasename("messages");
+        return source;
+    }
+
+//    @Override
+//    public void addViewControllers(final ViewControllerRegistry registry) {
+//        registry.addViewController("/login").setViewName("login");
 //    }
 
     @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/login").setViewName("login");
-    }
-
-    @Override
-    public void configureViewResolvers(ViewResolverRegistry registry) {
+    public void configureViewResolvers(final ViewResolverRegistry registry) {
         registry.jsp().prefix("/WEB-INF/views/").suffix(".jsp");
     }
 }

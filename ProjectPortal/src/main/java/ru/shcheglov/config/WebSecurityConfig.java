@@ -30,18 +30,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().hasAnyRole(
-                UserRole.USER.name(),
-                UserRole.ADMINISTRATOR.name()
-        )
+    protected void configure(final HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/*").hasAnyAuthority(UserRole.ADMINISTRATOR.name(), UserRole.USER.name())
+                .antMatchers("/admin/*").hasAuthority(UserRole.ADMINISTRATOR.name())
                 .and()
-                .formLogin()
+                .formLogin().loginPage("/login").loginProcessingUrl("/loginAction")
+                .usernameParameter("login").passwordParameter("password").failureUrl("/login")
                 .and()
                 .logout().permitAll().logoutSuccessUrl("/login")
                 .and()
