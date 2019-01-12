@@ -5,25 +5,25 @@
     <jsp:param name="title" value="Main" />
 </jsp:include>
 
-<sec:authorize access="isAnonymous()">
+<%--<sec:authorize access="isAnonymous()">--%>
     <b>Hello, my ANONYMOUS friend! </b><br>
     <b>Please, authorize to let me know you!</b><br>
-</sec:authorize>
+<%--</sec:authorize>--%>
 
-<sec:authorize access="isAuthenticated()">
-    <h2>Welcome, <c:out value="${username}"/>!</h2>
-</sec:authorize>
+<%--<sec:authorize access="isAuthenticated()">--%>
+    <h2>Welcome, friend!</h2>
+<%--</sec:authorize>--%>
 
-<sec:authorize access="hasAuthority('USER')">
+<%--<sec:authorize access="hasAuthority('USER')">--%>
     <h3>You authorized as USER.</h3><br>
-</sec:authorize>
+<%--</sec:authorize>--%>
 
-<sec:authorize access="hasAuthority('ADMINISTRATOR')">
+<%--<sec:authorize access="hasAuthority('ADMINISTRATOR')">--%>
     <h3>You authorized as ADMINISTRATOR.</h3><br>
-</sec:authorize>
+<%--</sec:authorize>--%>
 
-<sec:authorize access="hasAuthority('MANAGER')">
+<%--<sec:authorize access="hasAuthority('MANAGER')">--%>
     <h3>You authorized as MANAGER.</h3><br>
-</sec:authorize>
+<%--</sec:authorize>--%>
 
 <jsp:include page="footer.jsp" />

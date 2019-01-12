@@ -31,16 +31,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+//        auth.inMemoryAuthentication()
+//                .withUser("test").password("test").roles("USER")
+//                .and()
+//                .withUser("admin").password("admin").roles("ADMINISTRATOR", "USER");
     }
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/*").hasAnyAuthority("ADMINISTRATOR", "USER")
-                .antMatchers("/admin/*").hasAuthority("ADMINISTRATOR")
+        http
+                .antMatcher("/**")
+                .authorizeRequests()
+                    .antMatchers("/admin/**").hasAuthority("ADMINISTRATOR")
+                    .anyRequest().authenticated()
+
+//                .authorizeRequests()
+//                .anyRequest().hasAnyAuthority("ADMINISTRATOR", "USER")
+//                .antMatchers("/login", "/").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .antMatchers("/**").authenticated()
+//                .antMatchers("/admin/**").hasAuthority("ADMINISTRATOR")
                 .and()
                 .formLogin().loginPage("/login").loginProcessingUrl("/loginAction")
-                .usernameParameter("login").passwordParameter("password").failureUrl("/login")
+                .usernameParameter("l   ogin").passwordParameter("password").failureUrl("/login")
                 .and()
                 .logout().permitAll().logoutSuccessUrl("/login")
                 .and()

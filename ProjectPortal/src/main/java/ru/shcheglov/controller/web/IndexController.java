@@ -18,13 +18,8 @@ import java.security.Principal;
 @Controller
 public class IndexController {
 
-    @Autowired
-    private AuthService authService;
-
     @GetMapping("/")
-    public String index(final Principal principal, final Model model) {
-        final UserProfile user = authService.getUser(principal);
-        model.addAttribute("username", user.getFirstName() + " " + user.getLastName());
+    public String index() {
         return "index";
     }
 
