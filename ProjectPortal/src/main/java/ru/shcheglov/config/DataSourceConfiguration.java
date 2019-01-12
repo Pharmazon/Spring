@@ -26,7 +26,6 @@ import java.util.Properties;
 @ComponentScans({
         @ComponentScan("ru.shcheglov.service"),
         @ComponentScan("ru.shcheglov.repository"),
-        @ComponentScan("ru.shcheglov.controller"),
         @ComponentScan("ru.shcheglov.bootstrap")
 })
 @PropertySource("classpath:config.properties")

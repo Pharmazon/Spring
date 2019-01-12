@@ -2,6 +2,7 @@ package ru.shcheglov.service.user;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.shcheglov.dto.UserProfileDTO;
@@ -38,8 +39,8 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Autowired
     private RoleRepository roleRepository;
 
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void saveOne(@NotNull final UserProfile entity) {
@@ -83,14 +84,6 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     @Override
     public void saveOne(@NotNull final UserProfileDTO dto) {
-//        final Optional<User> optional = getOne(dto.getId());
-//        if (!optional.isPresent()) {
-//            final UserProfile entity = new UserProfile();
-//            entity.setId(dto.getId());
-//            entity.setName(dto.getName());
-//            entity.setLogin(dto.getLogin());
-//            saveOne(entity);
-//        }
     }
 
     @Override
@@ -138,8 +131,7 @@ public class UserProfileServiceImpl implements UserProfileService {
             @NotNull final String login,
             @NotNull final String password,
             @NotNull final UserRole userRole) {
-//        final String passwordHash = passwordEncoder.encode(password);
-        final String passwordHash = password;
+        final String passwordHash = passwordEncoder.encode(password);
         final User user = new User();
         user.setLogin(login);
         user.setEnabled(true);

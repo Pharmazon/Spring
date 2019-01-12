@@ -1,6 +1,7 @@
 package ru.shcheglov.controller.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +22,8 @@ public class LoginController {
     @Autowired
     private UserProfileService userProfileService;
 
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/login")
     private String login() {
@@ -42,8 +43,7 @@ public class LoginController {
         UserProfile up = userProfileService.getByLogin(login);
         if (up == null || !up.getUser().getEnabled()) return "redirect:/login";
 
-//        final boolean passwordCorrect = passwordEncoder.matches(password, up.getUser().getPassword());
-        final boolean passwordCorrect = password.equals(up.getUser().getPassword());
+        final boolean passwordCorrect = passwordEncoder.matches(password, up.getUser().getPassword());
         if (!passwordCorrect) return "redirect:/login";
 
         if (!result.hasErrors()) {

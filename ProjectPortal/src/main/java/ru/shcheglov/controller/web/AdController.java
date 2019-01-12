@@ -15,6 +15,7 @@ import ru.shcheglov.service.CategoryService;
 import ru.shcheglov.service.user.AuthService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -54,13 +55,10 @@ public class AdController {
     }
 
     @PostMapping("/profile/ad-create")
-    public String create(
-            final Ad entity,
-            final HttpServletRequest request,
-            final BindingResult result) {
+    public String create(final Ad entity, final Principal principal, final BindingResult result) {
         if (!result.hasErrors()) {
             entity.setDateTime(LocalDateTime.now());
-            final UserProfile userProfile = authService.getUser(request);
+            final UserProfile userProfile = authService.getUser(principal);
             entity.setUser(userProfile);
             adService.saveOne(entity);
         }

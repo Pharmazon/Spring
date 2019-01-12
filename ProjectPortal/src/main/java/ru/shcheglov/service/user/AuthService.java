@@ -4,6 +4,7 @@ import ru.shcheglov.model.user.Role;
 import ru.shcheglov.model.user.UserProfile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.security.Principal;
 
 /**
  * @author Alexey Shcheglov
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface AuthService {
 
-    UserProfile getUser(HttpServletRequest request);
+    UserProfile getUser(Principal principal);
 
     Role getUserRole(UserProfile up);
 

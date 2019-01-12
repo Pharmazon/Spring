@@ -1,12 +1,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <jsp:include page="../header.jsp">
-    <jsp:param name="title" value="Edit profile" />
+    <jsp:param name="title" value="Profile" />
 </jsp:include>
 
 <form:form method="post" action="/profile/profile-save" modelAttribute="user">
+    <sec:csrfInput/>
+
     <form:hidden path="id" />
     <form:hidden path="name" />
     <form:hidden path="dateRegistered" />
@@ -58,6 +61,11 @@
         <tr>
             <td align="left" style="padding-right: 10px">COMPANY NAME</td>
             <td>${user.company.name}</td>
+        </tr>
+
+        <tr>
+            <td align="left" style="padding-right: 10px">COMPANY NAME</td>
+            <td>${user.company.description}</td>
         </tr>
     </table>
 </form:form>

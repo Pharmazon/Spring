@@ -6,14 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.config.annotation.*;
 import ru.shcheglov.interceptor.LoggerInterceptor;
 
 /**
@@ -23,18 +16,13 @@ import ru.shcheglov.interceptor.LoggerInterceptor;
 
 @Configuration
 @EnableWebMvc
-@Import(DataSourceConfiguration.class)
-@ComponentScan({"ru.shcheglov.model", "ru.shcheglov.config"})
+@Import({DataSourceConfiguration.class, WebSecurityConfig.class})
+@ComponentScan({"ru.shcheglov.controller", "ru.shcheglov.model"})
 public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
     }
 
     @Override
@@ -42,14 +30,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LoggerInterceptor());
     }
 
-    @Bean
-    public InternalResourceViewResolver resolver() {
-        final InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-        resolver.setViewClass(JstlView.class);
-        resolver.setPrefix("/WEB-INF/views/");
-        resolver.setSuffix(".jsp");
-        return resolver;
-    }
+//    @Bean
+//    public InternalResourceViewResolver resolver() {
+//        final InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+//        resolver.setViewClass(JstlView.class);
+//        resolver.setPrefix("/WEB-INF/views/");
+//        resolver.setSuffix(".jsp");
+//        return resolver;
+//    }
 
     @Bean
     public MessageSource messageSource() {
@@ -58,4 +46,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
         return source;
     }
 
+    @Override
+    public void addViewControllers(final ViewControllerRegistry registry) {
+        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/").setViewName("index");
+    }
+
+    @Override
+    public void configureViewResolvers(final ViewResolverRegistry registry) {
+        registry.jsp().prefix("/WEB-INF/views/").suffix(".jsp");
+    }                                                                               
 }
