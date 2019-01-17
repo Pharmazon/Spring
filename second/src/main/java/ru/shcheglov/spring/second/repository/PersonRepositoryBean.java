@@ -7,8 +7,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 import ru.shcheglov.spring.second.model.Person;
 
-import javax.annotation.PostConstruct;
-import java.util.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.LinkedList;
 
 /**
  * @author Alexey Shcheglov
@@ -18,12 +19,6 @@ import java.util.*;
 @Repository
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class PersonRepositoryBean extends AbstractRepository<Person> implements PersonRepository {
-
-    @PostConstruct
-    private void init() {
-        merge(new Person("Иван", "Иванов", "Иванович", "ivan@ivanov.com"));
-        merge(new Person("Петр", "Петров", "Петрович", "petr@petrov.ru"));
-    }
 
     @Override
     public Collection<Person> findAll() {

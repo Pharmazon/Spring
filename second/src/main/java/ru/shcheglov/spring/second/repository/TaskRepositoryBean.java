@@ -16,53 +16,38 @@ import java.util.*;
 
 @Repository
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-public class TaskRepositoryBean implements TaskRepository {
-
-    @NotNull
-    private Map<String, Task> tasks = new LinkedHashMap<>();
+public class TaskRepositoryBean extends AbstractRepository<Task> implements TaskRepository {
 
     @Override
     public Collection<Task> findAll() {
-        return tasks.values();
+        return getEntityManager()
+                .createNamedQuery("Task.findAll", Task.class)
+                .getResultList();
     }
 
     @Override
     public Task findOneById(@Nullable final String id) {
-        if (id == null || id.isEmpty()) return null;
-        return tasks.get(id);
+        if (id == null) return null;
+        return getEntityManager().find(Task.class, id);
     }
 
     @Override
     public Collection<Task> findAllByIds(@Nullable final Collection<String> ids) {
         if (ids == null || ids.isEmpty()) return Collections.emptySet();
-        @Nullable final Collection<Task> result = new LinkedHashSet<>();
+        @Nullable final Collection<Task> result = new LinkedList<>();
         for (@Nullable final String id : ids) {
             if (id == null || id.isEmpty()) continue;
-            @Nullable final Task product = findOneById(id);
-            if (product == null) continue;
-            result.add(product);
+            @Nullable final Task person = findOneById(id);
+            if (person == null) continue;
+            result.add(person);
         }
         return result;
     }
 
     @Override
-    public Task merge(@Nullable final Task entity) {
-        if (entity == null) return null;
-        @Nullable final String id = entity.getId();
-        if (id == null || id.isEmpty()) return null;
-        if (tasks.containsKey(id)) {
-            tasks.replace(id, tasks.get(id), entity);
-        }
-        if (!tasks.containsKey(id)) {
-            tasks.put(id, entity);
-        }
-        return entity;
-    }
-
-    @Override
     public Collection<Task> merge(@Nullable final Collection<Task> entities) {
         if (entities == null || entities.isEmpty()) return Collections.emptySet();
-        @NotNull final Collection<Task> result = new LinkedHashSet<>();
+        @NotNull final Collection<Task> result = new LinkedList<>();
         for (@Nullable final Task entity : entities) {
             if (entity == null) continue;
             result.add(merge(entity));
@@ -72,7 +57,9 @@ public class TaskRepositoryBean implements TaskRepository {
 
     @Override
     public void removeAll() {
-        tasks.clear();
+        getEntityManager()
+                .createNamedQuery("Task.removeAll", Task.class)
+                .executeUpdate();
     }
 
     @Override
@@ -87,8 +74,8 @@ public class TaskRepositoryBean implements TaskRepository {
     @Override
     public void removeById(@Nullable final String id) {
         if (id == null || id.isEmpty()) return;
-        if (!tasks.containsKey(id)) return;
-        tasks.remove(id);
+        final Task person = findOneById(id);
+        removeOne(person);
     }
 
     @Override
