@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.shcheglov.spring.second.model.Person;
 import ru.shcheglov.spring.second.model.Task;
 import ru.shcheglov.spring.second.repository.PersonRepository;
-import ru.shcheglov.spring.second.repository.TaskRepository;
+import ru.shcheglov.spring.second.service.PersonService;
+import ru.shcheglov.spring.second.service.TaskService;
 
 import java.util.Collection;
 import java.util.Map;
@@ -24,34 +25,34 @@ import java.util.Map;
 public class TaskController {
 
     @Autowired
-    private TaskRepository taskRepository;
+    private TaskService taskService;
 
     @Autowired
-    private PersonRepository personRepository;
+    private PersonService personService;
 
     @GetMapping("/task-list")
     public String list(final Model model) {
-        final Collection<Task> tasks = taskRepository.findAll();
+        final Collection<Task> tasks = taskService.findAll();
         model.addAttribute("tasks", tasks);
         return "task-list";
     }
 
     @GetMapping("/task-create")
     public String create() {
-        taskRepository.merge(new Task());
+        taskService.merge(new Task());
         return "redirect:/task-list";
     }
 
     @GetMapping("/task-remove")
     public String remove(@RequestParam("id") String id) {
-        taskRepository.removeById(id);
+        taskService.removeById(id);
         return "redirect:/task-list";
     }
 
     @GetMapping("/task-edit")
     public String edit(@RequestParam("id") String id, Map<String, Object> model) {
-        final Task task = taskRepository.findOneById(id);
-        final Collection<Person> persons = personRepository.findAll();
+        final Task task = taskService.findOneById(id);
+        final Collection<Person> persons = personService.findAll();
         model.put("task", task);
         model.put("persons", persons);
         model.put("lastSelected", id);
@@ -60,7 +61,7 @@ public class TaskController {
 
     @PostMapping("/task-save")
     public String save(@ModelAttribute("task") Task task) {
-        taskRepository.merge(task);
+        taskService.merge(task);
         return "redirect:/task-list";
     }
 

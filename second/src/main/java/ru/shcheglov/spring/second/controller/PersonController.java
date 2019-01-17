@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.shcheglov.spring.second.model.Person;
-import ru.shcheglov.spring.second.repository.PersonRepository;
+import ru.shcheglov.spring.second.service.PersonService;
 
 import java.util.Collection;
 import java.util.Map;
@@ -22,37 +22,37 @@ import java.util.Map;
 public class PersonController {
 
     @Autowired
-    private PersonRepository personRepository;
+    private PersonService personService;
 
     @GetMapping("/person-list")
     public String list(final Model model) {
-        final Collection<Person> persons = personRepository.findAll();
+        final Collection<Person> persons = personService.findAll();
         model.addAttribute("persons", persons);
         return "person-list";
     }
 
     @GetMapping("/person-create")
     public String create() {
-        personRepository.merge(new Person());
+        personService.merge(new Person());
         return "redirect:/person-list";
     }
 
     @GetMapping("/person-remove")
     public String remove(@RequestParam("id") String id) {
-        personRepository.removeById(id);
+        personService.removeById(id);
         return "redirect:/person-list";
     }
 
     @GetMapping("/person-edit")
     public String edit(@RequestParam("id") String id, Map<String, Object> model) {
-        final Person person = personRepository.findOneById(id);
+        final Person person = personService.findOneById(id);
         model.put("person", person);
         return "person-edit";
     }
 
     @PostMapping("/person-save")
     public String save(@ModelAttribute("person") Person person) {
-        personRepository.merge(person);
+        personService.merge(person);
         return "redirect:/person-list";
     }
 
