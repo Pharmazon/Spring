@@ -15,6 +15,11 @@ import ru.shcheglov.spring.second.repository.TaskRepository;
 import java.util.Collection;
 import java.util.Map;
 
+/**
+ * @author Alexey Shcheglov
+ * @version dated 16.01.2019
+ */
+
 @Controller
 public class TaskController {
 

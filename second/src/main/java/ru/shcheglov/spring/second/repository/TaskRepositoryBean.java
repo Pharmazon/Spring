@@ -9,6 +9,11 @@ import ru.shcheglov.spring.second.model.Task;
 
 import java.util.*;
 
+/**
+ * @author Alexey Shcheglov
+ * @version dated 16.01.2019
+ */
+
 @Repository
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class TaskRepositoryBean implements TaskRepository {
