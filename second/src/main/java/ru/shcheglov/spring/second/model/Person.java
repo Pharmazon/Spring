@@ -1,11 +1,9 @@
 package ru.shcheglov.spring.second.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.jetbrains.annotations.Nullable;
 
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -13,25 +11,37 @@ import java.util.List;
  * @version dated 16.01.2019
  */
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "app_persons")
+@EqualsAndHashCode(callSuper = true)
+@NamedQueries({
+        @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p LEFT JOIN FETCH p.tasks"),
+        @NamedQuery(name = "Person.removeAll", query = "DELETE FROM Person p")
+})
 public class Person extends AbstractEntity {
 
     @Nullable
+    @Column(name = "first_name")
     private String firstName;
 
     @Nullable
+    @Column(name = "last_name")
     private String lastName;
 
     @Nullable
+    @Column(name = "middle_name")
     private String middleName;
 
     @Nullable
+    @Column(name = "email")
     private String email;
 
     @Nullable
+    @OneToMany(mappedBy = "person", fetch = FetchType.LAZY)
     private List<Task> tasks;
 
     public Person(@Nullable final String firstName, @Nullable final String lastName, @Nullable final String middleName,
