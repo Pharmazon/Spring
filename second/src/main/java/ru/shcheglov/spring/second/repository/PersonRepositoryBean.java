@@ -24,9 +24,7 @@ public class PersonRepositoryBean implements PersonRepository {
 
     @PostConstruct
     private void init() {
-        final Person person = new Person("Иван", "Иванов", "Иванович", "ivan@ivanov.com");
-        merge(person);
-        System.out.println(person.getId());
+        merge(new Person("Иван", "Иванов", "Иванович", "ivan@ivanov.com"));
         merge(new Person("Петр", "Петров", "Петрович", "petr@petrov.ru"));
     }
 

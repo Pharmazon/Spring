@@ -55,4 +55,5 @@ public class Person extends AbstractEntity {
         if (userId == null | userId.isEmpty()) return false;
         return getId().equals(userId);
     }
+
 }
