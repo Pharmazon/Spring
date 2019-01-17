@@ -12,6 +12,10 @@ import java.util.Collection;
 
 public interface CommonRepository<T extends AbstractEntity> {
 
+    void saveOne(@Nullable T entity);
+
+    void saveAll(@Nullable Collection<T> entities);
+
     Collection<T> findAll();
 
     T findOneById(@Nullable String id);
@@ -29,6 +33,8 @@ public interface CommonRepository<T extends AbstractEntity> {
     void removeById(@Nullable String id);
 
     void removeByIds(@Nullable Collection<String> ids);
+
+    void removeOne(@Nullable T entity);
 
 }
 

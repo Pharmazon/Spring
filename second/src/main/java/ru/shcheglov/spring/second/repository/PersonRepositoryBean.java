@@ -17,10 +17,7 @@ import java.util.*;
 
 @Repository
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-public class PersonRepositoryBean implements PersonRepository {
-
-    @NotNull
-    private Map<String, Person> persons = new LinkedHashMap<>();
+public class PersonRepositoryBean extends AbstractRepository<Person> implements PersonRepository {
 
     @PostConstruct
     private void init() {
@@ -30,46 +27,34 @@ public class PersonRepositoryBean implements PersonRepository {
 
     @Override
     public Collection<Person> findAll() {
-        return persons.values();
+        return getEntityManager()
+                .createNamedQuery("Person.findAll", Person.class)
+                .getResultList();
     }
 
     @Override
     public Person findOneById(@Nullable final String id) {
-        if (id == null || id.isEmpty()) return null;
-        return persons.get(id);
+        if (id == null) return null;
+        return getEntityManager().find(Person.class, id);
     }
 
     @Override
     public Collection<Person> findAllByIds(@Nullable final Collection<String> ids) {
         if (ids == null || ids.isEmpty()) return Collections.emptySet();
-        @Nullable final Collection<Person> result = new LinkedHashSet<>();
+        @Nullable final Collection<Person> result = new LinkedList<>();
         for (@Nullable final String id : ids) {
             if (id == null || id.isEmpty()) continue;
-            @Nullable final Person product = findOneById(id);
-            if (product == null) continue;
-            result.add(product);
+            @Nullable final Person person = findOneById(id);
+            if (person == null) continue;
+            result.add(person);
         }
         return result;
     }
 
     @Override
-    public Person merge(@Nullable final Person entity) {
-        if (entity == null) return null;
-        @Nullable final String id = entity.getId();
-        if (id == null || id.isEmpty()) return null;
-        if (persons.containsKey(id)) {
-            persons.replace(id, persons.get(id), entity);
-        }
-        if (!persons.containsKey(id)) {
-            persons.put(id, entity);
-        }
-        return entity;
-    }
-
-    @Override
     public Collection<Person> merge(@Nullable final Collection<Person> entities) {
         if (entities == null || entities.isEmpty()) return Collections.emptySet();
-        @NotNull final Collection<Person> result = new LinkedHashSet<>();
+        @NotNull final Collection<Person> result = new LinkedList<>();
         for (@Nullable final Person entity : entities) {
             if (entity == null) continue;
             result.add(merge(entity));
@@ -79,7 +64,9 @@ public class PersonRepositoryBean implements PersonRepository {
 
     @Override
     public void removeAll() {
-        persons.clear();
+        getEntityManager()
+                .createNamedQuery("Person.removeAll", Person.class)
+                .executeUpdate();
     }
 
     @Override
@@ -94,8 +81,8 @@ public class PersonRepositoryBean implements PersonRepository {
     @Override
     public void removeById(@Nullable final String id) {
         if (id == null || id.isEmpty()) return;
-        if (!persons.containsKey(id)) return;
-        persons.remove(id);
+        final Person person = findOneById(id);
+        removeOne(person);
     }
 
     @Override
