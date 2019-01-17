@@ -24,11 +24,11 @@ public class Task extends AbstractEntity {
     @Nullable
     private String description = "";
 
+    @Nullable
+    private Person person = null;
+
     public Task(@Nullable final String name) {
         this.name = name;
     }
-
-    @Nullable
-    private Person person;
 
 }

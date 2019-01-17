@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Task edit</title>
+    </head>
+    <body>
+        <div th:replace="fragments/header.html"></div>
+
+        <form th:action="@{/task-save}" th:object="${task}" method="post">
+            <table width="100%" cellspacing="0" cellpadding="10" border="1">
+                <tr>
+                    <td width="200" nowrap="nowrap">ID</td>
+                    <td width="100%">
+                        <input type="text" th:field="*{id}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        <input type="text" th:field="*{name}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td>
+                        <input type="text" th:field="*{description}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Responsible</td>
+                    <td>
+                        <select th:field="*{person}">
+                            <option th:value="0" disabled>Select performer:</option>
+                            <option th:each="person : ${persons}"
+                                    th:value="${person.id}"
+                                    th:selected="${person.isSelected(lastSelected)}"
+                                    th:text="${person}">
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
+            <br/>
+            <button type="submit">SAVE</button>
+            <br/>
+        </form>
+
+        <div th:replace="fragments/footer.html"></div>
+    </body>
+</html>
