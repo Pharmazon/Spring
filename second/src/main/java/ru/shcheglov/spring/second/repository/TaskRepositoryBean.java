@@ -2,25 +2,34 @@ package ru.shcheglov.spring.second.repository;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.shcheglov.spring.second.model.Person;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
 import ru.shcheglov.spring.second.model.Task;
 
 import java.util.*;
 
+/**
+ * @author Alexey Shcheglov
+ * @version dated 16.01.2019
+ */
+
+@Repository
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class TaskRepositoryBean implements TaskRepository {
 
     @NotNull
-    private Map<String, Task> products = new LinkedHashMap<>();
+    private Map<String, Task> tasks = new LinkedHashMap<>();
 
     @Override
     public Collection<Task> findAll() {
-        return products.values();
+        return tasks.values();
     }
 
     @Override
     public Task findOneById(@Nullable final String id) {
         if (id == null || id.isEmpty()) return null;
-        return products.get(id);
+        return tasks.get(id);
     }
 
     @Override
@@ -41,11 +50,11 @@ public class TaskRepositoryBean implements TaskRepository {
         if (entity == null) return null;
         @Nullable final String id = entity.getId();
         if (id == null || id.isEmpty()) return null;
-        if (products.containsKey(id)) {
-            products.replace(id, products.get(id), entity);
+        if (tasks.containsKey(id)) {
+            tasks.replace(id, tasks.get(id), entity);
         }
-        if (!products.containsKey(id)) {
-            products.put(id, entity);
+        if (!tasks.containsKey(id)) {
+            tasks.put(id, entity);
         }
         return entity;
     }
@@ -63,7 +72,7 @@ public class TaskRepositoryBean implements TaskRepository {
 
     @Override
     public void removeAll() {
-        products.clear();
+        tasks.clear();
     }
 
     @Override
@@ -78,8 +87,8 @@ public class TaskRepositoryBean implements TaskRepository {
     @Override
     public void removeById(@Nullable final String id) {
         if (id == null || id.isEmpty()) return;
-        if (!products.containsKey(id)) return;
-        products.remove(id);
+        if (!tasks.containsKey(id)) return;
+        tasks.remove(id);
     }
 
     @Override

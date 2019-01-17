@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Greetings!</title>
+    </head>
+    <body>
+        <div th:replace="fragments/header.html"></div>
+            <h1 style="margin-left: 10px">WELCOME, FRIEND!</h1>
+        <div th:replace="fragments/footer.html"></div>
+        <!--<div th:replace="~{fragments/footer :: footer}"></div>-->
+    </body>
+</html>

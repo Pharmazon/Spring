@@ -2,31 +2,43 @@ package ru.shcheglov.spring.second.repository;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Repository;
 import ru.shcheglov.spring.second.model.Person;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
 
+/**
+ * @author Alexey Shcheglov
+ * @version dated 16.01.2019
+ */
+
+@Repository
+@Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class PersonRepositoryBean implements PersonRepository {
 
     @NotNull
-    private Map<String, Person> products = new LinkedHashMap<>();
+    private Map<String, Person> persons = new LinkedHashMap<>();
 
     @PostConstruct
     private void init() {
-        merge(new Person("Иванов", "Иван", "Иванович", "ivan@ivanov.com"));
-        merge(new Person("Петров", "Петр", "Петрович", "petr@petrov.ru"));
+        final Person person = new Person("Иван", "Иванов", "Иванович", "ivan@ivanov.com");
+        merge(person);
+        System.out.println(person.getId());
+        merge(new Person("Петр", "Петров", "Петрович", "petr@petrov.ru"));
     }
 
     @Override
     public Collection<Person> findAll() {
-        return products.values();
+        return persons.values();
     }
 
     @Override
     public Person findOneById(@Nullable final String id) {
         if (id == null || id.isEmpty()) return null;
-        return products.get(id);
+        return persons.get(id);
     }
 
     @Override
@@ -47,11 +59,11 @@ public class PersonRepositoryBean implements PersonRepository {
         if (entity == null) return null;
         @Nullable final String id = entity.getId();
         if (id == null || id.isEmpty()) return null;
-        if (products.containsKey(id)) {
-            products.replace(id, products.get(id), entity);
+        if (persons.containsKey(id)) {
+            persons.replace(id, persons.get(id), entity);
         }
-        if (!products.containsKey(id)) {
-            products.put(id, entity);
+        if (!persons.containsKey(id)) {
+            persons.put(id, entity);
         }
         return entity;
     }
@@ -69,7 +81,7 @@ public class PersonRepositoryBean implements PersonRepository {
 
     @Override
     public void removeAll() {
-        products.clear();
+        persons.clear();
     }
 
     @Override
@@ -84,8 +96,8 @@ public class PersonRepositoryBean implements PersonRepository {
     @Override
     public void removeById(@Nullable final String id) {
         if (id == null || id.isEmpty()) return;
-        if (!products.containsKey(id)) return;
-        products.remove(id);
+        if (!persons.containsKey(id)) return;
+        persons.remove(id);
     }
 
     @Override
