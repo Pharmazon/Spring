@@ -1,7 +1,6 @@
 package ru.shcheglov.spring.second.repository;
 
 import lombok.Getter;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.shcheglov.spring.second.model.AbstractEntity;
 
