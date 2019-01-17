@@ -1,0 +1,67 @@
+.header {
+    background: black;
+    color: white;
+    width: inherit;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    font-size: 12pt;
+}
+
+.headerChild a:visited {
+    color: white;
+}
+
+.headerChild a:link {
+    color: white;
+}
+
+.headerChild a:hover {
+    color: red;
+}
+
+.headerChild {
+    margin-right: 10px;
+    line-height: 50px;
+}
+
+.header :nth-child(2) {
+    margin-left: 10px;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    width: inherit;
+    height: calc(100vh - 90px);
+}
+
+table {
+    margin-top: 20px;
+}
+
+.footer {
+    background: black;
+    height: 40px;
+    color: white;
+    line-height: 40px;
+    font-size: 10pt;
+    padding-left: 10px;
+}
+
+.even {
+    background-color: lightsteelblue;
+}
+
+table tr td input[type="text"] {
+    width: 400px;
+}
