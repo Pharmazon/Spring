@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
+import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Repository;
 import ru.shcheglov.spring.second.model.Task;
 
@@ -28,7 +29,11 @@ public class TaskRepositoryBean extends AbstractRepository<Task> implements Task
     @Override
     public Task findOneById(@Nullable final String id) {
         if (id == null) return null;
-        return getEntityManager().find(Task.class, id);
+        final List<Task> tasks = getEntityManager()
+                .createNamedQuery("Task.findOne", Task.class)
+                .setParameter("taskId", id)
+                .getResultList();
+        return DataAccessUtils.singleResult(tasks);
     }
 
     @Override
@@ -74,14 +79,18 @@ public class TaskRepositoryBean extends AbstractRepository<Task> implements Task
     @Override
     public void removeById(@Nullable final String id) {
         if (id == null || id.isEmpty()) return;
-        final Task person = findOneById(id);
-        removeOne(person);
+        final Task task = findOneById(id);
+        if (task == null) return;
+        removeOne(task);
     }
 
     @Override
     public void removeByIds(@Nullable final Collection<String> ids) {
         if (ids == null || ids.isEmpty()) return;
-        for (@Nullable final String id : ids) removeById(id);
+        for (@Nullable final String id : ids) {
+            if (id == null || id.isEmpty()) continue;
+            removeById(id);
+        }
     }
 
 }

@@ -1,5 +1,6 @@
 package ru.shcheglov.spring.second.repository;
 
+import org.jetbrains.annotations.NotNull;
 import ru.shcheglov.spring.second.model.Person;
 
 /**
@@ -8,4 +9,7 @@ import ru.shcheglov.spring.second.model.Person;
  */
 
 public interface PersonRepository extends CommonRepository<Person> {
+
+    Person findOneByEmail(@NotNull String email);
+
 }

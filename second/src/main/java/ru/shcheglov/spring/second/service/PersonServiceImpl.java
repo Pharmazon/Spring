@@ -1,5 +1,6 @@
 package ru.shcheglov.spring.second.service;
 
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -82,8 +83,22 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void initPerson(@Nullable String firstName, @Nullable String lastName, @Nullable String middleName, @Nullable String email) {
+    public void initPerson(@Nullable String firstName, @Nullable String lastName, @Nullable String middleName,
+                           @NotNull String email) {
+        if (isPersonExists(email)) return;
         final Person person = new Person(firstName, lastName, middleName, email);
         personRepository.merge(person);
     }
+
+    @Override
+    public boolean isPersonExists(@NotNull final String email) {
+        final Person person = findOneByEmail(email);
+        return person != null;
+    }
+
+    @Override
+    public Person findOneByEmail(@NotNull String email) {
+        return personRepository.findOneByEmail(email);
+    }
+
 }

@@ -4,12 +4,14 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
+import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.stereotype.Repository;
 import ru.shcheglov.spring.second.model.Person;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author Alexey Shcheglov
@@ -30,7 +32,11 @@ public class PersonRepositoryBean extends AbstractRepository<Person> implements 
     @Override
     public Person findOneById(@Nullable final String id) {
         if (id == null) return null;
-        return getEntityManager().find(Person.class, id);
+        final List<Person> persons = getEntityManager()
+                .createNamedQuery("Person.findOne", Person.class)
+                .setParameter("personId", id)
+                .getResultList();
+        return DataAccessUtils.singleResult(persons);
     }
 
     @Override
@@ -77,13 +83,26 @@ public class PersonRepositoryBean extends AbstractRepository<Person> implements 
     public void removeById(@Nullable final String id) {
         if (id == null || id.isEmpty()) return;
         final Person person = findOneById(id);
+        if (person == null) return;
         removeOne(person);
     }
 
     @Override
     public void removeByIds(@Nullable final Collection<String> ids) {
         if (ids == null || ids.isEmpty()) return;
-        for (@Nullable final String id : ids) removeById(id);
+        for (@Nullable final String id : ids) {
+            if (id == null || id.isEmpty()) continue;
+            removeById(id);
+        }
+    }
+
+    @Override
+    public Person findOneByEmail(@NotNull String email) {
+        final List<Person> persons = getEntityManager()
+                .createNamedQuery("Person.findOneByEmail", Person.class)
+                .setParameter("personEmail", email)
+                .getResultList();
+        return DataAccessUtils.singleResult(persons);
     }
 
 }
