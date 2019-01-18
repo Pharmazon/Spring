@@ -20,7 +20,8 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "Task.findAll", query = "SELECT t FROM Task t LEFT JOIN FETCH t.person"),
-        @NamedQuery(name = "Task.removeAll", query = "DELETE FROM Task t")
+        @NamedQuery(name = "Task.removeAll", query = "DELETE FROM Task t"),
+        @NamedQuery(name = "Task.findOne", query = "SELECT t FROm Task t LEFT JOIN FETCH t.person WHERE t.id = :taskId")
 })
 public class Task extends AbstractEntity {
 

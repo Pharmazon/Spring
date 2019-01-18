@@ -20,7 +20,10 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p LEFT JOIN FETCH p.tasks"),
-        @NamedQuery(name = "Person.removeAll", query = "DELETE FROM Person p")
+        @NamedQuery(name = "Person.removeAll", query = "DELETE FROM Person p"),
+        @NamedQuery(name = "Person.findOneByEmail", query = "SELECT p FROM Person p WHERE p.email = :personEmail"),
+        @NamedQuery(name = "Person.findOne",
+                query = "SELECT p FROM Person p LEFT JOIN FETCH p.tasks WHERE p.id = :personId")
 })
 public class Person extends AbstractEntity {
 
