@@ -17,7 +17,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "app_tasks")
-@EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "Task.findAll", query = "SELECT t FROM Task t LEFT JOIN FETCH t.person"),
         @NamedQuery(name = "Task.removeAll", query = "DELETE FROM Task t"),

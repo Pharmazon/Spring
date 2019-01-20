@@ -17,7 +17,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "app_persons")
-@EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p LEFT JOIN FETCH p.tasks"),
         @NamedQuery(name = "Person.removeAll", query = "DELETE FROM Person p"),
