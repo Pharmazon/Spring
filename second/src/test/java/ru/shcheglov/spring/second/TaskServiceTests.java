@@ -20,15 +20,16 @@ public class TaskServiceTests {
     @Autowired
     private TaskService taskService;
 
-    private static Task actualTask;
+    private Task actualTask;
 
     @BeforeClass
     public static void initClass() {
-        actualTask = new Task("First task");
+//        actualTask = new Task("First task");
     }
 
     @Before
     public void initTest() {
+        actualTask = new Task("First task");
         taskService.merge(actualTask);
     }
 
