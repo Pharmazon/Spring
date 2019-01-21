@@ -19,12 +19,13 @@ public class LogAspect {
 
     private static final Logger LOGGER = LogManager.getLogger(LogAspect.class);
 
-    @Pointcut("execution(* ru.shcheglov.spring.second.service..*.*(..))")
-    private void getActionName() {
+    @Pointcut("execution(* ru.shcheglov.spring.second..*.*(..))")
+    private void getName() {
     }
 
-    @Before("getActionName()")
+    @Before("getName()")
     public void logBefore(final JoinPoint joinPoint) {
         LOGGER.info(joinPoint);
     }
+
 }
