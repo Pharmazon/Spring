@@ -17,7 +17,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "app_persons")
-@EqualsAndHashCode(callSuper = true)
 @NamedQueries({
         @NamedQuery(name = "Person.findAll", query = "SELECT p FROM Person p LEFT JOIN FETCH p.tasks"),
         @NamedQuery(name = "Person.removeAll", query = "DELETE FROM Person p"),
@@ -65,7 +64,7 @@ public class Person extends AbstractEntity {
     }
 
     public boolean isSelected(final String userId) {
-        if (userId == null | userId.isEmpty()) return false;
+        if (userId == null || userId.isEmpty()) return false;
         return getId().equals(userId);
     }
 

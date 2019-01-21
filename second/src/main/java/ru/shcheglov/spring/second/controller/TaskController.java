@@ -50,12 +50,12 @@ public class TaskController {
     }
 
     @GetMapping("/task-edit")
-    public String edit(@RequestParam("id") String id, Map<String, Object> model) {
+    public String edit(@RequestParam("id") String id, final Model model) {
         final Task task = taskService.findOneById(id);
         final Collection<Person> persons = personService.findAll();
-        model.put("task", task);
-        model.put("persons", persons);
-        model.put("lastSelected", id);
+        model.addAttribute("task", task);
+        model.addAttribute("persons", persons);
+        model.addAttribute("lastSelected", id);
         return "task-edit";
     }
 

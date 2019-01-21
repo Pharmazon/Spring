@@ -2,6 +2,7 @@ package ru.shcheglov.spring.second;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
  * @author Alexey Shcheglov
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
+@EnableAspectJAutoProxy
 public class SecondApplication {
 
 	public static void main(String[] args) {
