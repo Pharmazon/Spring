@@ -64,7 +64,7 @@ public class Person extends AbstractEntity {
     }
 
     public boolean isSelected(final String userId) {
-        if (userId == null | userId.isEmpty()) return false;
+        if (userId == null || userId.isEmpty()) return false;
         return getId().equals(userId);
     }
 

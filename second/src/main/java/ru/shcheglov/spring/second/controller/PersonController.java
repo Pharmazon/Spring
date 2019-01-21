@@ -44,9 +44,9 @@ public class PersonController {
     }
 
     @GetMapping("/person-edit")
-    public String edit(@RequestParam("id") String id, Map<String, Object> model) {
+    public String edit(@RequestParam("id") String id, final Model model) {
         final Person person = personService.findOneById(id);
-        model.put("person", person);
+        model.addAttribute("person", person);
         return "person-edit";
     }
 
