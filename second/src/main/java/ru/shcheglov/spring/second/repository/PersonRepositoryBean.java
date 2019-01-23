@@ -32,11 +32,12 @@ public class PersonRepositoryBean extends AbstractRepository<Person> implements 
     @Override
     public Person findOneById(@Nullable final String id) {
         if (id == null) return null;
-        final List<Person> persons = getEntityManager()
-                .createNamedQuery("Person.findOne", Person.class)
-                .setParameter("personId", id)
-                .getResultList();
-        return DataAccessUtils.singleResult(persons);
+//        final List<Person> persons = getEntityManager()
+//                .createNamedQuery("Person.findOne", Person.class)
+//                .setParameter("personId", id)
+//                .getResultList();
+//        return DataAccessUtils.singleResult(persons);
+        return getEntityManager().find(Person.class, id);
     }
 
     @Override

@@ -3,7 +3,10 @@ package ru.shcheglov.spring.second.bootstrap;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import ru.shcheglov.spring.second.endpoint.PersonEndpoint;
 import ru.shcheglov.spring.second.service.PersonService;
+
+import javax.xml.ws.Endpoint;
 
 /**
  * @author Alexey Shcheglov
