@@ -11,7 +11,6 @@ import ru.shcheglov.spring.second.model.Person;
 import ru.shcheglov.spring.second.service.PersonService;
 
 import java.util.Collection;
-import java.util.Map;
 
 /**
  * @author Alexey Shcheglov

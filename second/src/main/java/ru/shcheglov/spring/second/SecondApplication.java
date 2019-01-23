@@ -12,7 +12,6 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication(exclude = JpaRepositoriesAutoConfiguration.class)
 @EnableAspectJAutoProxy
-//@EnableAutoConfiguration
 public class SecondApplication {
 
 	public static void main(String[] args) {
