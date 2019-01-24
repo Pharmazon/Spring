@@ -28,7 +28,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 
     @Bean
     @SuppressWarnings("unchecked")
-    public ServletRegistrationBean dispatcherServlet(ApplicationContext context) {
+    public ServletRegistrationBean messageDispatcherServlet(ApplicationContext context) {
         final MessageDispatcherServlet servlet = new MessageDispatcherServlet();
         servlet.setApplicationContext(context);
         servlet.setTransformWsdlLocations(true);

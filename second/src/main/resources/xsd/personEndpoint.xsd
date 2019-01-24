@@ -3,7 +3,7 @@
            xmlns:tns="http://localhost:8080/soap/persons"
            targetNamespace="http://localhost:8080/soap/persons"
            elementFormDefault="qualified">
-    
+
     <xs:complexType name="personRecord">
         <xs:sequence>
             <xs:element name="id" type="xs:string" />
@@ -17,7 +17,7 @@
     <xs:element name="createPersonByEmail">
         <xs:complexType>
             <xs:sequence>
-                <xl:element name="email" type="xs:string" />
+                <xs:element name="email" type="xs:string" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -32,10 +32,10 @@
     <xs:element name="createFullPerson">
         <xs:complexType>
             <xs:sequence>
-                <xl:element name="firstName" type="xs:string" />
-                <xl:element name="lastName" type="xs:string" />
-                <xl:element name="middleName" type="xs:string" />
-                <xl:element name="email" type="xs:string" />
+                <xs:element name="firstName" type="xs:string" />
+                <xs:element name="lastName" type="xs:string" />
+                <xs:element name="middleName" type="xs:string" />
+                <xs:element name="email" type="xs:string" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -50,7 +50,7 @@
     <xs:element name="getPersonById">
         <xs:complexType>
             <xs:sequence>
-                <xl:element name="personId" type="xs:string" />
+                <xs:element name="personId" type="xs:string" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -58,7 +58,7 @@
     <xs:element name="getPersonByEmail">
         <xs:complexType>
             <xs:sequence>
-                <xl:element name="personEmail" type="xs:string" />
+                <xs:element name="personEmail" type="xs:string" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -66,7 +66,7 @@
     <xs:element name="isPersonExists">
         <xs:complexType>
             <xs:sequence>
-                <xl:element name="personEmail" type="xs:string" />
+                <xs:element name="personEmail" type="xs:string" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -81,7 +81,7 @@
     <xs:element name="removePersonById">
         <xs:complexType>
             <xs:sequence>
-                <xl:element name="personId" type="xs:string" />
+                <xs:element name="personId" type="xs:string" />
             </xs:sequence>
         </xs:complexType>
     </xs:element>
