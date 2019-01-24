@@ -14,11 +14,20 @@
 	<artifactId>second</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>second</name>
-	<description>Demo project for Spring Boot</description>
+	<description>My first project for Spring Boot</description>
+
+	<developers>
+		<developer>
+			<id>shcheglov</id>
+			<name>Alexey Shcheglov</name>
+			<url>http://www.example.com</url>
+			<email>example@pochta.ru</email>
+		</developer>
+	</developers>
 
 	<properties>
 		<java.version>1.8</java.version>
-		<springboot.version>2.1.2.RELEASE</springboot.version>
+        <spring.boot.version>2.1.2.RELEASE</spring.boot.version>
 		<postgresql.version>42.2.5</postgresql.version>
 	</properties>
 
@@ -39,18 +48,24 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-			<version>${springboot.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-			<version>${springboot.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -66,6 +81,7 @@
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>${postgresql.version}</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -77,6 +93,11 @@
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations</artifactId>
 			<version>16.0.2</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -85,6 +106,48 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>org.apache.cxf</groupId>-->
+				<!--<artifactId>cxf-codegen-plugin</artifactId>-->
+				<!--<version>3.2.7</version>-->
+				<!--<executions>-->
+					<!--<execution>-->
+						<!--<id>generate-sources</id>-->
+						<!--<phase>generate-sources</phase>-->
+						<!--<configuration>-->
+							<!--<sourceRoot>${project.basedir}/generated/cxf</sourceRoot>-->
+							<!--<wsdlOptions>-->
+								<!--<wsdlOption>-->
+									<!--<wsdl>http://localhost:8080/PersonEndpoint?wsdl</wsdl>-->
+								<!--</wsdlOption>-->
+							<!--</wsdlOptions>-->
+						<!--</configuration>-->
+						<!--<goals>-->
+							<!--<goal>wsdl2java</goal>-->
+						<!--</goals>-->
+					<!--</execution>-->
+				<!--</executions>-->
+			<!--</plugin>-->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<id>xjc</id>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<sources>
+						<source>src/main/resources/xsd</source>
+					</sources>
+					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+					<clearOutputDir>false</clearOutputDir>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

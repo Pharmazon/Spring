@@ -2,6 +2,7 @@ package ru.shcheglov.spring.second;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
@@ -9,7 +10,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * @version dated 16.01.2019
  */
 
-@SpringBootApplication
+@SpringBootApplication(exclude = JpaRepositoriesAutoConfiguration.class)
 @EnableAspectJAutoProxy
 public class SecondApplication {
 

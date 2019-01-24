@@ -9,6 +9,7 @@
 
         <form th:action="@{/person-save}" th:object="${person}" method="post">
             <table width="100%" cellspacing="0" cellpadding="10" border="1">
+                <input type="hidden" th:field="*{tasks}" />
                 <tr>
                     <td width="200" nowrap="nowrap">ID</td>
                     <td>
