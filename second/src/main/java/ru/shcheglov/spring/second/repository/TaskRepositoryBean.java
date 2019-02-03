@@ -93,4 +93,11 @@ public class TaskRepositoryBean extends AbstractRepository<Task> implements Task
         }
     }
 
+    @Override
+    public long count() {
+        return getEntityManager()
+                .createQuery("SELECT COUNT(t) FROM Task t GROUP BY t.id")
+                .getFirstResult();
+    }
+
 }

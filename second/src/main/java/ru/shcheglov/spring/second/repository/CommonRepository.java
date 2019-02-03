@@ -36,5 +36,7 @@ public interface CommonRepository<T extends AbstractEntity> {
 
     void removeOne(@Nullable T entity);
 
+    long count();
+
 }
 

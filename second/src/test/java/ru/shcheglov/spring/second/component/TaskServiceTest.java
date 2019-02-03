@@ -1,10 +1,10 @@
-package ru.shcheglov.spring.second;
+package ru.shcheglov.spring.second.component;
 
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.shcheglov.spring.second.model.Task;
 import ru.shcheglov.spring.second.service.TaskService;
 
@@ -13,19 +13,14 @@ import ru.shcheglov.spring.second.service.TaskService;
  * @version dated 16.01.2019
  */
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class TaskServiceTests {
+@DataJpaTest
+@RunWith(SpringJUnit4ClassRunner.class)
+public class TaskServiceTest {
 
     @Autowired
     private TaskService taskService;
 
     private Task actualTask;
-
-    @BeforeClass
-    public static void initClass() {
-//        actualTask = new Task("First task");
-    }
 
     @Before
     public void initTest() {
