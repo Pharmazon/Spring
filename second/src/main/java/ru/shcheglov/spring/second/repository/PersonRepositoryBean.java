@@ -97,6 +97,13 @@ public class PersonRepositoryBean extends AbstractRepository<Person> implements 
     }
 
     @Override
+    public long count() {
+        return getEntityManager()
+                .createQuery("SELECT COUNT(p) FROM Person p GROUP BY p.id")
+                .getFirstResult();
+    }
+
+    @Override
     public Person findOneByEmail(@NotNull String email) {
         final List<Person> persons = getEntityManager()
                 .createNamedQuery("Person.findOneByEmail", Person.class)

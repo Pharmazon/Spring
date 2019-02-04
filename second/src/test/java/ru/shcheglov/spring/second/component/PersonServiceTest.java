@@ -1,10 +1,10 @@
-package ru.shcheglov.spring.second;
+package ru.shcheglov.spring.second.component;
 
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.shcheglov.spring.second.model.Person;
 import ru.shcheglov.spring.second.service.PersonService;
 
@@ -13,9 +13,9 @@ import ru.shcheglov.spring.second.service.PersonService;
  * @version dated 16.01.2019
  */
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
-public class PersonServiceTests {
+@RunWith(SpringJUnit4ClassRunner.class)
+public class PersonServiceTest {
 
     @Autowired
     private PersonService personService;
@@ -47,7 +47,6 @@ public class PersonServiceTests {
         final String actualId = actualPerson.getId();
         final Person expectedPerson = personService.findOneById(actualId);
         expectedPerson.setTasks(null);
-        boolean equals = expectedPerson.equals(actualPerson);
         Assert.assertEquals(actualPerson, expectedPerson);
     }
 

@@ -54,6 +54,11 @@ public class Person extends AbstractEntity {
         this.email = email;
     }
 
+    public Person(@Nullable String firstName, @Nullable String email) {
+        this.firstName = firstName;
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return lastName + " " + firstName + " " + middleName;
